@@ -1,0 +1,229 @@
+body {
+    background-color: #121212;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+}
+
+.navbar {
+    transition: background-color 0.3s;
+}
+
+.navbar .nav-link {
+    color: #f0f0f0;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.navbar .nav-link:hover {
+    color: #ffc107;
+    transform: scale(1.1);
+}
+
+h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #444;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.btn-group .btn {
+    margin-right: 5px;
+}
+
+.footer {
+    background-color: #1b1b1b;
+    padding: 20px 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+.btn-outline-warning {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-warning:hover {
+    background-color: #ffc107;
+    color: #121212;
+}
+
+.badge-outline-sistemas {
+    color: #ffc107;
+    background-color: transparent;
+    border: 1px solid #ffc107;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-javascript {
+    color: #fffb07;
+    background-color: transparent;
+    border: 1px solid #fffb07;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-html {
+    color: #ff8b07;
+    background-color: transparent;
+    border: 1px solid #ff8b07;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-css {
+    color: #079cff;
+    background-color: transparent;
+    border: 1px solid #079cff;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-boostrap {
+    color: #07ff1c;
+    background-color: transparent;
+    border: 1px solid #07ff1c;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-back {
+    color: #b00df0;
+    background-color: transparent;
+    border: 1px solid #b00df0;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-java {
+    color: #f00d18;
+    background-color: transparent;
+    border: 1px solid #f00d18;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-vuejs {
+    color: #f0ce0d;
+    background-color: transparent;
+    border: 1px solid #f0ce0d;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-wp {
+    color: #0dcaf0;
+    background-color: transparent;
+    border: 1px solid #0dcaf0;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-equipe {
+    color: #f00d6c;
+    background-color: transparent;
+    border: 1px solid #f00d6c;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-figma {
+    color: #ca0df0;
+    background-color: transparent;
+    border: 1px solid #ca0df0;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-sup {
+    color: #0df086;
+    background-color: transparent;
+    border: 1px solid #0df086;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+.badge-outline-en {
+    color: #f00d0d;
+    background-color: transparent;
+    border: 1px solid #f00d0d;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    display: inline-block;
+}
+
+footer {
+    background-color: #2c3e50; 
+    color: white; 
+    text-align: center; 
+    padding: 20px 0;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-button {
+    color: #ffc107;
+    font-size: 30px;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-button:hover {
+    color: white;
+    transform: scale(1.2);
+}
