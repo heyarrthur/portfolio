@@ -74,6 +74,26 @@ h2 {
     color: #121212;
 }
 
+.badge-outline-wgg{
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 1.115em;
+    display: inline-block;
+}
+
+.badge-outline-wgg:hover {
+    color: #ffc107;
+    background-color: transparent;
+    border: 1px solid #ffc107;
+    padding: 0.25em 0.6em;
+    border-radius: 0.25rem;
+    font-size: 1.115em;
+    display: inline-block;
+}
+
 .badge-outline-sistemas {
     color: #ffc107;
     background-color: transparent;
@@ -226,4 +246,22 @@ footer {
 .social-button:hover {
     color: white;
     transform: scale(1.2);
+}
+
+.icon-link {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.icon-link:hover {
+    color: #ffc107;
+}
+
+.btn-close {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.btn-close:hover {
+    color: #ffc107;
 }
