@@ -1,9 +1,7 @@
-// Filtro de Projetos
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter');
     const projectCards = document.querySelectorAll('.project-card');
 
-    // Função para filtrar os projetos
     function filterProjects(category) {
         projectCards.forEach(card => {
             const categories = card.getAttribute('data-category').split(' ');
@@ -20,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Evento de clique nos botões de filtro
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             const category = this.getAttribute('data-filter');
@@ -28,6 +25,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Exibir todos os projetos inicialmente
     filterProjects('all');
 });

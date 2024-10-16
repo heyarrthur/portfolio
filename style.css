@@ -62,8 +62,17 @@ h2 {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    filter: invert(1);
+    filter: invert(0);
+    color: #fff;
 }
+
+@media (max-width: 768px) {
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        display: none;
+    }
+}
+
 
 .btn-outline-warning {
     transition: background-color 0.3s, color 0.3s;
