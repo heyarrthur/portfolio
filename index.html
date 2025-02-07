@@ -1,570 +1,588 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Arthur Marques | Portfólio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio - Arthur Marques Ferreira</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+<body class="light-theme">
+    <!-- Navbar mobile: visível apenas em telas pequenas -->
+    <nav class="d-lg-none navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Arthur | Portfólio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#sobre">Sobre mim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#formacoes">Formações</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projetos">Meus Projetos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contato">Contato</a>
-                    </li>
-                </ul>
-            </div>
+            <span class="navbar-brand ms-2">Arthur Marques Ferreira</span>
         </div>
     </nav>
 
-    <main class="container" style="margin-top: 80px;">
+    <!-- Offcanvas para dispositivos móveis -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="profile text-center">
+                <img src="arthur.jpeg" alt="Foto de Arthur" id="profile-pic" />
+                <h4>Arthur Marques Ferreira</h4>
+            </div>
+            <div class="social-icons text-center my-3">
+                <a href="https://www.instagram.com/hey.arrthur/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/heyarrthur" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/arthur-marques-ferreira-a007a9279/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <hr class="divider" />
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#sobre-mim" data-bs-dismiss="offcanvas">Sobre Mim</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#conhecimentos" data-bs-dismiss="offcanvas">Conhecimentos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#formacoes" data-bs-dismiss="offcanvas">Formações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#experiencias" data-bs-dismiss="offcanvas">Experiências</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projetos" data-bs-dismiss="offcanvas">Projetos</a>
+                </li>
+            </ul>
+            <div class="theme-toggle mt-4">
+                <button id="theme-toggle-offcanvas" class="btn btn-primary w-100">Tema Escuro</button>
+            </div>
+        </div>
+    </div>
 
-        <section id="sobre-mim" class="my-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="" alt="Minha Foto" class="img-fluid rounded">
+    <!-- Navbar fixa à esquerda para telas grandes -->
+    <nav id="side-navbar" class="d-none d-lg-flex flex-column">
+        <div class="profile text-center">
+            <img src="arthur.jpeg" alt="Foto de Arthur" id="profile-pic" />
+            <h4>Arthur Marques Ferreira</h4>
+        </div>
+        <div class="social-icons text-center my-3">
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <hr class="divider" />
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#sobre-mim">Sobre Mim</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#conhecimentos">Conhecimentos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#formacoes">Formações</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#experiencias">Experiências</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#projetos">Projetos</a>
+            </li>
+        </ul>
+        <div class="theme-toggle mt-auto w-100">
+            <button id="theme-toggle" class="btn btn-primary w-100">Tema Escuro</button>
+        </div>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main class="content">
+        <!-- Seção Sobre Mim (exemplo anterior) -->
+        <section id="sobre-mim" class="section-content">
+            <h2>Sobre Mim</h2>
+            <div id="sobreMimContainer">
+                <p id="sobreMimContent"></p>
+                <button id="btnSaibaMais" class="btn btn-outline-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalSobreMim">
+                    Saiba mais sobre mim
+                </button>
+            </div>
+        </section>
+
+        <!-- Seção Conhecimentos -->
+        <section id="conhecimentos" class="section-content">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <h2>Conhecimentos</h2>
+                <div class="filter-buttons">
+                    <button class="btn filter-btn" data-filter="Front-End">Front-End</button>
+                    <button class="btn filter-btn" data-filter="Back-End">Back-End</button>
+                    <button class="btn filter-btn" data-filter="WordPress">WordPress</button>
+                    <button class="btn filter-btn" data-filter="Versionamento">Versionamento</button>
+                    <button class="btn filter-btn active" data-filter="all">Todos</button>
+                </div>
+            </div>
+            <div id="conhecimentosContainer" class="cards-container">
+                <!-- Card 1 - HTML (Front-End) -->
+                <div class="conhecimento-card" data-category="Front-End">
+                    <i class="fa-brands fa-html5"></i>
+                    <h3>HTML</h3>
+                    <p>Estruturei páginas da web de forma semântica e acessível, utilizando tags apropriadas para
+                        organizar o conteúdo de maneira clara, intuitiva e otimizada, garantindo uma melhor experiência
+                        para os usuários e facilitando a indexação pelos motores de busca.</p>
+                </div>
+                <!-- Card 2 - CSS (Front-End) -->
+                <div class="conhecimento-card" data-category="Front-End">
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <h3>CSS</h3>
+                    <p>Estilizei interfaces utilizando Flexbox e Grid para desenvolver layouts responsivos e
+                        dinâmicos, garantindo uma melhor adaptação em diferentes dispositivos. Além disso, apliquei
+                        transições e animações para proporcionar uma experiência de usuário mais fluida e
+                        envolvente.
+                    </p>
+                </div>
+                <!-- Card 3 - BOOTSTRAP (Front-End) -->
+                <div class="conhecimento-card" data-category="Front-End">
+                    <i class="fa-brands fa-bootstrap"></i>
+                    <h3>Bootstrap</h3>
+                    <p>Dominei o uso do sistema de grid do Bootstrap para desenvolver layouts responsivos de forma ágil
+                        e eficiente, além de personalizar componentes como botões, modais e carrosséis, garantindo uma
+                        interface moderna e intuitiva.
+                    </p>
+                </div>
+                <!-- Card 4 - JS (Front-End) -->
+                <div class="conhecimento-card" data-category="Front-End">
+                    <i class="fa-brands fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <p>Manipulei o DOM para criar interações dinâmicas, capturar e responder a eventos do usuário de
+                        forma eficiente. Além disso, trabalhei com funções assíncronas para realizar requisições a APIs,
+                        garantindo um carregamento fluido e uma experiência mais interativa.</p>
+                </div>
+                <!-- Card 5 - JAVA (Back-End) -->
+                <div class="conhecimento-card" data-category="Back-End">
+                    <i class="fa-brands fa-java"></i>
+                    <h3>Java</h3>
+                    <p>Desenvolvi aplicações robustas utilizando orientação a objetos, aplicando boas práticas
+                        como encapsulamento, herança e polimorfismo. Implementei tratamento de exceções para
+                        garantir a estabilidade do sistema e trabalhei com manipulação de dados utilizando
+                        frameworks modernos, otimizando a performance e a escalabilidade das aplicações.</p>
+                </div>
+                <!-- Card 6 - ELEMENTOR (WP) -->
+                <div class="conhecimento-card" data-category="WordPress">
+                    <i class="fa-brands fa-elementor"></i>
+                    <h3>Elementor</h3>
+                    <p>Criei sites profissionais e responsivos no WordPress sem a necessidade de código, utilizando
+                        widgets personalizáveis, temas dinâmicos e ferramentas de otimização para SEO,
+                        garantindo um design intuitivo e uma melhor visibilidade nos motores de busca.</p>
+                </div>
+                <!-- Card 7 - springboot (Back-End) -->
+                <div class="conhecimento-card" data-category="Back-End">
+                    <i class="fa-solid fa-s"></i>
+                    <h3>SpringBoot</h3>
+                    <p>Desenvolvi APIs RESTful eficientes e seguras, aplicando injeção de dependência para uma
+                        arquitetura modular, integrando bancos de dados para armazenamento e gerenciamento de
+                        informações, e implementando autenticação com JWT para garantir a segurança dos acessos.</p>
+                </div>
+                <!-- Card 9 - JSON (Back-End) -->
+                <div class="conhecimento-card" data-category="Front-End">
+                    <i class="fa-solid fa-j"></i>
+                    <h3>JSON</h3>
+                    <p>Estruturei e manipulei dados no formato JSON para otimizar a comunicação entre aplicações,
+                        utilizando JavaScript e APIs para o envio, recebimento e processamento de informações de forma
+                        dinâmica e eficiente.</p>
+                </div>
+                <!-- Card 10 - WORDPRESS (Back-End) -->
+                <div class="conhecimento-card" data-category="WordPress">
+                    <i class="fa-brands fa-wordpress"></i>
+                    <h3>WordPress</h3>
+                    <p>Desenvolvi e personalizei sites e blogs, utilizando temas e plugins para criar interfaces
+                        funcionais e atrativas. Além disso, apliquei técnicas de otimização para SEO, garantindo melhor
+                        desempenho, visibilidade nos motores de busca e segurança aprimorada.</p>
+                </div>
+                <!-- Card 11 - GIT (Versionamento) -->
+                <div class="conhecimento-card" data-category="Versionamento">
+                    <i class="fa-brands fa-git-alt"></i>
+                    <h3>GIT</h3>
+                    <p>Versionei códigos de forma eficiente, utilizando commits, branches e merge para garantir um
+                        desenvolvimento colaborativo, organizado e seguro, facilitando o controle de versões e a
+                        integração entre equipes.</p>
+                </div>
+                <!-- Card 12 - NODEJS (Back-End) -->
+                <div class="conhecimento-card" data-category="Back-End">
+                    <i class="fa-brands fa-node-js"></i>
+                    <h3>NodeJS</h3>
+                    <p>Desenvolvi aplicações backend escaláveis, utilizando Express.js para criar APIs eficientes e
+                        estruturadas, além de implementar a comunicação assíncrona com bancos de dados, garantindo
+                        melhor desempenho e escalabilidade.</p>
+                </div>
+                <!-- Card 13 - AWS (Versionamento) -->
+                <div class="conhecimento-card" data-category="Versionamento">
+                    <i class="fa-brands fa-aws"></i>
+                    <h3>AWS</h3>
+                    <p>Utilizei serviços como S3, EC2 e RDS para hospedar aplicações, gerenciar armazenamento de forma
+                        eficiente e garantir escalabilidade na nuvem, otimizando a performance e a disponibilidade dos
+                        sistemas.</p>
+                </div>
+                <!-- Card 14 - DADOS (BACK) -->
+                <div class="conhecimento-card" data-category="Back-End">
+                    <i class="fa-solid fa-database"></i>
+                    <h3>Banco de Dados</h3>
+                    <p>Modelei e gerenciei bancos de dados relacionais e não relacionais, utilizando SQL para realizar
+                        consultas e operações CRUD de forma eficiente, garantindo organização, integridade e desempenho
+                        no armazenamento de dados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Formações -->
+        <section id="formacoes" class="section-content">
+            <h2>Formações</h2>
+
+            <!-- Card de Formação 1 -->
+            <div class="card card-formacao">
+                <div class="card-header" data-bs-toggle="collapse" data-bs-target="#card1Collapse" aria-expanded="false"
+                    aria-controls="card1Collapse">
+                    <h3>EBAC</h3>
+                    <button class="btn btn-link toggle-collapse">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div id="card1Collapse" class="collapse">
+                    <div class="card-body">
+                        <div class="course">
+                            <div class="course-title">Desenvolvimento Full-Stack Java</div>
+                            <div class="course-description">Estou cursando um programa completo de desenvolvimento, do
+                                básico ao avançado, que abrange uma ampla gama de tecnologias, como VueJS, NodeJS,
+                                JavaScript, MongoDB, Springboot, jQuery, LESS, Ajax e ReactJS. O curso oferece uma
+                                abordagem prática, com diversas atividades que fortalecem o domínio dessas linguagens e
+                                frameworks.<br><br>
+
+                                Entre os projetos desenvolvidos, destaco o Gerenciador de Tarefas e a Agenda, ambos
+                                frutos das práticas propostas pelo curso oferecido pela EBAC. Durante essa jornada,
+                                adquiri um conhecimento profundo sobre programação, incluindo boas práticas, lógica de
+                                resolução de problemas, e a importância de escrever códigos limpos e bem estruturados,
+                                facilitando a manutenção e compreensão por outros desenvolvedores.<br><br>
+
+                                O curso também ampliou minha visão sobre o setor de tecnologia, reafirmando meu desejo
+                                de seguir carreira nessa área. A cada novo desafio, fui lembrado de que há sempre mais a
+                                aprender, e isso me motiva a continuar evoluindo profissionalmente</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Inteligência Artificial</div>
+                            <div class="course-description">Neste curso, adquiri conhecimento sobre Inteligência
+                                Artificial (IA) e suas aplicações em várias profissões, além de entender as questões
+                                éticas envolvidas. Estudei como funcionam os deepfakes, seus riscos e os métodos de
+                                forense multimídia usados para identificá-los.<br><br>
+
+                                Aprendi a aplicar IA em marketing e negócios, com foco em plataformas como TikTok, Meta
+                                e Google. Também desenvolvi habilidades para avaliar perfis em redes sociais,
+                                automatizar tarefas e processar imagens. Estudei técnicas de copywriting, storytelling
+                                emocional e estratégias de posicionamento de marcas com foco na criação de conteúdo
+                                relevante e atraente.<br><br>
+
+                                Além disso, aprofundei-me em conceitos de IA e Machine Learning, explorando suas
+                                diferentes abordagens e aplicações. Também estudei como aplicar IA no desenvolvimento de
+                                produtos digitais, desde a criação até as etapas de pós-desenvolvimento. Por fim,
+                                explorei o impacto da IA nas áreas de design, arquitetura, moda digital/metaverso.</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Introdução a Programação</div>
+                            <div class="course-description">Neste curso, aprofundei meus conhecimentos em programação e
+                                desenvolvimento de software. Aprendi a aplicar o pensamento computacional e a lógica de
+                                programação, além de representar algoritmos por meio de pseudocódigos e fluxogramas.
+                                Estudei a declaração e uso de variáveis, tipos de dados, e como aplicar operadores
+                                lógicos e relacionais para a tomada de decisões.<br><br>
+
+                                Explorei estruturas de repetição, rotinas e funções, assim como o manuseio de
+                                caracteres, cadeias de caracteres, vetores e matrizes. O curso também me proporcionou
+                                uma introdução ao desenvolvimento Front-End e Back-End, com ênfase em Python, além de
+                                desenvolvimento de aplicativos móveis para Android e iOS. Essa experiência me ofereceu
+                                uma base sólida para enfrentar desafios na área de tecnologia.</div>
+                        </div>
                     </div>
-                    <div class="col-md-8">
-                        <h2>Sobre Mim</h2>
-                        <p>Olá, sou Arthur Marques Ferreira, apaixonado por tecnologia desde os 14 anos. Minha jornada
-                            começou na programação com a linguagem .lua, inicialmente utilizada para desenvolver scripts
-                            em jogos, como a criação de automações no Counter-Strike. Esse primeiro contato despertou em
-                            mim a curiosidade de entender como eram feitas as soluções para os problemas, o que me levou
-                            a explorar o desenvolvimento web.
+                </div>
+            </div>
 
-                            No início, trabalhei no front-end, construindo interfaces básicas com HTML, CSS e
-                            JavaScript. Essas habilidades iniciais me deram uma sólida compreensão da importância da
-                            experiência do usuário e da criação de interfaces visuais atraentes e funcionais.
-
-                            Em fevereiro de 2023, dei um novo passo na minha carreira, começando a trabalhar como
-                            freelancer em marketing digital. Colaborei com empresas como Mr. Pina, Portugália e Pizza
-                            Burguer, onde aprendi sobre a influência do marketing digital no comportamento dos usuários.
-                            Desenvolvi habilidades em estratégias de campanhas, captação de leads e otimização de
-                            anúncios, adquirindo uma visão abrangente do mundo digital.<br> <br>
-
-                            Entretanto, minha verdadeira paixão sempre foi a programação. Em março de 2023, conheci o
-                            back-end e, a partir...</p>
-                        <button type="button" class="badge-outline-wgg" data-bs-toggle="modal"
-                            data-bs-target="#sobreMimModal">Saber Mais</button>
+            <!-- Card de Formação 2 -->
+            <div class="card card-formacao">
+                <div class="card-header" data-bs-toggle="collapse" data-bs-target="#card2Collapse" aria-expanded="false"
+                    aria-controls="card2Collapse">
+                    <h3>ADA TECH</h3>
+                    <button class="btn btn-link toggle-collapse">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div id="card2Collapse" class="collapse">
+                    <div class="card-body">
+                        <div class="course">
+                            <div class="course-title">História da ciência da computação</div>
+                            <div class="course-description">No módulo História da Ciência da Computação da Ada Tech,
+                                aprendi sobre a evolução da computação, desde os primeiros dispositivos mecânicos até os
+                                computadores modernos. O curso abordou os principais marcos históricos, como a criação
+                                da Máquina de Turing, os primeiros computadores programáveis e o impacto da computação
+                                na sociedade. Além disso, estudei os fundamentos matemáticos que sustentam a computação,
+                                incluindo sistemas numéricos, lógica booleana e conceitos essenciais para entender como
+                                um computador processa informações. Também aprendi sobre a estrutura básica de um
+                                computador, incluindo hardware, software e sistemas operacionais, compreendendo como
+                                essas tecnologias evoluíram e se tornaram essenciais no mundo digital atual.</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Fundamentos matemáticos</div>
+                            <div class="course-description">No módulo Fundamentos Matemáticos da Ada Tech, aprendi os
+                                conceitos essenciais que formam a base da computação e da programação. O curso abordou a
+                                lógica booleana, que é fundamental para o funcionamento dos circuitos digitais e da
+                                tomada de decisões em algoritmos. Também estudei sistemas numéricos, como binário, octal
+                                e hexadecimal, compreendendo como os computadores representam e processam informações.
+                                Além disso, aprofundei meu conhecimento em álgebra e conjuntos, que são aplicados em
+                                estruturas de dados e na modelagem de problemas computacionais. O curso também explorou
+                                conceitos de probabilidade e estatística, fundamentais para a análise de dados e
+                                inteligência artificial, além de introduzir a teoria dos grafos, essencial para a
+                                resolução de problemas em redes e otimização.</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Entendimento de Mercado</div>
+                            <div class="course-description">No módulo Entendimento de Mercado da Ada Tech, aprendi a
+                                importância de compreender o cenário tecnológico e como as empresas utilizam a
+                                computação para impulsionar seus negócios. O curso abordou tendências do setor de
+                                tecnologia, como inteligência artificial, computação em nuvem e big data, além de
+                                explorar o impacto da transformação digital nas empresas. Também estudei as principais
+                                carreiras na área de tecnologia, suas demandas no mercado e as habilidades mais
+                                requisitadas pelos empregadores. Outro ponto essencial foi a análise de produtos e
+                                serviços digitais, entendendo como são desenvolvidos, lançados e escalados no mercado.
+                                Além disso, aprofundei conhecimentos sobre metodologias ágeis e boas práticas de
+                                desenvolvimento de software, fundamentais para atuar em times de tecnologia de forma
+                                eficiente.</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Básico sobre o funcionamento do computador</div>
+                            <div class="course-description">No módulo Básico sobre o Funcionamento do Computador da Ada
+                                Tech, aprendi como os computadores processam informações e interagem com o usuário. O
+                                curso abordou a estrutura e os componentes essenciais do hardware, como processador
+                                (CPU), memória RAM, armazenamento (HD/SSD) e placa-mãe, explicando suas funções e como
+                                trabalham em conjunto. Também estudei o funcionamento do software, incluindo sistemas
+                                operacionais e sua interação com o hardware para gerenciar processos e recursos. Além
+                                disso, compreendi como os dados são representados e manipulados em linguagem binária, a
+                                lógica por trás da execução de programas e os princípios da computação que permitem o
+                                funcionamento dos dispositivos modernos. Esse conhecimento me deu uma base sólida para
+                                entender a tecnologia e sua aplicação em diversas áreas.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="modal fade" id="sobreMimModal" tabindex="-1" aria-labelledby="sobreMimModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content bg-dark text-light">
+        <!-- Modal para exibir detalhes do curso (Formações) -->
+        <div class="modal fade" id="modalCurso" tabindex="-1" aria-labelledby="modalCursoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="sobreMimModalLabel">Sobre Mim</h5>
-                        <button type="button" class="btn-close text-light" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <h5 class="modal-title" id="modalCursoLabel">Detalhes do Curso</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                     </div>
-                    <div class="modal-body">
-                        <p>Olá, sou Arthur Marques Ferreira, apaixonado por tecnologia desde os 14 anos. Minha jornada
-                            começou
-                            na programação com a linguagem .lua, inicialmente utilizada para desenvolver scripts em
-                            jogos, como
-                            a criação de automações no Counter-Strike. Esse primeiro contato despertou em mim a
-                            curiosidade de
-                            entender como eram feitas as soluções para os problemas, o que me levou a explorar o
-                            desenvolvimento
-                            web.<br><br>
-
-                            No início, trabalhei no front-end, construindo interfaces básicas com HTML, CSS e
-                            JavaScript. Essas
-                            habilidades iniciais me deram uma sólida compreensão da importância da experiência do
-                            usuário e da
-                            criação de interfaces visuais atraentes e funcionais.<br><br>
-
-                            Em fevereiro de 2023, dei um novo passo na minha carreira, começando a trabalhar como
-                            freelancer em
-                            marketing digital. Colaborei com empresas como Mr. Pina, Portugália e Pizza Burguer, onde
-                            aprendi
-                            sobre a influência do marketing digital no comportamento dos usuários. Desenvolvi
-                            habilidades em
-                            estratégias de campanhas, captação de leads e otimização de anúncios, adquirindo uma visão
-                            abrangente do mundo digital.<br><br>
-
-                            Entretanto, minha verdadeira paixão sempre foi a programação. Em março de 2023, conheci o
-                            back-end
-                            e, a partir de então, me dediquei intensamente a essa área, com foco em Java. Decidi
-                            aprofundar meus
-                            estudos e ingressei em um curso de Desenvolvimento FullStack Java, onde aprendi tecnologias
-                            modernas
-                            como VueJS, NodeJS, MongoDB, Springboot, ReactJS e outras.<br><br>
-
-                            Atualmente, estou estagiando na Usepress, onde venho enfrentando desafios técnicos práticos
-                            que têm
-                            sido cruciais para o meu crescimento. Trabalhei com banco de dados, WordPress, APIs e criei
-                            chatbots
-                            para WhatsApp, além de realizar transferências de arquivos via FileZilla e prestar suporte
-                            técnico
-                            aos clientes. Essa experiência me proporcionou uma visão ampla do ciclo completo de
-                            desenvolvimento
-                            de software e a capacidade de oferecer soluções criativas e eficientes.<br><br>
-
-                            Em julho de 2024, tive a oportunidade de trabalhar na Unimed Juiz de Fora, o que expandiu
-                            ainda mais
-                            minha visão sobre diferentes áreas e ambientes corporativos. Esta experiência me ajudou a
-                            desenvolver
-                            uma perspectiva mais ampla sobre o mercado e a importância da colaboração em equipes
-                            multidisciplinares.<br><br>
-
-                            Sou movido por desafios e pelo desejo de evoluir constantemente. Estou sempre aprendendo
-                            algo novo e
-                            me mantendo atualizado com as tecnologias e tendências mais recentes. Como uma pessoa
-                            comunicativa e
-                            colaborativa, estou sempre em busca de crescimento pessoal e profissional, pronto para
-                            agregar valor
-                            a cada projeto.</p>
+                    <div class="modal-body" id="modalCursoBody">
+                        <!-- O conteúdo completo do curso será inserido via JavaScript -->
                     </div>
                 </div>
             </div>
         </div>
 
-        <section id="formacoes" class="my-5">
-            <h2 class="text-light">Minhas Formações</h2>
-            <div id="formacoesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-                <div class="carousel-inner">
+        <!-- Seção Experiências -->
+        <section id="experiencias" class="section-content">
+            <h2>Experiências</h2>
+            <div class="timeline">
+                <!-- Experiência 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Analista e Desenvolvedor de Sistemas Jr. (Atualmente)</h3>
+                        <p>
 
-                    <div class="carousel-item active">
-                        <div class="card bg-dark text-light shadow" data-course="curso1">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="ebac.png" class="img-fluid rounded-start" alt="Curso 1">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h2 class="card-title">Desenvolvimento Full Stack Java</h2>
-                                        <p class="card-text">
-                                            Estou cursando um programa completo de desenvolvimento, do básico ao
-                                            avançado, que
-                                            abrange uma ampla gama de tecnologias, como VueJS, NodeJS, JavaScript,
-                                            MongoDB,
-                                            Springboot, jQuery, LESS, Ajax e ReactJS. O curso oferece uma abordagem
-                                            prática, com
-                                            diversas atividades que fortalecem o domínio dessas linguagens e
-                                            frameworks.<br><br>
-
-                                            Entre os projetos desenvolvidos, destaco o Gerenciador de Tarefas e a
-                                            Agenda, ambos
-                                            frutos das práticas propostas pelo curso oferecido pela EBAC. Durante essa
-                                            jornada,
-                                            adquiri um conhecimento profundo sobre programação, incluindo boas práticas,
-                                            lógica de
-                                            resolução de problemas, e a importância de escrever códigos limpos e bem
-                                            estruturados,
-                                            facilitando a manutenção e compreensão por outros desenvolvedores.<br><br>
-
-                                            O curso também ampliou minha visão sobre o setor de tecnologia, reafirmando
-                                            meu desejo
-                                            de seguir carreira nessa área. A cada novo desafio, fui lembrado de que há
-                                            sempre mais
-                                            a aprender, e isso me motiva a continuar evoluindo profissionalmente.
-                                        </p>
-                                        <div class="d-flex justify-content-end mt-auto">
-                                            <a href="cursofullstackjava.pdf" target="_blank"
-                                                class="btn btn-outline-warning">Certificado</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            Na Usepress, aprimorei minhas habilidades em diversas áreas, com ênfase na criação e
+                            integração de APIs, garantindo soluções eficientes e escaláveis. Contribuí ativamente no
+                            desenvolvimento de sites, aplicando as melhores práticas para otimização de desempenho e
+                            experiência do usuário. Além disso, ofereci suporte técnico especializado a clientes,
+                            auxiliando na configuração de SMTPs, na gestão de bancos de dados e na administração de
+                            hosts, assegurando estabilidade, segurança e alta disponibilidade das aplicações.
                     </div>
-
-                    
-
-                    <div class="carousel-item">
-                        <div class="card bg-dark text-light shadow" data-course="curso2">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="ebac.png" class="img-fluid rounded-start" alt="Curso 2">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h2 class="card-title">Inteligência Artificial</h2>
-                                        <p class="card-text">Neste curso, adquiri conhecimento sobre Inteligência
-                                            Artificial (IA) e suas
-                                            aplicações em várias profissões, além de entender as questões éticas
-                                            envolvidas. Estudei como
-                                            funcionam os deepfakes, seus riscos e os métodos de forense multimídia
-                                            usados para
-                                            identificá-los. <br><br>
-
-                                            Aprendi a aplicar IA em marketing e negócios, com foco em plataformas como
-                                            TikTok, Meta e
-                                            Google. Também desenvolvi habilidades para avaliar perfis em redes sociais,
-                                            automatizar
-                                            tarefas e processar imagens. Estudei técnicas de copywriting, storytelling
-                                            emocional e
-                                            estratégias de posicionamento de marcas com foco na criação de conteúdo
-                                            relevante e
-                                            atraente.<br><br>
-
-                                            Além disso, aprofundei-me em conceitos de IA e Machine Learning, explorando
-                                            suas diferentes
-                                            abordagens e aplicações. Também estudei como aplicar IA no desenvolvimento
-                                            de produtos
-                                            digitais, desde a criação até as etapas de pós-desenvolvimento. Por fim,
-                                            explorei o impacto
-                                            da IA nas áreas de design, arquitetura, moda digital/metaverso.
-                                        </p>
-                                        <div class="d-flex justify-content-end mt-auto">
-                                            <a href="cursoia.pdf" target="_blank"
-                                                class="btn btn-outline-warning">Certificado</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="card bg-dark text-light shadow" data-course="curso3">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="ebac.png" class="img-fluid rounded-start" alt="Curso 3">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h2 class="card-title">Introdução à Programação</h2>
-                                        <p class="card-text">
-                                            Neste curso, aprofundei meus conhecimentos em programação e desenvolvimento
-                                            de software.
-                                            Aprendi a aplicar o pensamento computacional e a lógica de programação, além
-                                            de representar
-                                            algoritmos por meio de pseudocódigos e fluxogramas. Estudei a declaração e
-                                            uso de variáveis,
-                                            tipos de dados, e como aplicar operadores lógicos e relacionais para a
-                                            tomada de
-                                            decisões.<br><br>
-
-                                            Explorei estruturas de repetição, rotinas e funções, assim como o manuseio
-                                            de caracteres,
-                                            cadeias de caracteres, vetores e matrizes. O curso também me proporcionou
-                                            uma introdução ao
-                                            desenvolvimento Front-End e Back-End, com ênfase em Python, além de
-                                            desenvolvimento de
-                                            aplicativos móveis para Android e iOS. Essa experiência me ofereceu uma base
-                                            sólida para
-                                            enfrentar desafios na área de tecnologia.<br><br><br><br>
-                                        </p>
-                                        <div class="d-flex justify-content-end mt-auto">
-                                            <a href="cursointroprogramacao.pdf" target="_blank"
-                                                class="btn btn-outline-warning">Certificado</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Estágiario de Análises e Desenvolvimento de Sistemas - 2024 a 2025</h3>
+                        <p>
 
-                <button class="carousel-control-prev" type="button" data-bs-target="#formacoesCarousel"
-                    data-bs-slide="prev" style="z-index: 10; left: -150px;">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#formacoesCarousel"
-                    data-bs-slide="next" style="z-index: 10; right: -150px;">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Próximo</span>
-                </button>
+                            Na Usepress, aprimorei minhas habilidades em diversas áreas, com ênfase na criação e
+                            integração de APIs, garantindo soluções eficientes e escaláveis. Contribuí ativamente no
+                            desenvolvimento de sites, aplicando as melhores práticas para otimização de desempenho e
+                            experiência do usuário. Além disso, ofereci suporte técnico especializado a clientes,
+                            auxiliando na configuração de SMTPs, na gestão de bancos de dados e na administração de
+                            hosts, assegurando estabilidade, segurança e alta disponibilidade das aplicações.
+                    </div>
+                </div>
+                <!-- Experiência 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Jovem Aprendiz (Atualmente)</h3>
+                        <p>
+                            Na Unimed Juiz de Fora, iniciei minha trajetória como auxiliar de expedição, onde fui
+                            responsável pela coleta e entrega de documentos, formatação de relatórios, gestão de
+                            estoques e substituição de equipamentos de informática, como impressoras. Com dedicação e
+                            aprendizado contínuo, tive a oportunidade de migrar para o setor de compras, onde atuo
+                            atualmente. Minhas principais responsabilidades incluem a aquisição de medicamentos para
+                            hospitais, acompanhamento de pedidos (follow-up), além da gestão de devoluções e trocas,
+                            garantindo eficiência nos processos e abastecimento adequado das unidades.
+                        </p>
+                    </div>
+                </div>
+                <!-- Experiência 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Free Lancer de Social Media - 2023 a 2024</h3>
+                        <p>
+                            Nesta experiência, tive a oportunidade de colaborar com grandes empresas em Juiz de Fora,
+                            adquirindo conhecimentos estratégicos em Facebook Ads e anúncios no Instagram. Aprofundei
+                            minha compreensão sobre o comportamento dos algoritmos dos navegadores, permitindo a criação
+                            de campanhas mais precisas e eficientes.
+                            <br>
+                            Desenvolvi técnicas de segmentação avançadas, otimizando anúncios para alcançar o público
+                            certo com maior impacto, além de aprimorar minha capacidade de análise de métricas para
+                            ajustar estratégias e melhorar o desempenho das campanhas.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="projetos" class="my-5">
-            <h2 class="text-light">Meus Projetos</h2>
-
-            <div class="btn-group mb-4" role="group">
-                <button type="button" class="btn btn-outline-light filter" data-filter="all">Todos</button>
-                <button type="button" class="btn btn-outline-warning filter" data-filter="sistemas">Sistemas</button>
-                <button type="button" class="btn btn-outline-info filter" data-filter="wordpress">Wordpress</button>
+        <!-- Seção Projetos -->
+        <section id="projetos" class="section-content">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <h2>Projetos</h2>
+                <div class="filter-buttons">
+                    <button class="btn filter-btn" data-filter="Back-End">Back-End</button>
+                    <button class="btn filter-btn" data-filter="Front-End">Front-End</button>
+                    <button class="btn filter-btn" data-filter="WordPress">WordPress</button>
+                    <button class="btn filter-btn" data-filter="UI/UX">UI/UX</button>
+                    <button class="btn filter-btn active" data-filter="all">Todos</button>
+                </div>
             </div>
-
-            <div class="row" id="projectCards">
+            <div id="projetosContainer" class="cards-container projetos-container">
                 <!-- Card 1 -->
-                <div class="col-md-4 project-card" data-category="sistemas">
-                    <div class="card bg-dark text-light mb-4 shadow"
-                        onclick="window.location.href='projetos/tarefas/index.html';" style="cursor: pointer;">
-                        <div class="card-body">
-                            <h5 class="card-title">Gerenciamento de Tarefas</h5>
-                            <p class="card-text">Desenvolvi um sistema de tarefas diárias que visa ajudar na
-                                organização do dia a dia de forma leve e agradável. A interface intuitiva permite
-                                que os usuários insiram e acompanhem suas atividades facilmente.<br> <br>
-
-                                Uma característica marcante do sistema são as animações de celebração, que são
-                                ativadas ao concluir tarefas, tornando o processo mais divertido e motivador. Além
-                                disso, o sistema permite a personalização de tarefas e prazos, adaptando-se às
-                                necessidades de cada usuário. Com essa ferramenta, a rotina diária se torna mais
-                                organizada e satisfatória dando uma motivação extra.</p>
-                            <span class="badge-outline-sistemas">Sistemas</span>
-                            <span class="badge-outline-javascript">JS</span>
-                            <span class="badge-outline-html">HTML</span>
-                            <span class="badge-outline-css">CSS</span>
-                            <span class="badge-outline-boostrap">Boostrap</span>
-                        </div>
+                <div class="projeto-card" data-category="Front-End">
+                    <div class="card-image">
+                        <img src=".png" alt="Projeto 1" />
                     </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="col-md-4 project-card" data-category="sistemas">
-                    <div class="card bg-dark text-light mb-4 shadow"
-                        onclick="window.location.href='projetos/agenda/index.html';" style="cursor: pointer;">
-                        <div class="card-body">
-                            <h5 class="card-title">Sistema de Agendamento</h5>
-                            <p class="card-text">Desenvolvi um sistema de gerenciamento de horários voltado para
-                                profissionais da saúde, como dentistas. Essa ferramenta permite acompanhar o
-                                comparecimento dos pacientes, informando se eles estiveram presentes, ausentes ou se
-                                cancelaram seus agendamentos.<br> <br>
-
-                                Com uma interface amigável, o sistema facilita a organização da agenda, permitindo
-                                que os profissionais visualizem rapidamente o status de cada compromisso. Isso não
-                                só otimiza a gestão do tempo, mas também melhora a experiência do paciente, ao
-                                proporcionar um controle mais eficiente sobre os agendamentos.</p>
-                            <span class="badge-outline-sistemas">Sistemas</span>
-                            <span class="badge-outline-javascript">JS</span>
-                            <span class="badge-outline-html">HTML</span>
-                            <span class="badge-outline-css">CSS</span>
-                            <span class="badge-outline-boostrap">Boostrap</span>
-                        </div>
+                    <div class="card-content">
+                        <h3>DashCO - Plataforma Administrativa (Desenolvimento)</h3>
+                        <p>O DashCo é uma plataforma moderna e intuitiva desenvolvida para otimizar a produtividade
+                            e organização dos usuários. A aplicação conta com um dashboard interativo que centraliza
+                            diversas ferramentas essenciais, como um chat integrado com IA utilizando a API da OpenAI,
+                            um sistema de gerenciamento de tarefas que permite criar, editar e concluir atividades, além
+                            de um bloco de notas digital para anotações rápidas. Também inclui uma calculadora embutida,
+                            suporte para armazenamento e acesso a arquivos, uma agenda para eventos e compromissos, e um
+                            módulo que permite a edição de planilhas Excel diretamente na plataforma. Projetado com um
+                            design clean e responsivo, o DashCo oferece uma experiência fluida, garantindo facilidade de
+                            uso e eficiência. Desenvolvido com tecnologias modernas como HTML, CSS e JavaScript no
+                            frontend e Node.js no backend, a plataforma é hospedada no Render para acessibilidade
+                            global.</p>
                     </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="col-md-4 project-card" data-category="sistemas">
-                    <div class="card bg-dark text-light mb-4 shadow"
-                        onclick="window.location.href='projetos/calculadora/index.html';" style="cursor: pointer;">
-                        <div class="card-body">
-                            <h5 class="card-title">Calculadora</h5>
-                            <p class="card-text">Desenvolvi uma calculadora que oferece todas as funcionalidades de
-                                uma calculadora comum, além de recursos avançados como funções trigonométricas (tan,
-                                sin, cos), logaritmos e muito mais. <br> <br>
-
-                                Essa aplicação foi projetada para facilitar a realização de cálculos complexos em
-                                uma única interface, tornando-a uma ferramenta completa e prática para usuários que
-                                precisam de agilidade e precisão em suas operações matemáticas. Com um design
-                                intuitivo, a calculadora atende tanto a necessidades cotidianas quanto a requisitos
-                                mais avançados, proporcionando uma experiência eficiente para todos os tipos de
-                                usuários.</p>
-                            <span class="badge-outline-sistemas">Sistemas</span>
-                            <span class="badge-outline-javascript">JS</span>
-                            <span class="badge-outline-html">HTML</span>
-                            <span class="badge-outline-css">CSS</span>
-                            <span class="badge-outline-boostrap">Boostrap</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 4  -->
-                <div class="col-md-4 project-card" data-category="sistemas">
-                    <div class="card bg-dark text-light mb-4 shadow"
-                    onclick="window.location.href='projetos/login/index.html';" style="cursor: pointer;">
-                        <div class="card-body">
-                            <h5 class="card-title">Página de Login</h5>
-                            <p class="card-text">Desenvolvi uma página de login básica utilizando HTML, CSS e
-                                JavaScript, projetada para oferecer uma experiência de autenticação simples e intuitiva.
-                                A interface apresenta campos para nome de usuário e senha, além de um botão de 'Entrar'
-                                que, ao ser clicado, valida as informações inseridas. Caso os dados estejam corretos, o
-                                usuário é redirecionado para uma nova página, enquanto mensagens de erro são exibidas em
-                                caso de falha na autenticação.<br><br><br><br><br><br><br><br><br></p>
-                            <span class="badge-outline-sistemas">Sistemas</span>
-                            <span class="badge-outline-javascript">JS</span>
-                            <span class="badge-outline-html">HTML</span>
-                            <span class="badge-outline-css">CSS</span>
-                            <span class="badge-outline-boostrap">Boostrap</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 5 -->
-                <div class="col-md-4 project-card" data-category="sistemas">
-                    <div class="card bg-dark text-light mb-4 shadow"
-                        onclick="window.location.href='projetos/chatbot/index.html';" style="cursor: pointer;">
-                        <div class="card-body">
-                            <h5 class="card-title">ChatBOT Automático</h5>
-                            <p class="card-text">Desenvolvi um sistema básico de chatbot em JavaScript, projetado
-                                para demonstrar funcionalidades de resposta automática. O chatbot inicia a interação
-                                com a mensagem base "Olá" e, a partir daí, responde de maneira contextualizada,
-                                adaptando suas respostas com base nas entradas do usuário.<br> <br>
-
-                                Esse sistema ilustra como um chatbot pode ser útil ao fornecer respostas relevantes
-                                e imediatas, facilitando a comunicação e aprimorando a experiência do usuário. Com
-                                uma estrutura simples, o chatbot pode ser facilmente expandido para incluir mais
-                                funcionalidades e diálogos, tornando-se uma ferramenta valiosa para diversas
-                                aplicações.<br> <br> <br><br> </p>
-                            <span class="badge-outline-sistemas">Sistemas</span>
-                            <span class="badge-outline-javascript">JS</span>
-                            <span class="badge-outline-html">HTML</span>
-                            <span class="badge-outline-css">CSS</span>
-                            <span class="badge-outline-boostrap">Boostrap</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 6  -->
-                <div class="col-md-4 project-card" data-category="sistemas">
-                    <div class="card bg-dark text-light mb-4 shadow"
-                    onclick="window.location.href='projetos/pn/index.html';" style="cursor: pointer;">
-                        <div class="card-body">
-                            <h5 class="card-title">Sistema de Imóveis</h5>
-                            <p class="card-text">Página em Desenvolvimento. Em breve será disponibilizado o arquivo... <br> <br> <br> <br> <br> <br>  <br> <br>
-                                <br> <br> <br> <br> <br> <br> <br> <br>
-                            </p>
-                            <span class="badge-outline-sistemas">Sistemas</span>
-                            <span class="badge-outline-back">Back-end</span>
-                            <span class="badge-outline-boostrap">Boostrap</span>
-                            <span class="badge-outline-java">Java</span>
-                            <span class="badge-outline-vuejs">VueJS</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 8 -->
-                <div class="col-md-4 project-card" data-category="wordpress">
-                    <div class="card bg-dark text-light mb-4 shadow"
-                        onclick="window.location.href='https://recrieprofissionais.com.br/';" style="cursor: pointer;">
-                        <div class="card-body">
-                            <h5 class="card-title">Recrie Profissionais</h5>
-                            <p class="card-text">Esta foi mais uma experiência enriquecedora que tive como
-                                estagiário com Gustavo, onde trabalhamos na criação de um site de vendas de jalecos.
-                                Utilizamos o WordPress para o desenvolvimento da plataforma, garantindo uma
-                                interface amigável e funcional. <br> <br>
-
-                                Durante o processo, ofereci suporte contínuo às proprietárias do site, auxiliando em
-                                diversos aspectos e resolvendo problemas criativos que surgiram ao longo do projeto.
-                                Essa vivência não apenas aprimorou minhas habilidades técnicas, mas também
-                                fortaleceu minha capacidade de trabalhar em equipe e solucionar desafios de maneira
-                                eficaz. <br> <br> <br> <br> <br></p>
-                            <span class="badge-outline-wp">Wordpress</span>
-                            <span class="badge-outline-equipe">Team Work</span>
-                            <span class="badge-outline-sup">Suporte</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 9 -->
-                <div class="col-md-4 project-card" data-category="wordpress">
-                    <div class="card bg-dark text-light mb-4 shadow"
-                        onclick="window.location.href='https://ghgeologia.com.br/';" style="cursor: pointer;">
-                        <div class="card-body">
-                            <h5 class="card-title">GH Geologia</h5>
-                            <p class="card-text">No projeto do site da GH Geologia, tive a oportunidade de testar
-                                minhas habilidades e assumir grandes responsabilidades. Gustavo confiou a mim a
-                                criação do site, fornecendo apenas as informações necessárias que o cliente
-                                desejava.<br> <br>
-
-                                Toda alteração e feedback que surgiram foram direcionados a mim, permitindo que eu
-                                gerenciasse o projeto de forma independente. Essa experiência representou um desafio
-                                incrível para minha carreira como desenvolvedor, pois me permitiu aprimorar minhas
-                                habilidades técnicas e desenvolver minha capacidade de gestão de projetos, além de
-                                fortalecer minha autoconfiança na área. <br> <br> <br> <br></p>
-                            <span class="badge-outline-wp">Wordpress</span>
-                            <span class="badge-outline-sup">Suporte</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 10 -->
-                <div class="col-md-4 project-card" data-category="wordpress">
-                    <div class="card bg-dark text-light mb-4 shadow"
-                        onclick="window.location.href='https://epigene.com.br/';" style="cursor: pointer;">
-                        <div class="card-body">
-                            <h5 class="card-title">Epigine</h5>
-                            <p class="card-text">No projeto do Epigine, tive minha primeira oportunidade de criar um
-                                site em português e inglês, o que me permitiu entender o processo de montagem de um
-                                site voltado para um público internacional. Essa experiência foi valiosa para
-                                aprender diferentes abordagens de desenvolvimento, adaptando o conteúdo e o design
-                                para atender às preferências e gostos de pessoas de diferentes países. <br> <br>
-
-                                Trabalhar em um projeto bilíngue não apenas ampliou minhas habilidades técnicas, mas
-                                também me proporcionou uma perspectiva mais ampla sobre como comunicar eficazmente
-                                em contextos culturais variados. Essa vivência foi fundamental para meu crescimento
-                                como desenvolvedor e para minha compreensão das nuances de atender a um público
-                                global.</p>
-                            <span class="badge-outline-wp">Wordpress</span>
-                            <span class="badge-outline-sup">Suporte</span>
-                            <span class="badge-outline-equipe">Team Work</span>
-                            <span class="badge-outline-en">English</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 10 -->
-                <div class="col-md-4 project-card" data-category="wordpress">
-                    <div class="card bg-dark text-light mb-4 shadow"
-                        onclick="window.location.href='https://redemgfarma.com.br/';" style="cursor: pointer;">
-                        <div class="card-body">
-                            <h5 class="card-title">Rede MG Farma</h5>
-                            <p class="card-text">Neste projeto, colaborei em equipe durante meu estágio na Usepress,
-                                sob a supervisão do meu chefe Gustavo. Juntos, desenvolvemos um site utilizando a
-                                plataforma Elementos e a ferramenta Figma para design.<br> <br>
-
-                                A divisão de responsabilidades foi fundamental para o progresso do projeto,
-                                permitindo que cada membro da equipe contribuísse de forma eficaz. Além do
-                                desenvolvimento, também oferecemos suporte aos clientes, garantindo que suas
-                                necessidades fossem atendidas e que o projeto estivesse alinhado às suas
-                                expectativas. Essa experiência me proporcionou habilidades valiosas em trabalho em
-                                equipe, gerenciamento de projetos e atendimento ao cliente.<br> <br> <br></p>
-                            <span class="badge-outline-wp">Wordpress</span>
-                            <span class="badge-outline-equipe">Team Work</span>
-                            <span class="badge-outline-figma">Figma</span>
-                            <span class="badge-outline-sup">Suporte</span>
-                        </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline-primary btn-visualizar">Visualizar</button>
+                        <button class="btn btn-outline-secondary btn-saber-mais">Saber mais</button>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer class="bg-dark text-light py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <a href="https://www.instagram.com/hey.arrthur/" target="_blank"
-                        class="text-decoration-none mx-3 icon-link">
-                        <i class="fab fa-instagram fa-lg"></i>
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/arthur-marques-ferreira-a007a9279/" target="_blank"
-                        class="text-decoration-none mx-3 icon-link">
-                        <i class="fab fa-linkedin fa-lg"></i>
-                    </a>
-
-                    <a href="https://wa.me/32991145114" target="_blank" class="text-decoration-none mx-3 icon-link">
-                        <i class="fab fa-whatsapp fa-lg"></i>
-                    </a>
-
-                    <a href="https://github.com/heyarrthur" target="_blank" class="text-decoration-none mx-3 icon-link">
-                        <i class="fab fa-github fa-lg"></i>
-                    </a>
-
-                    <a href="mailto:arthurmf.adm@gmail.com" target="_blank" class="text-decoration-none mx-3 icon-link">
-                        <i class="fas fa-envelope fa-lg"></i>
-                    </a>
+    <!-- Modal para exibir o texto completo de "Sobre Mim" -->
+    <div class="modal fade" id="modalSobreMim" tabindex="-1" aria-labelledby="modalSobreMimLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalSobreMimLabel">Sobre Mim</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
+                <div class="modal-body" id="modalSobreMimBody">
+                    <!-- O texto completo será inserido via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para exibir os detalhes de cada card de Conhecimentos -->
+    <div class="modal fade" id="modalConhecimento" tabindex="-1" aria-labelledby="modalConhecimentoLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalConhecimentoLabel">Detalhes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body" id="modalConhecimentoBody">
+                    <!-- O conteúdo completo do card será inserido via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <!-- Lado Esquerdo -->
+            <div class="footer-left">
+                <h4>Arthur Marques Ferreira</h4>
+                <p>arthurmf.adm@gmail.com<br>(32) 9 9114-5114</p>
+                <hr>
+                <div class="footer-social">
+                    <a href="mailto:arthurmf.adm@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/hey.arrthur/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/arthur-marques-ferreira-a007a9279/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/heyarrthur"><i class="fab fa-github"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=5532991145114"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Lado Direito -->
+            <div class="footer-right">
+                <h4>Contato</h4>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="assunto">Assunto</label>
+                        <select id="assunto" name="assunto" class="form-control">
+                            <option value="">Selecione...</option>
+                            <option value="duvidas">Dúvidas</option>
+                            <option value="dicas">Dicas</option>
+                            <option value="proposta">Proposta</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Nome Sobrenome</label>
+                        <input type="text" id="nome" name="nome" class="form-control" placeholder="Seu nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Seu e-mail</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Seu e-mail">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" class="form-control" placeholder="Seu telefone">
+                    </div>
+                    <button type="submit" class="btn">Enviar formulário</button>
+                </form>
             </div>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
 
+    <!-- Bootstrap JS (com Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS personalizado -->
+    <script src="script.js"></script>
 </body>
 
 </html>

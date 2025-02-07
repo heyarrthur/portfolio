@@ -1,290 +1,888 @@
-body,html {
-    background-color: #121212;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #f0f0f0;
+/* ===============================
+   Variáveis de Cores e Configurações
+   =============================== */
+:root {
+    /* Cores do tema claro */
+    --bg-light: #f4f4f4;
+    --text-light: #333;
+    --navbar-bg-light: #ffffff;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+
+    /* Cores do tema escuro */
+    --bg-dark: #1e1e1e;
+    --text-dark: #ddd;
+    --navbar-bg-dark: #2c2c2c;
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+
+    /* Cores para seções e cards em modo escuro */
+    --section-bg-dark: #2c2c2c;
+    --card-bg-dark: #2c2c2c;
+    --border-dark: #444;
+
+    /* Cores principais */
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+
+    /* Filtros */
+    --front-end-color: #ff69b4;
+    --back-end-color: #ff0000;
+    --wordpress-color: #0000ff;
+    --uxui-color: #800080;
+
+    /* Transições */
+    --transition-default: 0.3s ease-in-out;
+}
+
+/* ===============================
+     Temas: Claro e Escuro
+     =============================== */
+body.light-theme {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+
+body.dark-theme {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+/* ===============================
+     Navbar fixa à esquerda (Desktop)
+     =============================== */
+#side-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background-color: var(--navbar-bg-light);
+    box-shadow: 2px 0 5px var(--shadow-light);
+    padding: 20px;
+    transition: background-color var(--transition-default), box-shadow var(--transition-default);
+    flex-shrink: 0;
+}
+
+body.dark-theme #side-navbar {
+    background-color: var(--navbar-bg-dark);
+    box-shadow: 2px 0 8px var(--shadow-dark);
+}
+
+/* ===============================
+     Perfil (foto e nome)
+     =============================== */
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: transform var(--transition-default);
+}
+
+#profile-pic:hover {
+    transform: scale(1.05);
+}
+
+.profile h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* ===============================
+     Ícones das redes sociais
+     =============================== */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    font-size: 1.3rem;
+    color: inherit;
+    transition: color var(--transition-default), transform var(--transition-default);
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* ===============================
+     Divisor e Menu de Navegação
+     =============================== */
+.divider {
     width: 100%;
-    overflow-x: hidden;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
 }
 
-.navbar {
-    transition: background-color 0.3s;
+.nav-link {
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color var(--transition-default);
 }
 
-.navbar .nav-link {
-    color: #f0f0f0;
-    transition: color 0.3s, transform 0.2s;
+.nav-link:hover,
+.nav-link:focus {
+    background-color: rgba(0, 123, 255, 0.1);
 }
 
-.navbar .nav-link:hover {
-    color: #ffc107;
+/* ===============================
+     Botão de Tema
+     =============================== */
+.theme-toggle .btn {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: #fff;
+    transition: background-color var(--transition-default), transform var(--transition-default);
+}
+
+.theme-toggle .btn:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.02);
+}
+
+/* ===============================
+     Conteúdo Principal
+     =============================== */
+.content {
+    margin-left: 280px;
+    padding: 40px 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.section-content {
+    margin-bottom: 40px;
+}
+
+.section-content h2 {
+    margin-bottom: 15px;
+    font-size: 2rem;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* ===============================
+     Seção Sobre Mim
+     =============================== */
+#sobreMimContainer {
+    position: relative;
+    /* Para o modo escuro, se desejar, você pode alterar o fundo: */
+    background-color: rgba(0, 0, 0, 0.03);
+    /* Ou usar uma cor mais escura: */
+    /* background-color: var(--section-bg-dark); */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#sobreMimContent {
+    margin: 0;
+    text-align: justify;
+}
+
+#btnSaibaMais {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+/* ===============================
+     Seção Conhecimentos - Filtros
+     =============================== */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.filter-btn {
+    border: 1px solid;
+    background-color: transparent;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color var(--transition-default);
+}
+
+/* Filtros com cores */
+.filter-btn[data-filter="Front-End"] {
+    border-color: var(--front-end-color);
+    color: var(--front-end-color);
+}
+
+.filter-btn[data-filter="Back-End"] {
+    border-color: var(--back-end-color);
+    color: var(--back-end-color);
+}
+
+.filter-btn[data-filter="WordPress"] {
+    border-color: var(--wordpress-color);
+    color: var(--wordpress-color);
+}
+
+.filter-btn[data-filter="Versionamento"] {
+    border-color: var(--uxui-color);
+    color: var(--uxui-color);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* ===============================
+     Seção Conhecimentos - Cards
+     =============================== */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.conhecimento-card {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-default), box-shadow var(--transition-default);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+body.dark-theme .conhecimento-card {
+    background-color: var(--card-bg-dark);
+    border: 1px solid var(--border-dark);
+    color: var(--text-dark);
+}
+
+.conhecimento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.conhecimento-card i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.conhecimento-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.conhecimento-card p {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.conhecimento-card .btn-saber-mais {
+    align-self: flex-end;
+    font-size: 0.8rem;
+}
+
+/* ===============================
+   Seção Formações - Cards de Formação
+   =============================== */
+.card-formacao {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out, background-color var(--transition-default), border-color var(--transition-default);
+    background-color: #fff;
+    /* fundo padrão para o modo claro */
+}
+
+body.dark-theme .card-formacao {
+    background-color: var(--card-bg-dark, #2c2c2c);
+    /* fundo para o modo escuro; defina --card-bg-dark se desejar */
+    border-color: var(--border-dark, #444);
+}
+
+.card-formacao:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-formacao .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(248, 248, 248, 0.1);
+    cursor: pointer;
+    transition: background-color var(--transition-default);
+}
+
+body.dark-theme .card-formacao .card-header {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-dark);
+}
+
+.card-formacao .card-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.card-formacao .toggle-collapse {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Quando o collapse estiver aberto, a seta gira 180° */
+.card-formacao .collapse.show~.card-header .toggle-collapse,
+.card-formacao .card-header[aria-expanded="true"] .toggle-collapse {
+    transform: rotate(180deg);
+}
+
+.card-formacao .card-body {
+    padding: 15px;
+    background-color: #fff;
+    transition: background-color var(--transition-default), color var(--transition-default);
+}
+
+body.dark-theme .card-formacao .card-body {
+    background-color: var(--section-bg-dark, #2c2c2c);
+    color: var(--text-dark);
+}
+
+/* Cursos dentro do card */
+.course {
+    margin-bottom: 15px;
+}
+
+.course:last-child {
+    margin-bottom: 0;
+}
+
+.course-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.course-description {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+body.dark-theme .modal-content {
+    background-color: var(--bg-dark);
+    /* ou use uma cor que preferir, ex.: #1e1e1e */
+    color: var(--text-dark);
+    /* garante que o texto fique claro */
+    border: none;
+}
+
+/* Opcional: ajuste do cabeçalho e rodapé do modal */
+body.dark-theme .modal-header,
+body.dark-theme .modal-footer {
+    background-color: var(--bg-dark);
+    border: none;
+}
+
+body.dark-theme .modal-header .modal-title {
+    color: var(--text-dark);
+}
+
+body.dark-theme .btn-close {
+    filter: invert(1);
+    /* inverte a cor do ícone de fechar, se necessário */
+}
+
+/* ===============================
+     Seção Experiências - Timeline
+     =============================== */
+.timeline {
+    position: relative;
+    margin: 40px 0;
+    padding-left: 40px;
+    /* Linha adaptada para modo escuro com transparência */
+    border-left: 2px solid rgba(0, 123, 255, 0.5);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -53px;
+    top: 65px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--primary-color);
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.timeline-item:hover .timeline-marker {
     transform: scale(1.1);
 }
 
-h2 {
-    font-weight: 700;
-    margin-bottom: 1rem;
+.timeline-content {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+    width: 100%;
 }
 
-.card {
-    border: none;
-    border-radius: 10px;
+body.dark-theme .timeline-content {
+    background-color: var(--section-bg-dark);
+    color: var(--text-dark);
+    box-shadow: 0 2px 5px var(--shadow-dark);
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.timeline-content p {
+    margin: 10px 0 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.timeline-item:hover .timeline-content {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ===============================
+     Seção Projetos - Filtros e Cards
+     =============================== */
+
+/* Filtros (modelo semelhante ao de Conhecimentos) */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.filter-btn {
+    border: 1px solid;
+    background-color: transparent;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color var(--transition-default);
+}
+
+.filter-btn[data-filter="Back-End"] {
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.filter-btn[data-filter="Front-End"] {
+    border-color: #ff69b4;
+    color: #ff69b4;
+}
+
+.filter-btn[data-filter="WordPress"] {
+    border-color: #0000ff;
+    color: #0000ff;
+}
+
+.filter-btn[data-filter="UI/UX"] {
+    border-color: #800080;
+    color: #800080;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Container de projetos: grid com 3 colunas em desktop */
+.projetos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Card de Projeto */
+.projeto-card {
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card img {
+body.dark-theme .projeto-card {
+    background-color: var(--card-bg-dark);
+    border: 1px solid var(--border-dark);
+    color: var(--text-dark);
+}
+
+.projeto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagem do projeto: ocupa 35% da altura do card */
+.projeto-card .card-image {
+    height: 35%;
+    overflow: hidden;
+}
+
+.projeto-card .card-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
 }
 
-.modal-content {
-    border-radius: 10px;
+.projeto-card:hover .card-image img {
+    transform: scale(1.05);
 }
 
-.modal-header {
-    border-bottom: 1px solid #444;
+/* Conteúdo do card */
+.projeto-card .card-content {
+    padding: 10px 15px;
+    flex-grow: 1;
 }
 
-.modal-body {
-    padding: 20px;
+.projeto-card .card-content h3 {
+    margin: 0 0 5px;
+    font-size: 1.1rem;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+.projeto-card .card-content p {
+    font-size: 0.9rem;
+    margin: 0;
 }
 
-.btn-group .btn {
-    margin-right: 5px;
+/* Rodapé do card com botões */
+.projeto-card .card-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
 }
 
+body.dark-theme .projeto-card .card-footer {
+    border-top-color: var(--border-dark);
+}
+
+.projeto-card .card-footer button {
+    font-size: 0.85rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.projeto-card .card-footer button:hover {
+    transform: scale(1.02);
+}
+
+/* ===============================
+   Footer
+   =============================== */
 .footer {
-    background-color: #1b1b1b;
-    padding: 20px 0;
+    background-color: var(--navbar-bg-dark, #2c2c2c);
+    /* Usado para o modo escuro */
+    color: var(--text-dark, #ddd);
+    /* Usado para o modo escuro */
+    padding: 40px 20px;
+    margin-top: 40px;
+    margin-left: 250px;
+    /* Ajustado para 250px */
+    transition: background-color var(--transition-default), color var(--transition-default);
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    filter: invert(0);
+/* Caso o footer precise de ajustes específicos para o modo claro, você pode defini-los também */
+body.light-theme .footer {
+    background-color: var(--navbar-bg-light, #ffffff);
+    color: var(--text-light, #333);
+}
+
+/* Garantindo que, em modo escuro, o footer adote os valores definidos */
+body.dark-theme .footer {
+    background-color: var(--navbar-bg-dark, #2c2c2c);
+    color: var(--text-dark, #ddd);
+}
+
+/* Responsividade para o footer */
+@media (max-width: 992px) {
+    .footer {
+        margin-left: 0;
+        /* Em telas menores, remove a margem para usar toda a largura */
+    }
+}
+
+/* Container interno do Footer */
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-left,
+.footer-right {
+    flex: 1;
+    min-width: 300px;
+    margin: 10px;
+}
+
+/* Footer Left – Dados e Redes Sociais */
+.footer-left h4 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.footer-left p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.footer-left hr {
+    border: 0;
+    border-top: 1px solid currentColor;
+    margin: 15px 0;
+}
+
+.footer-social a {
+    color: inherit;
+    margin-right: 10px;
+    font-size: 1.5rem;
+    transition: color var(--transition-default);
+}
+
+.footer-social a:hover {
+    color: var(--primary-color, #007bff);
+}
+
+/* Footer Right – Formulário de Contato */
+.footer-right h4 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.footer-right form {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-right .form-group {
+    margin-bottom: 15px;
+}
+
+.footer-right label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Inputs do formulário no Footer */
+
+/* Estilo base para os inputs */
+.footer-right .form-control {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border-dark, #444);
+    border-radius: 4px;
+    transition: background-color var(--transition-default), border-color var(--transition-default);
+}
+
+/* No modo claro: fundo branco e texto escuro */
+body.light-theme .footer-right .form-control {
+    background-color: #fff;
+    color: #333;
+}
+
+/* No modo escuro: fundo em tom de cinza e texto claro */
+body.dark-theme .footer-right .form-control {
+    background-color: #444;
+    /* Ajuste esse valor se desejar um tom diferente */
+    color: #ddd;
+}
+
+/* Ajustando os placeholders */
+body.light-theme .footer-right .form-control::placeholder {
+    color: #888;
+}
+
+body.dark-theme .footer-right .form-control::placeholder {
+    color: #bbb;
+}
+
+
+.footer-right .btn {
+    align-self: flex-start;
+    padding: 8px 15px;
+    border-radius: 4px;
+    background-color: var(--primary-color, #007bff);
     color: #fff;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 5%;
+    border: none;
+    transition: background-color var(--transition-default);
+    cursor: pointer;
 }
 
-.carousel-control-prev {
-    left: 0;
+.footer-right .btn:hover {
+    background-color: var(--primary-hover, #0056b3);
 }
 
-.carousel-control-next {
-    right: 0;
-}
-
+/* Responsividade do Footer */
 @media (max-width: 768px) {
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        display: none;
+    .footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        min-width: 100%;
+        margin: 10px 0;
+    }
+
+    .footer-social a {
+        margin-right: 15px;
     }
 }
 
 
-.btn-outline-warning {
-    transition: background-color 0.3s, color 0.3s;
+/* ===============================
+     Responsividade para Projetos
+     =============================== */
+@media (max-width: 992px) {
+    .projetos-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.btn-outline-warning:hover {
-    background-color: #ffc107;
-    color: #121212;
+@media (max-width: 576px) {
+    .projetos-container {
+        grid-template-columns: 1fr;
+    }
 }
 
-.badge-outline-wgg{
-    color: #ffffff;
-    background-color: transparent;
-    border: 1px solid #ffffff;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 1.115em;
-    display: inline-block;
+/* ===============================
+     Responsividade para Timeline
+     =============================== */
+@media (max-width: 576px) {
+    .timeline {
+        padding-left: 20px;
+        border-left-width: 1px;
+    }
+
+    .timeline-marker {
+        left: -10px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .timeline-content {
+        padding: 10px 15px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
 }
 
-.badge-outline-wgg:hover {
-    color: #ffc107;
-    background-color: transparent;
-    border: 1px solid #ffc107;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 1.115em;
-    display: inline-block;
+/* ===============================
+     Animação fadeIn
+     =============================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.badge-outline-sistemas {
-    color: #ffc107;
-    background-color: transparent;
-    border: 1px solid #ffc107;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
+/* ===============================
+     Estilos Responsivos
+     =============================== */
+@media (max-width: 992px) {
+    .content {
+        margin-left: 0;
+        padding: 30px 15px;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-.badge-outline-javascript {
-    color: #fffb07;
-    background-color: transparent;
-    border: 1px solid #fffb07;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
+@media (max-width: 576px) {
+    .section-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .profile h4 {
+        font-size: 1rem;
+    }
+
+    #profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .social-icons a {
+        font-size: 1.1rem;
+    }
+
+    .nav-link {
+        padding: 8px 12px;
+    }
+
+    .theme-toggle .btn {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.badge-outline-html {
-    color: #ff8b07;
-    background-color: transparent;
-    border: 1px solid #ff8b07;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-.badge-outline-css {
-    color: #079cff;
-    background-color: transparent;
-    border: 1px solid #079cff;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-.badge-outline-boostrap {
-    color: #07ff1c;
-    background-color: transparent;
-    border: 1px solid #07ff1c;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-.badge-outline-back {
-    color: #b00df0;
-    background-color: transparent;
-    border: 1px solid #b00df0;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-.badge-outline-java {
-    color: #f00d18;
-    background-color: transparent;
-    border: 1px solid #f00d18;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-.badge-outline-vuejs {
-    color: #f0ce0d;
-    background-color: transparent;
-    border: 1px solid #f0ce0d;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-.badge-outline-wp {
-    color: #0dcaf0;
-    background-color: transparent;
-    border: 1px solid #0dcaf0;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-.badge-outline-equipe {
-    color: #f00d6c;
-    background-color: transparent;
-    border: 1px solid #f00d6c;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-.badge-outline-figma {
-    color: #ca0df0;
-    background-color: transparent;
-    border: 1px solid #ca0df0;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-.badge-outline-sup {
-    color: #0df086;
-    background-color: transparent;
-    border: 1px solid #0df086;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-.badge-outline-en {
-    color: #f00d0d;
-    background-color: transparent;
-    border: 1px solid #f00d0d;
-    padding: 0.25em 0.6em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    display: inline-block;
-}
-
-footer {
-    background-color: #2c3e50; 
-    color: white; 
-    text-align: center; 
-    padding: 20px 0;
-}
-
-.social-icons {
-    margin-top: 10px;
-}
-
-.social-button {
-    color: #ffc107;
-    font-size: 30px;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: transform 0.3s, color 0.3s;
-}
-
-.social-button:hover {
-    color: white;
-    transform: scale(1.2);
-}
-
-.icon-link {
-    color: white;
-    transition: color 0.3s ease;
-}
-
-.icon-link:hover {
-    color: #ffc107;
-}
-
-.btn-close {
-    color: white;
-    transition: color 0.3s ease;
-}
-
-.btn-close:hover {
-    color: #ffc107;
+/* ===============================
+     Ajuste para Offcanvas (Mobile)
+     =============================== */
+.offcanvas .profile,
+.offcanvas .social-icons,
+.offcanvas .theme-toggle {
+    margin-bottom: 20px;
 }
