@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arthur Ferreira | Portfólio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        :root {
+            --verde: #21c184;
+            --fundo-claro: linear-gradient(to bottom right, #ffffff, #f7fdfb);
+            --fundo-escuro: #121212;
+            --texto-claro: #222;
+            --texto-escuro: #f1f1f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--fundo-claro);
+            color: var(--texto-claro);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: var(--fundo-escuro);
+            color: var(--texto-escuro);
+        }
+
+        /* Tema Claro (padrão do Bootstrap bg-light) */
+        .navbar {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar .nav-link {
+            color: #212529;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-link:hover {
+            color: #21c184;
+        }
+
+        .navbar .btn-outline-verde {
+            border: 1px solid #21c184;
+            color: #21c184;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .btn-outline-verde:hover {
+            background-color: rgba(33, 193, 132, 0.15);
+        }
+
+        /* === Tema Dark === */
+        body.dark-mode .navbar {
+            background-color: #1e1e1e !important;
+        }
+
+        body.dark-mode .navbar .nav-link {
+            color: #f1f1f1 !important;
+        }
+
+        body.dark-mode .navbar .nav-link:hover {
+            color: #21c184 !important;
+        }
+
+        body.dark-mode .navbar .btn-outline-verde {
+            border: 1px solid #21c184;
+            color: #21c184;
+        }
+
+        body.dark-mode .navbar .btn-outline-verde:hover {
+            background-color: rgba(33, 193, 132, 0.15);
+        }
+
+        /* Botão hambúrguer para modo escuro */
+        body.dark-mode .navbar-toggler {
+            border-color: #ccc;
+        }
+
+        body.dark-mode .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28 255, 255, 255, 0.7 %29)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+
+        .theme-toggle-btn {
+            border: none;
+            background: transparent;
+            font-size: 1.3rem;
+            color: var(--verde);
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+
+
+        .theme-toggle-btn:hover {
+            border: none;
+            background: transparent;
+            font-size: 1.3rem;
+            color: var(--verde);
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+
+        .message-balloon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--verde);
+            color: white;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1050;
+        }
+
+        .chat-popup {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 320px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1060;
+            overflow: hidden;
+        }
+
+        body.dark-mode .chat-popup {
+            background: #1e1e1e;
+            color: #f1f1f1;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        body.dark-mode .chat-header {
+            border-color: #333;
+        }
+
+        .chat-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .chat-body {
+            padding: 1rem;
+        }
+
+        .chat-msg {
+            min-height: 30px;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        textarea#mensagemUsuario {
+            resize: none;
+            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            font-size: 0.95rem;
+            transition: border 0.3s;
+            height: 40px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        textarea#mensagemUsuario::-webkit-scrollbar {
+            display: none;
+        }
+
+        textarea#mensagemUsuario {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body.dark-mode textarea#mensagemUsuario {
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            color: #f1f1f1;
+        }
+
+
+
+
+
+
+        .filtro-modern {
+            background-color: #fff;
+            border: 2px solid #000;
+            color: #000;
+            border-radius: 8px;
+            font-size: 1.0rem;
+            padding: 4px 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .small-filtro {
+            padding: 6px 12px;
+            font-size: 0.875rem;
+        }
+
+        .filtro-modern:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #btnFiltro.active {
+            border-color: var(--verde);
+            background-color: rgba(33, 193, 132, 0.25);
+            color: var(--verde);
+        }
+
+        body.dark-mode .filtro-modern {
+            background-color: #1e1e1e;
+            border-color: #fff;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+        }
+
+        body.dark-mode #btnFiltro.active {
+            background-color: rgba(33, 193, 132, 0.25);
+            border-color: var(--verde);
+            color: var(--verde);
+        }
+
+        .filtro-btn.small-btn {
+            padding: 4px 12px;
+            font-size: 1.0rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .filtro-btn.small-btn:hover {
+            background-color: rgba(33, 193, 132, 0.25);
+            color: var(--verde);
+            border-color: var(--verde);
+        }
+
+        body.dark-mode .dark-mode-card {
+            background-color: #1e1e1e !important;
+            color: #f1f1f1 !important;
+        }
+
+        body.dark-mode .dark-mode-card .text-muted {
+            color: #ccc !important;
+        }
+
+        body.dark-mode .dark-mode-card .btn-outline-dark {
+            color: #fff;
+            border-color: #fff;
+        }
+
+
+        body.dark-mode .dark-mode-card {
+            background-color: #1e1e1e !important;
+            color: #f1f1f1 !important;
+        }
+
+        body.dark-mode .dark-mode-card .text-muted {
+            color: #ccc !important;
+        }
+
+
+
+        .dark-mode .dark-mode-input {
+            background-color: #2c2c2c !important;
+            color: #f1f1f1 !important;
+            border-color: #444 !important;
+        }
+
+        .dark-mode .dark-mode-input::placeholder {
+            color: #aaa;
+        }
+
+        body.dark-mode #sobre-mim {
+            color: #f1f1f1;
+        }
+
+        body.dark-mode #sobre-mim .text-muted {
+            color: #ccc !important;
+        }
+
+        body.dark-mode #sobre-mim button.btn-outline-success {
+            border-color: #21c184;
+            color: #21c184;
+        }
+
+        body.dark-mode #sobre-mim button.btn-outline-success:hover {
+            background-color: rgba(33, 193, 132, 0.15);
+        }
+
+        body.dark-mode #sobre-mim #textoSobre {
+            color: #ccc !important;
+        }
+
+        body.dark-mode #sobre-mim .btn-outline-success {
+            border-color: #21c184;
+            color: #21c184;
+        }
+
+        body.dark-mode #modalSobre .modal-content {
+            background-color: #1e1e1e;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode #modalSobre .modal-header,
+        body.dark-mode #modalSobre .modal-body {
+            background-color: #1e1e1e;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-light px-3">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">Arthur Ferreira</a>
+
+            <!-- Botão hamburguer para mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Itens colapsáveis -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#sobre-mim">Sobre Mim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#formacoes">Formações</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experiencias">Experiências</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#conhecimentos">Conhecimentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Meu Currículo</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-verde px-3 py-1 ms-2" style="border-radius: 45px;"
+                            href="#contato">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="theme-toggle-btn btn btn-link" onclick="toggleTheme()">
+                            <i class="bi bi-moon-fill" id="theme-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div style="margin-top: 80px;"></div>
+
+
+    <section id="sobre-mim" class="container my-5">
+        <h2 class="text-center fw-bold mb-5">Sobre Mim</h2>
+        <div class="row align-items-start g-5">
+            <div class="col-md-5 text-center">
+                <img src="img/sobre.jpg" alt="Foto Sobre Mim" class="img-fluid rounded-4 shadow">
+            </div>
+            <div class="col-md-7">
+                <div id="textoSobre" class="text-muted" style="white-space: pre-line;"></div>
+                <button id="btnSaberMais" class="btn btn-outline-success btn-sm mt-3 float-end d-none"
+                    style="border-radius: 455px;" data-bs-toggle="modal" data-bs-target="#modalSobre">Saber mais
+                    sobre</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalSobre" tabindex="-1" aria-labelledby="modalSobreLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="height: 90vh;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalSobreLabel">Sobre Mim</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body overflow-auto" id="textoModalSobre"
+                    style="max-height: calc(90vh - 60px); white-space: pre-line;"></div>
+            </div>
+        </div>
+    </div>
+
+    <section id="formacoes" class="container my-5">
+        <h2 class="text-center fw-bold mb-5">Formações</h2>
+        <div class="row">
+            <!-- Filtro -->
+            <div class="col-md-12 d-flex align-items-start">
+                <div>
+                    <button id="btnFiltro"
+                        class="btn filtro-modern small-filtro d-flex align-items-center justify-content-between"
+                        onclick="toggleFiltros()">
+                        <span><i class="bi bi-filter me-2"></i>Filtrar</span>
+                    </button>
+                </div>
+                <div id="filtroCategorias" class="ms-3 d-none animate__animated animate__fadeIn d-flex flex-wrap gap-2">
+                    <button class="btn btn-outline-secondary filtro-btn small-btn"
+                        onclick="filtrarCards('Graduação')">Graduação</button>
+                    <button class="btn btn-outline-secondary filtro-btn small-btn"
+                        onclick="filtrarCards('Curso Livre')">Curso Livre</button>
+                    <button class="btn btn-outline-secondary filtro-btn small-btn"
+                        onclick="filtrarCards('Back-End')">Back-End</button>
+                    <button class="btn btn-outline-secondary filtro-btn small-btn"
+                        onclick="filtrarCards('Front-End')">Front-End</button>
+                    <button class="btn btn-outline-secondary filtro-btn small-btn"
+                        onclick="filtrarCards('Segurança')">Segurança</button>
+                    <button class="btn btn-outline-secondary filtro-btn small-btn"
+                        onclick="filtrarCards('Redes')">Redes</button>
+                    <button class="btn btn-outline-secondary filtro-btn small-btn"
+                        onclick="filtrarCards('Todos')">Todos</button>
+                </div>
+            </div>
+
+            <!-- Cards de formação -->
+            <div class="col-md-12 mt-4">
+                <section class="container my-5">
+                    <div class="row g-4">
+
+                        <!-- Curso 1 -->
+                        <div class="col-md-6 card-box" data-tags="Graduação Redes">
+                            <div
+                                class="card h-100 shadow rounded-4 border-0 bg-white text-dark dark-mode-card position-relative">
+                                <div class="position-absolute top-0 end-0 p-3">
+                                    <div class="d-flex gap-2">
+                                        <i class="bi bi-filetype-js" style="color: #f7df1e;"></i>
+                                        <i class="bi bi-node-plus-fill" style="color: #3c873a;"></i>
+                                        <i class="bi bi-react" style="color: #61dafb;"></i>
+                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
+                                        <i class="bi bi-git" style="color: #f05030;"></i>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <img src="img1.jpg" alt="Universidade Federal" class="me-3"
+                                            style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;">
+                                        <div class="w-100">
+                                            <h5 class="mb-0 fw-semibold">Universidade Federal</h5>
+                                            <small class="text-muted">Formação em: 2020</small>
+                                            <div class="mt-1">
+                                                <small class="text-secondary d-block">Graduação | Redes</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p class="card-text text-muted">Curso completo de Engenharia de Redes com foco em
+                                        infraestrutura, cabeamento e segurança de redes corporativas.</p>
+                                </div>
+                                <div
+                                    class="card-footer d-flex justify-content-between bg-transparent border-0 px-4 pb-3">
+                                    <a href="certificados/cert1.pdf" target="_blank"
+                                        class="btn btn-outline-dark btn-sm rounded-pill px-3">Visualizar Certificado</a>
+                                    <button class="btn btn-success btn-sm rounded-pill px-3" data-bs-toggle="modal"
+                                        data-bs-target="#modalCurso1">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Curso 2 -->
+                        <div class="col-md-6 card-box" data-tags="Curso Livre Back-End">
+                            <div
+                                class="card h-100 shadow rounded-4 border-0 bg-white text-dark dark-mode-card position-relative">
+                                <div class="position-absolute top-0 end-0 p-3">
+                                    <div class="d-flex gap-2">
+                                        <i class="bi bi-filetype-js" style="color: #f7df1e;"></i>
+                                        <i class="bi bi-node-plus-fill" style="color: #3c873a;"></i>
+                                        <i class="bi bi-git" style="color: #f05030;"></i>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <img src="img2.jpg" alt="Curso DevPro" class="me-3"
+                                            style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;">
+                                        <div class="w-100">
+                                            <h5 class="mb-0 fw-semibold">Curso DevPro</h5>
+                                            <small class="text-muted">Formação em: 2022</small>
+                                            <div class="mt-1">
+                                                <small class="text-secondary d-block">Curso Livre | Back-End</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p class="card-text text-muted">Aprendizado intensivo em Node.js, Express, MongoDB e
+                                        práticas modernas de APIs REST e autenticação segura.</p>
+                                </div>
+                                <div
+                                    class="card-footer d-flex justify-content-between bg-transparent border-0 px-4 pb-3">
+                                    <a href="certificados/cert2.pdf" target="_blank"
+                                        class="btn btn-outline-dark btn-sm rounded-pill px-3">Visualizar Certificado</a>
+                                    <button class="btn btn-success btn-sm rounded-pill px-3" data-bs-toggle="modal"
+                                        data-bs-target="#modalCurso2">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Curso 3 -->
+                        <div class="col-md-6 card-box" data-tags="Curso Livre Front-End">
+                            <div
+                                class="card h-100 shadow rounded-4 border-0 bg-white text-dark dark-mode-card position-relative">
+                                <div class="position-absolute top-0 end-0 p-3">
+                                    <div class="d-flex gap-2">
+                                        <i class="bi bi-filetype-js" style="color: #f7df1e;"></i>
+                                        <i class="bi bi-react" style="color: #61dafb;"></i>
+                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
+                                        <i class="bi bi-git" style="color: #f05030;"></i>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <img src="img3.jpg" alt="Rocketseat" class="me-3"
+                                            style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;">
+                                        <div class="w-100">
+                                            <h5 class="mb-0 fw-semibold">Rocketseat</h5>
+                                            <small class="text-muted">Formação em: 2023</small>
+                                            <div class="mt-1">
+                                                <small class="text-secondary d-block">Curso Livre | Front-End</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p class="card-text text-muted">Curso prático em React.js, Styled Components,
+                                        integração com APIs e deploy de aplicações modernas e responsivas.</p>
+                                </div>
+                                <div
+                                    class="card-footer d-flex justify-content-between bg-transparent border-0 px-4 pb-3">
+                                    <a href="certificados/cert3.pdf" target="_blank"
+                                        class="btn btn-outline-dark btn-sm rounded-pill px-3">Visualizar Certificado</a>
+                                    <button class="btn btn-success btn-sm rounded-pill px-3" data-bs-toggle="modal"
+                                        data-bs-target="#modalCurso3">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Modais dos cursos -->
+                <!-- Modal Curso 1 -->
+                <div class="modal fade" id="modalCurso1" tabindex="-1" aria-labelledby="modalCurso1Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="img1.jpg" alt="Universidade Federal"
+                                        style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;"
+                                        class="me-3">
+                                    <h5 class="modal-title" id="modalCurso1Label">Universidade Federal - Engenharia de
+                                        Redes</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text-muted">
+                                    Este curso de Engenharia de Redes da Universidade Federal oferece uma base sólida em
+                                    infraestrutura de redes, cabeamento estruturado, protocolos de comunicação,
+                                    segurança de redes, e práticas modernas de conectividade. Os alunos também são
+                                    capacitados com tecnologias como JavaScript, Node.js, React, Git e Bootstrap ao
+                                    longo de projetos práticos e estudos de caso. Ao final da formação, o aluno está
+                                    apto a projetar, implementar e manter redes corporativas robustas e seguras.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Curso 2 -->
+                <div class="modal fade" id="modalCurso2" tabindex="-1" aria-labelledby="modalCurso2Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="img2.jpg" alt="Curso DevPro"
+                                        style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;"
+                                        class="me-3">
+                                    <h5 class="modal-title" id="modalCurso2Label">Curso DevPro - Back-End Profissional
+                                    </h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text-muted">
+                                    Curso focado em desenvolvimento de aplicações com Node.js, Express.js e MongoDB. Os
+                                    alunos trabalham com autenticação, rotas seguras, middlewares e deploy em servidores
+                                    reais. Utiliza ferramentas modernas como Git, Insomnia e integrações com sistemas
+                                    externos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Curso 3 -->
+                <div class="modal fade" id="modalCurso3" tabindex="-1" aria-labelledby="modalCurso3Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="img3.jpg" alt="Rocketseat"
+                                        style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;"
+                                        class="me-3">
+                                    <h5 class="modal-title" id="modalCurso3Label">Rocketseat - Front-End com React</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text-muted">
+                                    Curso voltado para desenvolvedores que desejam aprender e dominar React.js. O
+                                    conteúdo abrange criação de componentes reutilizáveis, gerenciamento de estado com
+                                    hooks, consumo de APIs REST e GraphQL, estilização com Styled Components e boas
+                                    práticas de organização de projetos modernos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section id="experiencias" class="container my-5">
+                    <h2 class="text-center fw-bold mb-5">Experiências</h2>
+                    <div class="position-relative ms-4">
+                        <div class="border-start border-3 border-success position-absolute top-0 start-0 h-100"
+                            style="left: 25px;"></div>
+                        <div class="ms-5 pb-4">
+                            <!-- Experiência 1 -->
+                            <div class="position-relative mb-4 animate__animated animate__fadeInUp">
+                                <div class="position-absolute top-50 translate-middle rounded-circle bg-success shadow border border-white dark-mode-border-dark"
+                                    style="width: 20px; height: 20px; left: -47px;"></div>
+                                <div class="bg-light dark-mode-card p-4 rounded-4 shadow-sm ms-5">
+                                    <h5 class="fw-bold mb-1">Desenvolvedor Back-End | Thynk</h5>
+                                    <small class="text-muted">Jan 2023 - Presente</small>
+                                    <p class="mb-0 mt-2 text-muted">Responsável por APIs REST com Node.js, integração
+                                        com MongoDB, autenticação JWT e deploy no Heroku.</p>
+                                </div>
+                            </div>
+                            <!-- Experiência 2 -->
+                            <div class="position-relative mb-4 animate__animated animate__fadeInUp">
+                                <div class="position-absolute top-50 translate-middle rounded-circle bg-success shadow border border-white dark-mode-border-dark"
+                                    style="width: 20px; height: 20px; left: -47px;"></div>
+                                <div class="bg-light dark-mode-card p-4 rounded-4 shadow-sm ms-5">
+                                    <h5 class="fw-bold mb-1">Estágio em Suporte Técnico | InfoTech</h5>
+                                    <small class="text-muted">Jul 2022 - Dez 2022</small>
+                                    <p class="mb-0 mt-2 text-muted">Atendimento a clientes, diagnóstico de problemas de
+                                        rede e manutenção de sistemas internos e externos.</p>
+                                </div>
+                            </div>
+                            <!-- Experiência 3 -->
+                            <div class="position-relative animate__animated animate__fadeInUp">
+                                <div class="position-absolute top-50 translate-middle rounded-circle bg-success shadow border border-white dark-mode-border-dark"
+                                    style="width: 20px; height: 20px; left: -47px;"></div>
+                                <div class="bg-light dark-mode-card p-4 rounded-4 shadow-sm ms-5">
+                                    <h5 class="fw-bold mb-1">Assistente Administrativo | Prefeitura Municipal</h5>
+                                    <small class="text-muted">Fev 2021 - Jun 2022</small>
+                                    <p class="mb-0 mt-2 text-muted">Organização de documentos, atendimento ao público e
+                                        suporte em processos licitatórios e administrativos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="conhecimentos" class="container my-5">
+                    <h2 class="text-center fw-bold mb-5">Conhecimentos</h2>
+
+                    <!-- Filtro de categorias -->
+                    <div class="d-flex align-items-center mb-4">
+                        <button id="btnFiltroConhecimentos"
+                            class="btn filtro-modern small-filtro d-flex align-items-center justify-content-between"
+                            onclick="toggleFiltrosConhecimentos()">
+                            <span><i class="bi bi-filter me-2"></i>Filtrar</span>
+                        </button>
+                        <div id="filtroCategoriasConhecimentos"
+                            class="ms-3 d-none animate__animated animate__fadeIn d-flex flex-wrap gap-2">
+                            <button class="btn btn-outline-secondary filtro-btn small-btn"
+                                onclick="filtrarConhecimentos('Back-End')">Back-End</button>
+                            <button class="btn btn-outline-secondary filtro-btn small-btn"
+                                onclick="filtrarConhecimentos('Front-End')">Front-End</button>
+                            <button class="btn btn-outline-secondary filtro-btn small-btn"
+                                onclick="filtrarConhecimentos('UI/UX')">UI/UX</button>
+                            <button class="btn btn-outline-secondary filtro-btn small-btn"
+                                onclick="filtrarConhecimentos('Versionamento')">Versionamento</button>
+                            <button class="btn btn-outline-secondary filtro-btn small-btn"
+                                onclick="filtrarConhecimentos('Segurança')">Segurança</button>
+                            <button class="btn btn-outline-secondary filtro-btn small-btn"
+                                onclick="filtrarConhecimentos('Redes')">Redes</button>
+                            <button class="btn btn-outline-secondary filtro-btn small-btn"
+                                onclick="filtrarConhecimentos('Todos')">Todos</button>
+                        </div>
+                    </div>
+
+                    <!-- Cards de conhecimentos -->
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+                        <!-- Exemplo de Card 1 -->
+                        <div class="col conhecimento-card" data-tags="Back-End">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-filetype-js fs-3 me-2" style="color: #f7df1e;"></i>
+                                    <h6 class="mb-0 fw-bold">JavaScript</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 3 anos | Nível: <span
+                                        class="text-success">Avançado</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Utilizado em projetos tanto front quanto back, com
+                                    foco em aplicações SPA e lógica assíncrona.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Front-End">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-bootstrap fs-3 me-2" style="color: #7952b3;"></i>
+                                    <h6 class="mb-0 fw-bold">Bootstrap</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 2 anos | Nível: <span
+                                        class="text-primary">Básico</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Framework CSS para criação rápida de interfaces
+                                    responsivas com grid e componentes prontos.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="UI/UX">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-palette fs-3 me-2" style="color: #d63384;"></i>
+                                    <h6 class="mb-0 fw-bold">Figma</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 1 ano | Nível: <span
+                                        class="text-warning">Intermediário</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Ferramenta essencial para criação de protótipos,
+                                    wireframes e colaboração em design de interfaces.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Versionamento">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-git fs-3 me-2" style="color: #f05030;"></i>
+                                    <h6 class="mb-0 fw-bold">Git</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 4 anos | Nível: <span
+                                        class="text-danger">Domínio Total</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Controle de versão eficiente com GitHub e GitLab,
+                                    gerenciamento de branches e pull requests.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Back-End">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-database fs-3 me-2" style="color: #4db33d;"></i>
+                                    <h6 class="mb-0 fw-bold">MongoDB</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 2 anos | Nível: <span
+                                        class="text-success">Avançado</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Banco de dados NoSQL usado com Node.js, com foco em
+                                    performance, escalabilidade e consultas flexíveis.</p>
+                            </div>
+                        </div>
+
+                        <!-- + mais cards em seguida conforme desejar -->
+                    </div>
+                </section>
+
+                <section id="projetos" class="container my-5">
+                    <h2 class="text-center fw-bold mb-5">Projetos</h2>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                        <!-- Projeto 1 -->
+                        <div class="col">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card position-relative">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="img/projeto1.jpg" alt="Projeto 1"
+                                            style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;"
+                                            class="me-2">
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">Sistema de Agendamento</h6>
+                                            <small class="text-muted">Objetivo: Estudos</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <i class="bi bi-filetype-js" style="color: #f7df1e;"></i>
+                                        <i class="bi bi-node-plus-fill" style="color: #3c873a;"></i>
+                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="text-muted small">Projeto de estudo para aplicação de um sistema de
+                                    agendamento de serviços com painel administrativo e usuário.</p>
+                                <div class="d-flex justify-content-between align-items-end pt-2">
+                                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
+                                    <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#modalProjeto1">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projeto 2 -->
+                        <div class="col">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card position-relative">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="img/projeto2.jpg" alt="Projeto 2"
+                                            style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;"
+                                            class="me-2">
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">Portfólio Profissional</h6>
+                                            <small class="text-muted">Objetivo: Pessoal</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
+                                        <i class="bi bi-git" style="color: #f05030;"></i>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="text-muted small">Portfólio moderno com tema dark/light, integração com redes
+                                    sociais, currículo e links de contato.</p>
+                                <div class="d-flex justify-content-between align-items-end pt-2">
+                                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
+                                    <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#modalProjeto2">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projeto 3 -->
+                        <div class="col">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card position-relative">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="img/projeto3.jpg" alt="Projeto 3"
+                                            style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;"
+                                            class="me-2">
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">Dashboard Administrativo</h6>
+                                            <small class="text-muted">Objetivo: Cliente</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <i class="bi bi-database" style="color: #4db33d;"></i>
+                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="text-muted small">Sistema para gestão de usuários e serviços de uma barbearia,
+                                    com painéis dinâmicos e autenticação.</p>
+                                <div class="d-flex justify-content-between align-items-end pt-2">
+                                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
+                                    <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#modalProjeto3">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Projeto 4 -->
+                        <div class="col">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card position-relative">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="img/projeto4.jpg" alt="Projeto 3"
+                                            style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;"
+                                            class="me-2">
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">Dashboard Administrativo</h6>
+                                            <small class="text-muted">Objetivo: Cliente</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <i class="bi bi-database" style="color: #4db33d;"></i>
+                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="text-muted small">Sistema para gestão de usuários e serviços de uma barbearia,
+                                    com painéis dinâmicos e autenticação.</p>
+                                <div class="d-flex justify-content-between align-items-end pt-2">
+                                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
+                                    <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#modalProjeto4">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Modais dos projetos -->
+                <div class="modal fade" id="modalProjeto1" tabindex="-1" aria-labelledby="modalProjeto1Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="img/projeto1.jpg" alt="Projeto 1" class="me-3"
+                                        style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto1Label">Sistema de Agendamento</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text-muted">Projeto desenvolvido como estudo para aplicar conceitos de backend
+                                    em Node.js, rotas protegidas, banco MongoDB e interfaces responsivas com Bootstrap.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modalProjeto2" tabindex="-1" aria-labelledby="modalProjeto2Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="img/projeto2.jpg" alt="Projeto 2" class="me-3"
+                                        style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto2Label">Portfólio Profissional</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text-muted">Site pessoal moderno com modo escuro, responsivo, integração com
+                                    redes sociais, currículo em PDF, links de projetos e formulário de contato com envio
+                                    para WhatsApp.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modalProjeto3" tabindex="-1" aria-labelledby="modalProjeto3Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="img/projeto3.jpg" alt="Projeto 3" class="me-3"
+                                        style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto3Label">Dashboard Administrativo</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text-muted">Aplicação focada no gerenciamento de serviços e clientes para
+                                    barbearias, com autenticação, relatórios e dashboards em tempo real, totalmente
+                                    responsiva e moderna.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modalProjeto3" tabindex="-1" aria-labelledby="modalProjeto3Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="img/projeto3.jpg" alt="Projeto 3" class="me-3"
+                                        style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto3Label">Dashboard Administrativo</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text-muted">Aplicação focada no gerenciamento de serviços e clientes para
+                                    barbearias, com autenticação, relatórios e dashboards em tempo real, totalmente
+                                    responsiva e moderna.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modalProjeto4" tabindex="-1" aria-labelledby="modalProjeto3Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="img/projeto4.jpg" alt="Projeto 3" class="me-3"
+                                        style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto3Label">Dashboard Administrativo</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text-muted">Aplicação focada no gerenciamento de serviços e clientes para
+                                    barbearias, com autenticação, relatórios e dashboards em tempo real, totalmente
+                                    responsiva e moderna.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section id="contato" class="container my-5">
+                    <h2 class="text-center fw-bold mb-5">Contato</h2>
+                    <div class="row align-items-center g-5">
+                        <div class="col-md-5 text-center">
+                            <img src="img/contato.jpg" alt="Foto Contato" class="img-fluid rounded-4 shadow">
+                        </div>
+                        <div class="col-md-7">
+                            <form onsubmit="enviarMensagemWhatsapp(event)">
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label fw-semibold">Nome Sobrenome</label>
+                                    <input type="text" class="form-control dark-mode-input" id="nome" required
+                                        placeholder="Digite seu nome completo">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefone" class="form-label fw-semibold">Telefone</label>
+                                    <input type="tel" class="form-control dark-mode-input" id="telefone" required
+                                        placeholder="Digite seu número com DDD">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="motivo" class="form-label fw-semibold">Motivo</label>
+                                    <select id="motivo" class="form-select dark-mode-input" required>
+                                        <option value="saber mais">Gostaria de saber mais sobre você</option>
+                                        <option value="proposta">Gostaria de fazer uma proposta</option>
+                                        <option value="dica">Gostaria de alguma dica</option>
+                                        <option value="sugestao">Gostaria de dar uma sugestão</option>
+                                        <option value="outros">Outros</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mensagem" class="form-label fw-semibold">Mensagem</label>
+                                    <textarea class="form-control dark-mode-input" id="mensagem" rows="4" required
+                                        placeholder="Digite sua mensagem"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-success rounded-pill px-4">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Balão de mensagem -->
+                <div class="message-balloon" onclick="toggleChat()">
+                    <i class="bi bi-chat-dots-fill"></i>
+                </div>
+
+                <!-- Pop-up de Chat -->
+                <div class="chat-popup" id="chatPopup">
+                    <div class="chat-header">
+                        <img src="logo.jpeg" alt="Arthur">
+                        <div>
+                            <strong>Arthur Ferreira</strong><br>
+                            <small class="text-muted">Online</small>
+                        </div>
+                    </div>
+                    <div class="chat-body">
+                        <div class="chat-msg" id="chat-msg"></div>
+                        <div class="d-flex align-items-start gap-2">
+                            <textarea id="mensagemUsuario" placeholder="Digite sua mensagem..."
+                                class="flex-grow-1"></textarea>
+                            <button class="btn btn-success d-flex align-items-center justify-content-center"
+                                style="height: 40px; width: 40px; border-radius: 12px;" onclick="enviarMensagem()">
+                                <i class="bi bi-send-fill"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                <script>
+                    function toggleTheme() {
+                        const body = document.body;
+                        const icon = document.getElementById("theme-icon");
+                        body.classList.toggle("dark-mode");
+                        icon.className = body.classList.contains("dark-mode") ? "bi bi-sun-fill" : "bi bi-moon-fill";
+                    }
+
+                    function toggleChat() {
+                        const chat = document.getElementById("chatPopup");
+                        if (chat.style.display === "none" || chat.style.display === "") {
+                            chat.style.display = "block";
+                            escreverTexto("Olá, tudo bem? Como posso te ajudar?", document.getElementById("chat-msg"));
+                        } else {
+                            chat.style.display = "none";
+                        }
+                    }
+
+                    function escreverTexto(texto, elemento) {
+                        elemento.innerHTML = "";
+                        let i = 0;
+                        const interval = setInterval(() => {
+                            if (i < texto.length) {
+                                elemento.innerHTML += texto.charAt(i);
+                                i++;
+                            } else {
+                                clearInterval(interval);
+                            }
+                        }, 40);
+                    }
+
+                    function enviarMensagem() {
+                        const msg = document.getElementById("mensagemUsuario").value;
+                        if (!msg.trim()) return;
+                        setTimeout(() => {
+                            const url = `https://wa.me/5532991855045?text=${encodeURIComponent(msg)}`;
+                            window.open(url, '_blank');
+                        }, 2000);
+                    }
+                </script>
+                <script>
+                    function toggleFiltros() {
+                        const btn = document.getElementById("btnFiltro");
+                        const filtros = document.getElementById("filtroCategorias");
+                        filtros.classList.toggle("d-none");
+                        btn.classList.toggle("active");
+                    }
+
+                    function filtrarCards(categoria) {
+                        const cards = document.querySelectorAll(".card-box");
+                        cards.forEach(card => {
+                            const tags = card.getAttribute("data-tags");
+                            if (categoria === "Todos" || tags.includes(categoria)) {
+                                card.style.display = "block";
+                            } else {
+                                card.style.display = "none";
+                            }
+                        });
+                    }
+                </script>
+                <script>
+                    function toggleFiltrosConhecimentos() {
+                        const btn = document.getElementById("btnFiltroConhecimentos");
+                        const filtros = document.getElementById("filtroCategoriasConhecimentos");
+                        filtros.classList.toggle("d-none");
+                        btn.classList.toggle("active");
+                    }
+
+                    function filtrarConhecimentos(categoria) {
+                        const cards = document.querySelectorAll(".conhecimento-card");
+                        cards.forEach(card => {
+                            const tags = card.getAttribute("data-tags");
+                            if (categoria === "Todos" || tags.includes(categoria)) {
+                                card.style.display = "block";
+                            } else {
+                                card.style.display = "none";
+                            }
+                        });
+                    }
+                </script>
+
+                <script>
+                    function enviarMensagemWhatsapp(e) {
+                        e.preventDefault();
+
+                        const nome = document.getElementById("nome").value;
+                        const telefone = document.getElementById("telefone").value;
+                        const motivo = document.getElementById("motivo").value;
+                        const mensagem = document.getElementById("mensagem").value;
+
+                        let texto = "";
+
+                        if (motivo === "outros") {
+                            texto = `Olá, tudo bem? Me chamo ${nome}, gostaria de falar outros assuntos não citados em seu formulário.\n\nMensagem: ${mensagem}`;
+                        } else {
+                            texto = `Olá, tudo bem? Me chamo ${nome}, ${motivo === "saber mais" ? "gostaria de saber mais sobre você" :
+                                motivo === "proposta" ? "gostaria de fazer uma proposta" :
+                                    motivo === "dica" ? "gostaria de alguma dica" :
+                                        "gostaria de dar uma sugestão"}.\n\nMensagem: ${mensagem}`;
+                        }
+
+                        const url = `https://wa.me/5532991145114?text=${encodeURIComponent(texto)}`;
+                        window.open(url, '_blank');
+                    }
+                </script>
+
+                <script>
+                    const textoCompleto = `Sou um desenvolvedor apaixonado por tecnologia, com experiência em múltiplas áreas do desenvolvimento web, tanto no front quanto no back-end. Iniciei minha jornada com HTML e CSS, mas logo me aprofundei em JavaScript, Node.js, React e bancos de dados como MongoDB. Também possuo conhecimentos sólidos em controle de versão com Git, práticas de UI/UX e segurança de aplicações.
+
+Além de estudar constantemente novas ferramentas, tenho aplicado meus conhecimentos em projetos reais e colaborado com equipes multidisciplinares. Acredito na importância da comunicação clara, do código limpo e do aprendizado contínuo como pilares da excelência profissional.
+
+Estou sempre em busca de desafios que me permitam crescer e agregar valor às pessoas e empresas ao meu redor. Quando não estou programando, gosto de compartilhar conteúdo, explorar novas ideias de produto e contribuir com a comunidade.`;
+
+                    const limiteCaracteres = 450;
+                    const textoSobre = document.getElementById("textoSobre");
+                    const btnSaberMais = document.getElementById("btnSaberMais");
+                    const textoModalSobre = document.getElementById("textoModalSobre");
+
+                    if (textoCompleto.length > limiteCaracteres) {
+                        textoSobre.textContent = textoCompleto.substring(0, limiteCaracteres) + "...";
+                        btnSaberMais.classList.remove("d-none");
+                        textoModalSobre.textContent = textoCompleto;
+                    } else {
+                        textoSobre.textContent = textoCompleto;
+                    }
+                </script>
+
+</body>
+
+</html>
