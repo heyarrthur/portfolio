@@ -10,6 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet" />
     <style>
         :root {
             --verde: #21c184;
@@ -224,23 +225,12 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
 
-        #btnFiltro.active {
-            border-color: var(--verde);
-            background-color: rgba(33, 193, 132, 0.25);
-            color: var(--verde);
-        }
 
         body.dark-mode .filtro-modern {
             background-color: #1e1e1e;
             border-color: #fff;
             color: #fff;
             box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-        }
-
-        body.dark-mode #btnFiltro.active {
-            background-color: rgba(33, 193, 132, 0.25);
-            border-color: var(--verde);
-            color: var(--verde);
         }
 
         .filtro-btn.small-btn {
@@ -328,6 +318,63 @@
             background-color: #1e1e1e;
             color: #ccc;
         }
+
+
+
+        body.dark-mode .modal-content {
+            background-color: #121212;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            border-radius: 10px;
+        }
+
+        body.dark-mode .modal-header {
+            background-color: #1f1f1f;
+            border-bottom: 1px solid #333;
+        }
+
+        body.dark-mode .modal-header .modal-title {
+            color: #ffffff;
+        }
+
+        body.dark-mode .modal-body {
+            background-color: #121212;
+            color: #d4d4d4;
+        }
+
+        body.dark-mode .modal-body p {
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+
+        body.dark-mode .btn-close {
+            filter: invert(1);
+        }
+
+        body.dark-mode .modal-header img {
+            border: 2px solid #333;
+        }
+
+        body.dark-mode .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        body.dark-mode .modal-body::-webkit-scrollbar-track {
+            background: #1f1f1f;
+        }
+
+        body.dark-mode .modal-body::-webkit-scrollbar-thumb {
+            background-color: #555;
+            border-radius: 4px;
+        }
+
+        body.dark-mode .modal-body::-webkit-scrollbar-thumb:hover {
+            background-color: #777;
+        }
+
+        body.dark-mode .navbar-brand {
+            color: #ffffff;
+        }
     </style>
 </head>
 
@@ -335,7 +382,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top bg-light px-3">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="#">Arthur Ferreira</a>
+            <a class="navbar-brand fw-bold" href="index.html">Arthur Ferreira</a>
 
             <!-- Botão hamburguer para mobile -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -351,10 +398,10 @@
                     <li class="nav-item"><a class="nav-link" href="#experiencias">Experiências</a></li>
                     <li class="nav-item"><a class="nav-link" href="#conhecimentos">Conhecimentos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Meu Currículo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../downloads/curriculo.pdf">Meu Currículo</a></li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-verde px-3 py-1 ms-2" style="border-radius: 45px;"
-                            href="#contato">Contato</a>
+                            href="https://api.whatsapp.com/send/?phone=5532991145114&text&type=phone_number&app_absent=0">Contato</a>
                     </li>
                     <li class="nav-item">
                         <button class="theme-toggle-btn btn btn-link" onclick="toggleTheme()">
@@ -374,7 +421,7 @@
         <h2 class="text-center fw-bold mb-5">Sobre Mim</h2>
         <div class="row align-items-start g-5">
             <div class="col-md-5 text-center">
-                <img src="img/sobre.jpg" alt="Foto Sobre Mim" class="img-fluid rounded-4 shadow">
+                <img src="../images/arthurFerreira.jpeg" alt="Foto Sobre Mim" class="img-fluid rounded-4 shadow">
             </div>
             <div class="col-md-7">
                 <div id="textoSobre" class="text-muted" style="white-space: pre-line;"></div>
@@ -423,7 +470,13 @@
                     <button class="btn btn-outline-secondary filtro-btn small-btn"
                         onclick="filtrarCards('Segurança')">Segurança</button>
                     <button class="btn btn-outline-secondary filtro-btn small-btn"
+                        onclick="filtrarCards('IA')">Inteligência Artificial</button>
+                    <button class="btn btn-outline-secondary filtro-btn small-btn"
+                        onclick="filtrarCards('Versionamento')">Versionamento</button>
+                    <button class="btn btn-outline-secondary filtro-btn small-btn"
                         onclick="filtrarCards('Redes')">Redes</button>
+                    <button class="btn btn-outline-secondary filtro-btn small-btn"
+                        onclick="filtrarCards('Pessoal')">Desenvolvimento Pessoal</button>
                     <button class="btn btn-outline-secondary filtro-btn small-btn"
                         onclick="filtrarCards('Todos')">Todos</button>
                 </div>
@@ -435,33 +488,46 @@
                     <div class="row g-4">
 
                         <!-- Curso 1 -->
-                        <div class="col-md-6 card-box" data-tags="Graduação Redes">
+                        <div class="col-md-6 card-box"
+                            data-tags="Graduação Redes Segurança Front-End Back-End Versionamento">
                             <div
                                 class="card h-100 shadow rounded-4 border-0 bg-white text-dark dark-mode-card position-relative">
                                 <div class="position-absolute top-0 end-0 p-3">
                                     <div class="d-flex gap-2">
-                                        <i class="bi bi-filetype-js" style="color: #f7df1e;"></i>
-                                        <i class="bi bi-node-plus-fill" style="color: #3c873a;"></i>
-                                        <i class="bi bi-react" style="color: #61dafb;"></i>
-                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
-                                        <i class="bi bi-git" style="color: #f05030;"></i>
+                                        <i class="fa-solid fa-c" style="color: #0084d1;"></i>
+                                        <i class="fa-solid fa-route" style="color: #808080;"></i>
+                                        <i class="fa-brands fa-java" style="color: #df1b1b;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
+                                        <i class="fa-brands fa-node-js" style="color: #17ec33;"></i>
+                                        <i class="fa-solid fa-database" style="color: #0de761;"></i>
+                                        <i class="fa-solid fa-shield" style="color: #1736e7;"></i>
                                     </div>
                                 </div>
                                 <div class="card-body p-4">
                                     <div class="d-flex align-items-start mb-3">
-                                        <img src="img1.jpg" alt="Universidade Federal" class="me-3"
+                                        <img src="../images/doctum.png" alt="Universidade Federal" class="me-3"
                                             style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;">
                                         <div class="w-100">
-                                            <h5 class="mb-0 fw-semibold">Universidade Federal</h5>
-                                            <small class="text-muted">Formação em: 2020</small>
+                                            <h5 class="mb-0 fw-semibold">Análise e Desenvolvimento de Sistemas</h5>
+                                            <small class="text-muted">Formação em: 2027</small>
                                             <div class="mt-1">
-                                                <small class="text-secondary d-block">Graduação | Redes</small>
+                                                <small class="text-secondary d-block">Rede de Ensino Doctum</small>
                                             </div>
                                         </div>
                                     </div>
                                     <hr>
-                                    <p class="card-text text-muted">Curso completo de Engenharia de Redes com foco em
-                                        infraestrutura, cabeamento e segurança de redes corporativas.</p>
+                                    <p class="card-text text-muted"> Atualmente estou cursando o 2º período de Análise e
+                                        Desenvolvimento de Sistemas pela
+                                        Rede de Ensino Doctum, onde venho desenvolvendo uma base sólida nos fundamentos
+                                        da
+                                        tecnologia, da programação e da lógica computacional, essenciais para a criação
+                                        de
+                                        sistemas e soluções digitais.
+                                        <br><br>
+                                        Até este momento da graduação, minha formação tem sido focada no desenvolvimento
+                                        de
+                                        competências fundamentais na área de desenvolvimento...
+                                    </p>
                                 </div>
                                 <div
                                     class="card-footer d-flex justify-content-between bg-transparent border-0 px-4 pb-3">
@@ -474,14 +540,21 @@
                         </div>
 
                         <!-- Curso 2 -->
-                        <div class="col-md-6 card-box" data-tags="Curso Livre Back-End">
+                        <div class="col-md-6 card-box"
+                            data-tags="Curso Livre Back-End Front-End Segurança Versionamento">
                             <div
                                 class="card h-100 shadow rounded-4 border-0 bg-white text-dark dark-mode-card position-relative">
                                 <div class="position-absolute top-0 end-0 p-3">
                                     <div class="d-flex gap-2">
-                                        <i class="bi bi-filetype-js" style="color: #f7df1e;"></i>
-                                        <i class="bi bi-node-plus-fill" style="color: #3c873a;"></i>
-                                        <i class="bi bi-git" style="color: #f05030;"></i>
+                                        <i class="fa-brands fa-html5" style="color: #e7900c;"></i>
+                                        <i class="fa-brands fa-css3-alt" style="color: #115eee;"></i>
+                                        <i class="fa-brands fa-bootstrap" style="color: #18e223;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
+                                        <i class="fa-brands fa-node-js" style="color: #17ec33;"></i>
+                                        <i class="fa-brands fa-vuejs" style="color: #e62121;"></i>
+                                        <i class="fa-brands fa-react" style="color: #2876dd;"></i>
+                                        <i class="fa-brands fa-java" style="color: #df1b1b;"></i>
+                                        <i class="fa-solid fa-database" style="color: #0de761;"></i>
                                     </div>
                                 </div>
                                 <div class="card-body p-4">
@@ -489,16 +562,26 @@
                                         <img src="img2.jpg" alt="Curso DevPro" class="me-3"
                                             style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;">
                                         <div class="w-100">
-                                            <h5 class="mb-0 fw-semibold">Curso DevPro</h5>
-                                            <small class="text-muted">Formação em: 2022</small>
+                                            <h5 class="mb-0 fw-semibold">Desenvolvimento FullStack Java</h5>
+                                            <small class="text-muted">Formação em: 2025</small>
                                             <div class="mt-1">
-                                                <small class="text-secondary d-block">Curso Livre | Back-End</small>
+                                                <small class="text-secondary d-block">Escola Britânica de Artes
+                                                    Criativas</small>
                                             </div>
                                         </div>
                                     </div>
                                     <hr>
-                                    <p class="card-text text-muted">Aprendizado intensivo em Node.js, Express, MongoDB e
-                                        práticas modernas de APIs REST e autenticação segura.</p>
+                                    <p class="card-text text-muted"> Durante minha jornada no curso de Desenvolvimento
+                                        Full Stack Java pela EBAC (Escola
+                                        Britânica de Artes Criativas e Tecnologia), adquiri uma formação completa que me
+                                        capacita a atuar em todas as etapas do desenvolvimento de aplicações web, tanto
+                                        no
+                                        front-end quanto no back-end.
+                                        <br><br>
+                                        O curso proporcionou uma experiência prática e aprofundada, onde pude
+                                        desenvolver
+                                        projetos reais, compreender os fluxos de desenvolvimento...
+                                    </p>
                                 </div>
                                 <div
                                     class="card-footer d-flex justify-content-between bg-transparent border-0 px-4 pb-3">
@@ -511,15 +594,15 @@
                         </div>
 
                         <!-- Curso 3 -->
-                        <div class="col-md-6 card-box" data-tags="Curso Livre Front-End">
+                        <div class="col-md-6 card-box" data-tags="Curso Livre IA">
                             <div
                                 class="card h-100 shadow rounded-4 border-0 bg-white text-dark dark-mode-card position-relative">
                                 <div class="position-absolute top-0 end-0 p-3">
                                     <div class="d-flex gap-2">
-                                        <i class="bi bi-filetype-js" style="color: #f7df1e;"></i>
-                                        <i class="bi bi-react" style="color: #61dafb;"></i>
-                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
-                                        <i class="bi bi-git" style="color: #f05030;"></i>
+                                        <i class="fa-solid fa-robot" style="color: #1b74e9;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
+                                        <i class="fa-brands fa-node-js" style="color: #17ec33;"></i>
+                                        <i class="fa-solid fa-database" style="color: #0de761;"></i>
                                     </div>
                                 </div>
                                 <div class="card-body p-4">
@@ -527,16 +610,24 @@
                                         <img src="img3.jpg" alt="Rocketseat" class="me-3"
                                             style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;">
                                         <div class="w-100">
-                                            <h5 class="mb-0 fw-semibold">Rocketseat</h5>
-                                            <small class="text-muted">Formação em: 2023</small>
+                                            <h5 class="mb-0 fw-semibold">Inteligência Artificial</h5>
+                                            <small class="text-muted">Formação em: 2024</small>
                                             <div class="mt-1">
-                                                <small class="text-secondary d-block">Curso Livre | Front-End</small>
+                                                <small class="text-secondary d-block">Escola Britânica de Artes
+                                                    Criativas</small>
                                             </div>
                                         </div>
                                     </div>
                                     <hr>
-                                    <p class="card-text text-muted">Curso prático em React.js, Styled Components,
-                                        integração com APIs e deploy de aplicações modernas e responsivas.</p>
+                                    <p class="card-text text-muted"> Durante minha formação em Inteligência Artificial
+                                        para Negócios pela EBAC, adquiri
+                                        conhecimentos fundamentais e práticos sobre como utilizar ferramentas de IA para
+                                        otimizar processos, gerar valor e impulsionar a transformação digital nas
+                                        empresas.
+                                        <br><br>
+                                        O curso me proporcionou uma visão ampla e estratégica do uso da inteligência
+                                        artificial, além de habilidades práticas para aplicar IA...
+                                    </p>
                                 </div>
                                 <div
                                     class="card-footer d-flex justify-content-between bg-transparent border-0 px-4 pb-3">
@@ -544,6 +635,99 @@
                                         class="btn btn-outline-dark btn-sm rounded-pill px-3">Visualizar Certificado</a>
                                     <button class="btn btn-success btn-sm rounded-pill px-3" data-bs-toggle="modal"
                                         data-bs-target="#modalCurso3">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Curso 4 -->
+                        <div class="col-md-6 card-box" data-tags="Curso Livre Front-End Back-End Versionamento Redes">
+                            <div
+                                class="card h-100 shadow rounded-4 border-0 bg-white text-dark dark-mode-card position-relative">
+                                <div class="position-absolute top-0 end-0 p-3">
+                                    <div class="d-flex gap-2">
+                                        <i class="fa-solid fa-c" style="color: #0084d1;"></i>
+                                        <i class="fa-solid fa-route" style="color: #808080;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
+                                        <i class="fa-brands fa-node-js" style="color: #17ec33;"></i>
+                                        <i class="fa-solid fa-database" style="color: #0de761;"></i>
+                                        <i class="fa-brands fa-html5" style="color: #e7900c;"></i>
+                                        <i class="fa-brands fa-css3-alt" style="color: #115eee;"></i>
+                                        <i class="fa-brands fa-bootstrap" style="color: #18e223;"></i>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <img src="img3.jpg" alt="Rocketseat" class="me-3"
+                                            style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;">
+                                        <div class="w-100">
+                                            <h5 class="mb-0 fw-semibold">Introdução a Programação</h5>
+                                            <small class="text-muted">Formação em: 2025</small>
+                                            <div class="mt-1">
+                                                <small class="text-secondary d-block">Escola Britânica de Artes
+                                                    Criativas</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p class="card-text text-muted">Durante minha participação no curso gratuito de
+                                        Introdução à Programação da EBAC,
+                                        adquiri uma base sólida nos conceitos fundamentais de programação e lógica
+                                        computacional, essenciais para iniciar minha trajetória na área de tecnologia.
+                                        <br><br>
+
+                                        🚀 Principais conhecimentos adquiridos:...
+                                    </p>
+                                </div>
+                                <div
+                                    class="card-footer d-flex justify-content-between bg-transparent border-0 px-4 pb-3">
+                                    <a href="certificados/cert3.pdf" target="_blank"
+                                        class="btn btn-outline-dark btn-sm rounded-pill px-3">Visualizar Certificado</a>
+                                    <button class="btn btn-success btn-sm rounded-pill px-3" data-bs-toggle="modal"
+                                        data-bs-target="#modalCurso4">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Curso 5 -->
+                        <div class="col-md-6 card-box" data-tags="Curso Livre Pessoal">
+                            <div
+                                class="card h-100 shadow rounded-4 border-0 bg-white text-dark dark-mode-card position-relative">
+                                <div class="position-absolute top-0 end-0 p-3">
+                                    <div class="d-flex gap-2">
+                                        <i class="fa-solid fa-person" style="color: #6fdb17;"></i>
+                                        <i class="fa-solid fa-brain" style="color: #da1b6a;"></i>
+                                        <i class="fa-solid fa-book" style="color: #e08a18;"></i>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <img src="img3.jpg" alt="Rocketseat" class="me-3"
+                                            style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;">
+                                        <div class="w-100">
+                                            <h5 class="mb-0 fw-semibold">Plano de Carreira</h5>
+                                            <small class="text-muted">Formação em: 2024</small>
+                                            <div class="mt-1">
+                                                <small class="text-secondary d-block">Escola Britânica de Artes
+                                                    Criativas</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p class="card-text text-muted">Durante o curso de Plano de Carreira da EBAC,
+                                        desenvolvi uma visão estratégica e prática para construir e gerenciar minha
+                                        trajetória profissional. O curso me ensinou a identificar meus pontos fortes,
+                                        definir objetivos claros e traçar caminhos efetivos para alcançar o sucesso na
+                                        carreira.
+                                        <br><br>
+                                        🎯 Principais aprendizados:...
+                                    </p>
+                                </div>
+                                <div
+                                    class="card-footer d-flex justify-content-between bg-transparent border-0 px-4 pb-3">
+                                    <a href="certificados/cert3.pdf" target="_blank"
+                                        class="btn btn-outline-dark btn-sm rounded-pill px-3">Visualizar Certificado</a>
+                                    <button class="btn btn-success btn-sm rounded-pill px-3" data-bs-toggle="modal"
+                                        data-bs-target="#modalCurso5">Saber Mais</button>
                                 </div>
                             </div>
                         </div>
@@ -561,20 +745,62 @@
                                     <img src="img1.jpg" alt="Universidade Federal"
                                         style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;"
                                         class="me-3">
-                                    <h5 class="modal-title" id="modalCurso1Label">Universidade Federal - Engenharia de
-                                        Redes</h5>
+                                    <h5 class="modal-title" id="modalCurso1Label">Análise e Desenvolvimento de Sistemas
+                                    </h5>
                                 </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Fechar"></button>
                             </div>
                             <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
-                                <p class="text-muted">
-                                    Este curso de Engenharia de Redes da Universidade Federal oferece uma base sólida em
-                                    infraestrutura de redes, cabeamento estruturado, protocolos de comunicação,
-                                    segurança de redes, e práticas modernas de conectividade. Os alunos também são
-                                    capacitados com tecnologias como JavaScript, Node.js, React, Git e Bootstrap ao
-                                    longo de projetos práticos e estudos de caso. Ao final da formação, o aluno está
-                                    apto a projetar, implementar e manter redes corporativas robustas e seguras.
+                                <p class="text">
+                                    Atualmente estou cursando o 2º período de Análise e Desenvolvimento de Sistemas pela
+                                    Rede de Ensino Doctum, onde venho desenvolvendo uma base sólida nos fundamentos da
+                                    tecnologia, da programação e da lógica computacional, essenciais para a criação de
+                                    sistemas e soluções digitais.
+                                    <br><br>
+                                    Até este momento da graduação, minha formação tem sido focada no desenvolvimento de
+                                    competências fundamentais na área de desenvolvimento de software, banco de dados e
+                                    infraestrutura de tecnologia.
+                                    <br><br>
+                                    🚀 Principais Conhecimentos e Habilidades Adquiridos até o 2º Período:
+                                    <hr>
+                                    🔹 Lógica de Programação e Algoritmos: Desenvolvimento de raciocínio lógico aplicado
+                                    à resolução de problemas, criação de algoritmos e estruturas de controle,
+                                    fundamentais para qualquer desenvolvimento de software.
+                                    <br><br>
+                                    🔹 Introdução à Programação: Primeiros passos na construção de sistemas utilizando
+                                    linguagens de programação estruturada, aprendendo conceitos como variáveis,
+                                    condicionais, loops, funções e vetores.
+                                    <br><br>
+                                    🔹 Arquitetura e Organização de Computadores: Entendimento do funcionamento dos
+                                    componentes de hardware, sistemas operacionais, processamento, armazenamento e
+                                    comunicação entre dispositivos.
+                                    <br><br>
+                                    🔹 Banco de Dados (Fundamentos): Conhecimentos introdutórios em modelagem de dados,
+                                    criação de tabelas, consultas, manipulação de dados e conceitos básicos de SQL,
+                                    fundamentais para a gestão de dados em sistemas.
+                                    <br><br>
+                                    🔹 Redes de Computadores (Fundamentos): Primeiros conceitos sobre comunicação de
+                                    dados, funcionamento de redes, protocolos, dispositivos de rede e noções iniciais
+                                    sobre segurança e infraestrutura.
+                                    <br><br>
+                                    🔹 Sistemas de Informação: Entendimento sobre como os sistemas são aplicados no
+                                    contexto organizacional, seus impactos nos processos de negócio e sua importância na
+                                    tomada de decisões.
+                                    <br><br>
+                                    🔹 Empreendedorismo e Inovação: Desenvolvimento de uma visão empreendedora aplicada
+                                    à tecnologia, com foco em criatividade, solução de problemas, identificação de
+                                    oportunidades e inovação no mercado de TI.
+                                    <br><br>
+                                    <hr>
+                                    📈 Resumo da Formação em Andamento
+                                    <br><br>
+                                    Ao longo desses dois primeiros períodos, tenho fortalecido meu conhecimento nas
+                                    bases do desenvolvimento de sistemas, raciocínio lógico, banco de dados e
+                                    fundamentos de redes e arquitetura de computadores. Essa etapa da minha formação tem
+                                    sido fundamental para construir a estrutura técnica necessária para avançar em áreas
+                                    mais complexas do desenvolvimento de software, análise de sistemas e soluções
+                                    digitais.
                                 </p>
                             </div>
                         </div>
@@ -591,18 +817,80 @@
                                     <img src="img2.jpg" alt="Curso DevPro"
                                         style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;"
                                         class="me-3">
-                                    <h5 class="modal-title" id="modalCurso2Label">Curso DevPro - Back-End Profissional
-                                    </h5>
+                                    <h5 class="modal-title" id="modalCurso2Label">Desenvolvimento Full Stack Java</h5>
                                 </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Fechar"></button>
                             </div>
                             <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
-                                <p class="text-muted">
-                                    Curso focado em desenvolvimento de aplicações com Node.js, Express.js e MongoDB. Os
-                                    alunos trabalham com autenticação, rotas seguras, middlewares e deploy em servidores
-                                    reais. Utiliza ferramentas modernas como Git, Insomnia e integrações com sistemas
-                                    externos.
+                                <p class="text">
+                                    Durante minha jornada no curso de Desenvolvimento Full Stack Java pela EBAC (Escola
+                                    Britânica de Artes Criativas e Tecnologia), adquiri uma formação completa que me
+                                    capacita a atuar em todas as etapas do desenvolvimento de aplicações web, tanto no
+                                    front-end quanto no back-end.
+                                    <br><br>
+                                    O curso proporcionou uma experiência prática e aprofundada, onde pude desenvolver
+                                    projetos reais, compreender os fluxos de desenvolvimento e aplicar as principais
+                                    tecnologias e metodologias utilizadas no mercado de tecnologia.
+                                    <br><br>
+                                    🚀 Principais Competências e Conhecimentos Adquiridos:
+                                    <hr>
+                                    🔸 Front-End (Interface do Usuário)
+                                    Criação de páginas web estruturadas com HTML5 e estilizadas com CSS3, utilizando
+                                    boas práticas de design responsivo.
+                                    <br><br>
+                                    Desenvolvimento de interatividade e dinamismo nas interfaces utilizando JavaScript
+                                    puro e bibliotecas como jQuery.
+                                    <br><br>
+                                    Aplicação de frameworks e pré-processadores como Bootstrap, Flexbox e SASS,
+                                    garantindo layouts modernos e profissionais.
+                                    <br><br>
+                                    Integração com serviços externos e APIs, utilizando AJAX para comunicação assíncrona
+                                    e atualização dinâmica dos dados.
+                                    <br><br>
+                                    Controle de versão e colaboração em projetos com Git e GitHub, aplicando fluxo de
+                                    trabalho profissional.
+                                    <br><br>
+                                    <hr>
+                                    🔸 Back-End (Lógica de Negócio e Servidores)
+                                    <br><br>
+                                    Domínio da linguagem Java, com foco na programação orientada a objetos e boas
+                                    práticas de desenvolvimento.
+                                    <br><br>
+                                    Criação de APIs robustas e seguras utilizando o framework Spring Boot, além de
+                                    implementação de microsserviços e gerenciamento de dependências com Maven e Gradle.
+                                    <br><br>
+                                    Desenvolvimento de sistemas back-end capazes de processar, armazenar e gerenciar
+                                    dados de forma eficiente.
+                                    <br><br>
+                                    Criação e gestão de bancos de dados relacionais, utilizando SQL, além de realizar
+                                    consultas, manipulações e modelagem de dados.
+                                    <br><br>
+                                    Aplicação de testes unitários e de integração, garantindo a qualidade, segurança e
+                                    estabilidade das aplicações.
+                                    <br><br>
+                                    <hr>
+                                    🔸 DevOps e Deploy
+                                    <br><br>
+                                    Configuração de ambientes de desenvolvimento modernos.
+                                    <br><br>
+                                    Uso de ferramentas como Docker para containerização, facilitando o deploy e a
+                                    escalabilidade de aplicações.
+                                    <br><br>
+                                    Conhecimentos introdutórios sobre integração contínua e entrega contínua (CI/CD),
+                                    aplicando práticas de DevOps no ciclo de desenvolvimento.
+                                    <br><br>
+                                    <hr>
+                                    🎯 Resumo da Formação
+                                    <br><br>
+                                    Ao longo dessa formação, desenvolvi habilidades técnicas e práticas essenciais para
+                                    atuar como desenvolvedor Full Stack. Hoje sou capaz de construir soluções web
+                                    completas, desde a criação da interface do usuário até a lógica de negócios no
+                                    servidor, utilizando tecnologias modernas, seguras e escaláveis.
+                                    <br><br>
+                                    Essa experiência me proporcionou não apenas conhecimento técnico, mas também visão
+                                    de mercado, capacidade de trabalho em equipe, versionamento de projetos e
+                                    desenvolvimento de software com foco na qualidade e na entrega de valor.
                                 </p>
                             </div>
                         </div>
@@ -619,17 +907,153 @@
                                     <img src="img3.jpg" alt="Rocketseat"
                                         style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;"
                                         class="me-3">
-                                    <h5 class="modal-title" id="modalCurso3Label">Rocketseat - Front-End com React</h5>
+                                    <h5 class="modal-title" id="modalCurso3Label">Inteligência Artificial</h5>
                                 </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Fechar"></button>
                             </div>
                             <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
-                                <p class="text-muted">
-                                    Curso voltado para desenvolvedores que desejam aprender e dominar React.js. O
-                                    conteúdo abrange criação de componentes reutilizáveis, gerenciamento de estado com
-                                    hooks, consumo de APIs REST e GraphQL, estilização com Styled Components e boas
-                                    práticas de organização de projetos modernos.
+                                <p class="text">
+                                    Durante minha formação em Inteligência Artificial para Negócios pela EBAC, adquiri
+                                    conhecimentos fundamentais e práticos sobre como utilizar ferramentas de IA para
+                                    otimizar processos, gerar valor e impulsionar a transformação digital nas empresas.
+                                    <br><br>
+                                    O curso me proporcionou uma visão ampla e estratégica do uso da inteligência
+                                    artificial, além de habilidades práticas para aplicar IA no dia a dia de negócios de
+                                    diversos setores.
+                                    <br><br>
+                                    🚀 Principais Habilidades e Conhecimentos Adquiridos:
+                                    <hr>
+                                    Conceitos de Inteligência Artificial: Compreensão de como a IA funciona, suas
+                                    aplicações no mercado e seu impacto nos negócios.
+                                    <br><br>
+                                    Ferramentas de IA: Aprendizado no uso de plataformas como ChatGPT, DALL-E,
+                                    MidJourney e Bing AI, aplicando IA para criação de textos, imagens, automação de
+                                    tarefas, análise de dados e apoio à tomada de decisões.
+                                    <br><br>
+                                    Criação de Prompts Eficientes: Desenvolvimento de comandos inteligentes e bem
+                                    estruturados para extrair o máximo de produtividade e qualidade das ferramentas de
+                                    IA.
+                                    <br><br>
+                                    Automatização de Processos: Implementação de IA para agilizar atividades
+                                    operacionais, gerar relatórios, criar conteúdos e otimizar fluxos de trabalho.
+                                    <br><br>
+                                    Análise Crítica e Ética: Avaliação dos limites, riscos, desafios éticos e
+                                    responsabilidades no uso de IA, garantindo uma atuação consciente e segura.
+                                    <br><br>
+                                    Planejamento Estratégico com IA: Capacidade de estruturar projetos e soluções de IA
+                                    alinhados aos objetivos do negócio, com foco em inovação, redução de custos e
+                                    aumento de produtividade.
+                                    <br><br>
+                                    <hr>
+                                    🎯 Resumo Profissional
+                                    <br><br>
+                                    Ao longo dessa formação, desenvolvi uma mentalidade inovadora, aprendendo a utilizar
+                                    a inteligência artificial como uma aliada no desenvolvimento de soluções criativas,
+                                    automação de tarefas e apoio na tomada de decisões estratégicas. Estou preparado
+                                    para aplicar IA de forma prática, eficiente e responsável, gerando valor real para
+                                    empresas e projetos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Curso 4 -->
+                <div class="modal fade" id="modalCurso4" tabindex="-1" aria-labelledby="modalCurso4Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="img3.jpg" alt="Rocketseat"
+                                        style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;"
+                                        class="me-3">
+                                    <h5 class="modal-title" id="modalCurso3Label">Introdução a Programação</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text">
+                                    Durante minha participação no curso gratuito de Introdução à Programação da EBAC,
+                                    adquiri uma base sólida nos conceitos fundamentais de programação e lógica
+                                    computacional, essenciais para iniciar minha trajetória na área de tecnologia.
+                                    <br><br>
+
+                                    🚀 Principais conhecimentos adquiridos:
+                                    <hr>
+                                    Desenvolvimento do pensamento computacional, aprendendo a resolver problemas
+                                    complexos de forma estruturada.
+                                    <br><br>
+                                    Fundamentos de lógica de programação, incluindo variáveis, tipos de dados,
+                                    estruturas condicionais e laços de repetição.
+                                    <br><br>
+                                    Criação e entendimento de algoritmos utilizando pseudocódigo, facilitando a
+                                    transição para linguagens reais.
+                                    <br><br>
+                                    Introdução prática às linguagens Python e C, aplicando os conceitos teóricos em
+                                    exercícios.
+                                    <br><br>
+                                    Visão geral sobre as áreas de desenvolvimento front-end e back-end.
+                                    <br><br>
+                                    Conhecimento sobre o mercado de TI e suas diversas oportunidades.
+                                    <br><br>
+                                    <hr>
+                                    🎯 Resumo
+                                    <br><br>
+                                    Esse curso foi essencial para minha introdução ao universo da programação,
+                                    preparando-me para avançar em formações mais especializadas e me aprofundar em
+                                    desenvolvimento de software.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Curso 5 -->
+                <div class="modal fade" id="modalCurso5" tabindex="-1" aria-labelledby="modalCurso55Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="img3.jpg" alt="Rocketseat"
+                                        style="width: 50px; height: 50px; object-fit: cover; border-radius: 10px;"
+                                        class="me-3">
+                                    <h5 class="modal-title" id="modalCurso3Label">Plano de Carreira</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text">
+                                    Durante o curso de Plano de Carreira da EBAC, desenvolvi uma visão estratégica e
+                                    prática para construir e gerenciar minha trajetória profissional. O curso me ensinou
+                                    a identificar meus pontos fortes, definir objetivos claros e traçar caminhos
+                                    efetivos para alcançar o sucesso na carreira.
+                                    <br><br>
+                                    🎯 Principais aprendizados:
+                                    <hr>
+                                    Autoconhecimento profissional para direcionar escolhas alinhadas aos meus valores e
+                                    habilidades.
+                                    <br><br>
+                                    Planejamento estratégico da carreira, com definição de metas de curto, médio e longo
+                                    prazo.
+                                    <br><br>
+                                    Otimização do perfil profissional, incluindo aprimoramento de currículos e presença
+                                    no LinkedIn.
+                                    <br><br>
+                                    Construção e manutenção de networking eficiente para abrir portas e criar
+                                    oportunidades.
+                                    <br><br>
+                                    Preparação para processos seletivos, entrevistas e negociação salarial.
+                                    <hr>
+                                    🎯 Resumo
+                                    <br><br>
+                                    Esse curso foi fundamental para que eu possa planejar minha carreira de forma
+                                    consciente e estruturada, aumentando minhas chances de sucesso no mercado de
+                                    trabalho.
                                 </p>
                             </div>
                         </div>
@@ -642,37 +1066,149 @@
                         <div class="border-start border-3 border-success position-absolute top-0 start-0 h-100"
                             style="left: 25px;"></div>
                         <div class="ms-5 pb-4">
-                            <!-- Experiência 1 -->
-                            <div class="position-relative mb-4 animate__animated animate__fadeInUp">
+                            <!-- Experiência 0 -->
+                            <div class="position-relative mb-4 animate__animated animate__fadeInUp"
+                                style="margin-left: -47px;">
                                 <div class="position-absolute top-50 translate-middle rounded-circle bg-success shadow border border-white dark-mode-border-dark"
-                                    style="width: 20px; height: 20px; left: -47px;"></div>
+                                    style="width: 20px; height: 20px; left: 0px;"></div>
                                 <div class="bg-light dark-mode-card p-4 rounded-4 shadow-sm ms-5">
-                                    <h5 class="fw-bold mb-1">Desenvolvedor Back-End | Thynk</h5>
-                                    <small class="text-muted">Jan 2023 - Presente</small>
-                                    <p class="mb-0 mt-2 text-muted">Responsável por APIs REST com Node.js, integração
-                                        com MongoDB, autenticação JWT e deploy no Heroku.</p>
+                                    <h5 class="fw-bold mb-1">CEO | Thynk Desenvolvimentos</h5>
+                                    <small class="text-muted">Fev 2025 - Presente</small>
+                                    <p class="mb-0 mt-2 text-muted">A Thynk nasceu da minha iniciativa de ajudar
+                                        pequenas e médias empresas a conquistarem presença digital de forma
+                                        profissional, eficiente e acessível. Por meio dela, ofereço soluções criativas e
+                                        personalizadas para negócios locais que desejam expandir sua atuação na
+                                        internet. Entre os serviços, estão o desenvolvimento de Landing Pages, sites
+                                        institucionais (Multi Pages) e E-commerces, sempre com foco em conversão,
+                                        usabilidade e performance.
+                                        <br><br>
+                                        Além do desenvolvimento web, também atuo na gestão de tráfego pago, oferecendo
+                                        suporte completo para campanhas em plataformas como Meta Ads
+                                        (Facebook/Instagram) e Google Ads. Auxilio os clientes tanto na configuração
+                                        quanto na otimização dos anúncios, além de fornecer suporte para análise de
+                                        desempenho dos sites, utilizando métricas e ferramentas específicas para
+                                        monitoramento, conversão e crescimento.
+                                        <br><br>
+                                        Todo esse trabalho é realizado aplicando os conhecimentos adquiridos ao longo
+                                        dos anos em marketing digital e desenvolvimento web, utilizando tecnologias como
+                                        JavaScript, Node.js, HTML, CSS, Bootstrap, além de outras bibliotecas e
+                                        frameworks que garantem soluções modernas, escaláveis e de alta qualidade.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Experiência 1 -->
+                            <div class="position-relative mb-4 animate__animated animate__fadeInUp"
+                                style="margin-left: -47px;">
+                                <div class="position-absolute top-50 translate-middle rounded-circle bg-success shadow border border-white dark-mode-border-dark"
+                                    style="width: 20px; height: 20px; left: 0px;"></div>
+                                <div class="bg-light dark-mode-card p-4 rounded-4 shadow-sm ms-5">
+                                    <h5 class="fw-bold mb-1">Estágiario | Usepress</h5>
+                                    <small class="text-muted">Abril 2024 - Abril 2025</small>
+                                    <p class="mb-0 mt-2 text-muted">Na Usepress, atuei como desenvolvedor estagiário,
+                                        onde tive a oportunidade de ampliar significativamente meus conhecimentos em
+                                        desenvolvimento web e back-end. Durante meu período na empresa, fui responsável
+                                        pelo desenvolvimento de APIs, integrações e manutenção de sistemas, além da
+                                        criação de sites institucionais e e-commerces utilizando WordPress, PHP e
+                                        JavaScript.
+                                        <br><br>
+                                        Participei de projetos de grande relevância, atendendo clientes de porte
+                                        nacional como a Natura e a Rede MG Farma, onde pude colaborar ativamente na
+                                        entrega de soluções robustas, escaláveis e alinhadas às necessidades dos
+                                        clientes. Entre os principais desafios, liderei o desenvolvimento de um sistema
+                                        de checkout step-by-step, pensado para melhorar a experiência do usuário e
+                                        aumentar a conversão dos clientes. Esse projeto envolveu desde a modelagem da
+                                        arquitetura até a implementação das funcionalidades e testes.
+                                        <br><br>
+                                        Infelizmente, devido ao encerramento do meu contrato de estágio, não pude
+                                        acompanhar o projeto até sua finalização. No entanto, essa experiência me
+                                        proporcionou um grande desenvolvimento profissional, fortalecendo minhas
+                                        habilidades técnicas, minha capacidade de trabalho em equipe, gestão de demandas
+                                        e resolução de problemas.
+
+                                    </p>
                                 </div>
                             </div>
                             <!-- Experiência 2 -->
-                            <div class="position-relative mb-4 animate__animated animate__fadeInUp">
+                            <div class="position-relative mb-4 animate__animated animate__fadeInUp"
+                                style="margin-left: -47px;">
                                 <div class="position-absolute top-50 translate-middle rounded-circle bg-success shadow border border-white dark-mode-border-dark"
-                                    style="width: 20px; height: 20px; left: -47px;"></div>
+                                    style="width: 20px; height: 20px; left: 0px;"></div>
                                 <div class="bg-light dark-mode-card p-4 rounded-4 shadow-sm ms-5">
-                                    <h5 class="fw-bold mb-1">Estágio em Suporte Técnico | InfoTech</h5>
-                                    <small class="text-muted">Jul 2022 - Dez 2022</small>
-                                    <p class="mb-0 mt-2 text-muted">Atendimento a clientes, diagnóstico de problemas de
-                                        rede e manutenção de sistemas internos e externos.</p>
+                                    <h5 class="fw-bold mb-1">Auxiliar de Escritório | Unimed Juiz de Fora</h5>
+                                    <small class="text-muted">Jan 2025 - Presente</small>
+                                    <p class="mb-0 mt-2 text-muted">Após minha experiência no setor de compras, retornei
+                                        ao almoxarifado da Unimed, onde reassumi as atividades de apoio no recebimento,
+                                        organização e distribuição de materiais, DIUs e medicamentos. Nessa nova etapa,
+                                        além das funções operacionais, passei a atuar também no atendimento de chamados
+                                        por meio das plataformas CSC, TASY e TOTVS, oferecendo suporte às áreas internas
+                                        da empresa. Outra responsabilidade que assumi foi a gestão de solicitações de
+                                        transporte, realizando o acionamento de veículos e motoboys para auxiliar nas
+                                        entregas e coletas, garantindo maior agilidade e eficiência na logística
+                                        hospitalar. Essa experiência ampliou minha visão sobre processos integrados,
+                                        atendimento e suporte operacional.</p>
+                                </div>
+                            </div>
+                            <!-- Experiência 2.1 -->
+                            <div class="position-relative mb-4 animate__animated animate__fadeInUp"
+                                style="margin-left: -47px;">
+                                <div class="bg-light dark-mode-card p-4 rounded-4 shadow-sm ms-5">
+                                    <h5 class="fw-bold mb-1">Aprendiz de Compras | Unimed Juiz de Fora</h5>
+                                    <small class="text-muted">Nov 2024 - Jan 2025</small>
+                                    <p class="mb-0 mt-2 text-muted">Após um período no almoxarifado, tive a
+                                        oportunidade de atuar como jovem aprendiz no setor de compras da Unimed. Nessa
+                                        função, fui responsável por realizar o follow-up de pedidos de medicamentos e
+                                        materiais hospitalares, garantindo o cumprimento dos prazos de entrega e a
+                                        disponibilidade dos itens. Também executava as próprias compras desses insumos,
+                                        desenvolvendo planilhas de controle e acompanhamento para otimizar os processos
+                                        e manter a organização das demandas. Além disso, realizava compras externas e
+                                        dava suporte às rotinas administrativas do setor. Essa experiência foi essencial
+                                        para aprimorar minhas habilidades de negociação, organização, análise de dados e
+                                        comunicação.</p>
+                                </div>
+                            </div>
+                            <!-- Experiência 2.2 -->
+                            <div class="position-relative mb-4 animate__animated animate__fadeInUp"
+                                style="margin-left: -47px;">
+                                <div class="bg-light dark-mode-card p-4 rounded-4 shadow-sm ms-5">
+                                    <h5 class="fw-bold mb-1">Aprendiz de Almoxarifado | Unimed Juiz de Fora</h5>
+                                    <small class="text-muted">Jul 2024 - Nov 2024</small>
+                                    <p class="mb-0 mt-2 text-muted">Na Unimed, iniciei minha trajetória profissional
+                                        como jovem aprendiz no setor de almoxarifado, onde desempenhava atividades
+                                        operacionais e administrativas. Minhas principais responsabilidades incluíam a
+                                        entrega de documentos, transporte de materiais como DIUs, realização de compras
+                                        externas e suporte logístico. Além disso, atuava na organização e controle do
+                                        setor de recebimentos, garantindo o bom funcionamento e a organização dos
+                                        processos internos. Essa experiência foi fundamental para desenvolver minha
+                                        disciplina, responsabilidade e habilidades de trabalho em equipe.</p>
                                 </div>
                             </div>
                             <!-- Experiência 3 -->
-                            <div class="position-relative animate__animated animate__fadeInUp">
+                            <div class="position-relative mb-4 animate__animated animate__fadeInUp"
+                                style="margin-left: -47px;">
                                 <div class="position-absolute top-50 translate-middle rounded-circle bg-success shadow border border-white dark-mode-border-dark"
-                                    style="width: 20px; height: 20px; left: -47px;"></div>
+                                    style="width: 20px; height: 20px; left: 0px;"></div>
                                 <div class="bg-light dark-mode-card p-4 rounded-4 shadow-sm ms-5">
-                                    <h5 class="fw-bold mb-1">Assistente Administrativo | Prefeitura Municipal</h5>
-                                    <small class="text-muted">Fev 2021 - Jun 2022</small>
-                                    <p class="mb-0 mt-2 text-muted">Organização de documentos, atendimento ao público e
-                                        suporte em processos licitatórios e administrativos.</p>
+                                    <h5 class="fw-bold mb-1">Social Media | FreeLancer</h5>
+                                    <small class="text-muted">Jan 2023 - Jun 2024</small>
+                                    <p class="mb-0 mt-2 text-muted">Como freelancer de social media, atuei na gestão de
+                                        mídias digitais de pequenas empresas da minha cidade, desenvolvendo estratégias
+                                        para aumentar a visibilidade, o engajamento e a conversão de clientes. Fui
+                                        responsável pela criação, gestão e otimização de campanhas de tráfego pago no
+                                        Instagram, Facebook e outras plataformas, sempre com foco em alcançar o público
+                                        local e gerar resultados efetivos.
+                                        <br><br>
+                                        Além da gestão de anúncios, oferecia suporte estratégico aos negócios, ajudando
+                                        na definição de público-alvo, criação de grupos de interesse e análise de
+                                        métricas para melhorar a performance das campanhas. Também cuidava da produção
+                                        de conteúdo, desenvolvendo artes, legendas, planejamento de postagens e
+                                        interagindo com os seguidores por meio de comentários e mensagens diretas,
+                                        fortalecendo o relacionamento entre a marca e o público.
+                                        <br><br>
+                                        Essa experiência me proporcionou uma visão completa sobre marketing digital,
+                                        comportamento de consumidores, funis de venda e estratégias de crescimento para
+                                        negócios locais, além de aprimorar minhas habilidades em comunicação, design,
+                                        análise de dados e gestão de redes sociais.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -692,92 +1228,304 @@
                         <div id="filtroCategoriasConhecimentos"
                             class="ms-3 d-none animate__animated animate__fadeIn d-flex flex-wrap gap-2">
                             <button class="btn btn-outline-secondary filtro-btn small-btn"
-                                onclick="filtrarConhecimentos('Back-End')">Back-End</button>
+                                onclick="filtrarConhecimentos('Back-End', this)">Back-End</button>
                             <button class="btn btn-outline-secondary filtro-btn small-btn"
-                                onclick="filtrarConhecimentos('Front-End')">Front-End</button>
+                                onclick="filtrarConhecimentos('Front-End', this)">Front-End</button>
                             <button class="btn btn-outline-secondary filtro-btn small-btn"
-                                onclick="filtrarConhecimentos('UI/UX')">UI/UX</button>
+                                onclick="filtrarConhecimentos('UI/UX', this)">UI/UX</button>
                             <button class="btn btn-outline-secondary filtro-btn small-btn"
-                                onclick="filtrarConhecimentos('Versionamento')">Versionamento</button>
+                                onclick="filtrarConhecimentos('Versionamento', this)">Versionamento</button>
                             <button class="btn btn-outline-secondary filtro-btn small-btn"
-                                onclick="filtrarConhecimentos('Segurança')">Segurança</button>
+                                onclick="filtrarConhecimentos('Dados', this)">Dados</button>
                             <button class="btn btn-outline-secondary filtro-btn small-btn"
-                                onclick="filtrarConhecimentos('Redes')">Redes</button>
-                            <button class="btn btn-outline-secondary filtro-btn small-btn"
-                                onclick="filtrarConhecimentos('Todos')">Todos</button>
+                                onclick="filtrarConhecimentos('Todos', this)">Todos</button>
                         </div>
                     </div>
 
                     <!-- Cards de conhecimentos -->
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+                    <div id="containerConhecimentos"
+                        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
                         <!-- Exemplo de Card 1 -->
-                        <div class="col conhecimento-card" data-tags="Back-End">
+                        <div class="col conhecimento-card" data-tags="Front-End">
                             <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
                                 <div class="d-flex align-items-center mb-2">
-                                    <i class="bi bi-filetype-js fs-3 me-2" style="color: #f7df1e;"></i>
-                                    <h6 class="mb-0 fw-bold">JavaScript</h6>
+                                    <i class="fa-brands fa-html5 fs-3 me-2" style="color: #df8005;"></i>
+                                    <h6 class="mb-0 fw-bold">HTML</h6>
                                 </div>
-                                <p class="mb-1 text-muted small">Tempo de Experiência: 3 anos | Nível: <span
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 2.5 anos | Nível: <span
                                         class="text-success">Avançado</span></p>
                                 <hr>
-                                <p class="mb-0 text-muted small">Utilizado em projetos tanto front quanto back, com
-                                    foco em aplicações SPA e lógica assíncrona.</p>
+                                <p class="mb-0 text-muted small">HTML (HyperText Markup Language) é a linguagem de
+                                    marcação responsável por estruturar o conteúdo de páginas na web. Com ele, definimos
+                                    elementos como títulos, parágrafos, imagens, links, tabelas e formulários,
+                                    funcionando como o esqueleto que dá forma e organização ao site.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Front-End UI/UX">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-brands fa-css3-alt fs-3 me-2" style="color: #0c49ce;"></i>
+                                    <h6 class="mb-0 fw-bold">CSS</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 2 anos | Nível: <span
+                                        class="text-success">Avançado</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">CSS (Cascading Style Sheets) é a linguagem utilizada
+                                    para definir o estilo e o design de páginas web. Com o CSS, é possível personalizar
+                                    cores, tamanhos, fontes, espaçamentos, posicionamento de elementos e criar efeitos
+                                    visuais, deixando o site mais bonito, organizado e responsivo.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags=" Front-End UI/UX">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-filetype-scss fs-3 me-2" style="color: #d63384;"></i>
+                                    <h6 class="mb-0 fw-bold">SCSS</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 1 ano | Nível: <span
+                                        class="text-primary">Básico</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">SCSS (Sassy CSS) é uma sintaxe do Sass, um
+                                    pré-processador de CSS que permite escrever estilos de forma mais organizada,
+                                    reutilizável e eficiente. Com SCSS, é possível usar variáveis, funções, aninhamento
+                                    de seletores, mixins e outras funcionalidades que não existem no CSS puro, tornando
+                                    o desenvolvimento mais rápido e produtivo.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Dados">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-filetype-json fs-3 me-2" style="color: #e9c834;"></i>
+                                    <h6 class="mb-0 fw-bold">JSON</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 2 anos | Nível: <span
+                                        class="text-secondary">Intermediário</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">JSON (JavaScript Object Notation) é um formato leve de
+                                    troca de dados, fácil de ler e escrever tanto para humanos quanto para máquinas. Ele
+                                    é usado principalmente para transmitir informações entre um servidor e uma aplicação
+                                    web, utilizando uma estrutura de chave e valor. É amplamente utilizado em APIs e
+                                    sistemas modernos para enviar e receber dados de forma organizada.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Front-End Back-End">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-brands fa-js fs-3 me-2" style="color: #f1dd24;"></i>
+                                    <h6 class="mb-0 fw-bold">JavaScript</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 2.5 anos | Nível: <span
+                                        class="text-success">Avançado</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">JavaScript é uma linguagem de programação utilizada
+                                    principalmente no Front-End para tornar as páginas web interativas e dinâmicas. Com
+                                    JavaScript, é possível criar efeitos visuais, validar formulários, manipular
+                                    elementos da página em tempo real, além de se comunicar com servidores para carregar
+                                    dados sem precisar recarregar a página. Hoje, também é muito usado no Back-End, com
+                                    ambientes como Node.js, para criar aplicações completas.</p>
                             </div>
                         </div>
 
                         <div class="col conhecimento-card" data-tags="Front-End">
                             <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
                                 <div class="d-flex align-items-center mb-2">
-                                    <i class="bi bi-bootstrap fs-3 me-2" style="color: #7952b3;"></i>
-                                    <h6 class="mb-0 fw-bold">Bootstrap</h6>
+                                    <i class="fa-brands fa-bootstrap fs-3 me-2" style="color: #0d9c00;"></i>
+                                    <h6 class="mb-0 fw-bold">Boostrap</h6>
                                 </div>
                                 <p class="mb-1 text-muted small">Tempo de Experiência: 2 anos | Nível: <span
-                                        class="text-primary">Básico</span></p>
+                                        class="text-secondary">Intermediário</span></p>
                                 <hr>
-                                <p class="mb-0 text-muted small">Framework CSS para criação rápida de interfaces
-                                    responsivas com grid e componentes prontos.</p>
+                                <p class="mb-0 text-muted small">Bootstrap é um framework front-end gratuito e open
+                                    source que facilita a criação de sites e aplicações web responsivas e modernas. Ele
+                                    oferece um conjunto de estilos CSS prontos, componentes interativos e um sistema de
+                                    grid flexível, permitindo que desenvolvedores construam layouts rápidos,
+                                    consistentes e adaptáveis a diferentes tamanhos de tela, sem precisar criar tudo do
+                                    zero.</p>
                             </div>
                         </div>
 
-                        <div class="col conhecimento-card" data-tags="UI/UX">
+                        <div class="col conhecimento-card" data-tags="Front-End">
                             <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
                                 <div class="d-flex align-items-center mb-2">
-                                    <i class="bi bi-palette fs-3 me-2" style="color: #d63384;"></i>
-                                    <h6 class="mb-0 fw-bold">Figma</h6>
+                                    <i class="fa-brands fa-vuejs fs-3 me-2" style="color: #b60000;"></i>
+                                    <h6 class="mb-0 fw-bold">VueJS</h6>
                                 </div>
                                 <p class="mb-1 text-muted small">Tempo de Experiência: 1 ano | Nível: <span
-                                        class="text-warning">Intermediário</span></p>
+                                        class="text-primary">Básico</span></p>
                                 <hr>
-                                <p class="mb-0 text-muted small">Ferramenta essencial para criação de protótipos,
-                                    wireframes e colaboração em design de interfaces.</p>
+                                <p class="mb-0 text-muted small">Vue.js é um framework progressivo de JavaScript para
+                                    construir interfaces de usuário. Ele é focado na camada de visualização (View) e
+                                    permite criar aplicações web reativas e componentes reutilizáveis de forma simples e
+                                    eficiente. Com Vue, você pode construir desde pequenos widgets até aplicações
+                                    complexas de página única (SPA), facilitando a organização e manutenção do código.
+                                </p>
                             </div>
                         </div>
 
-                        <div class="col conhecimento-card" data-tags="Versionamento">
+                        <div class="col conhecimento-card" data-tags="Front-End">
                             <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
                                 <div class="d-flex align-items-center mb-2">
-                                    <i class="bi bi-git fs-3 me-2" style="color: #f05030;"></i>
-                                    <h6 class="mb-0 fw-bold">Git</h6>
+                                    <i class="fa-brands fa-react fs-3 me-2" style="color: #0084d1;"></i>
+                                    <h6 class="mb-0 fw-bold">ReactJS</h6>
                                 </div>
-                                <p class="mb-1 text-muted small">Tempo de Experiência: 4 anos | Nível: <span
-                                        class="text-danger">Domínio Total</span></p>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 1 ano | Nível: <span
+                                        class="text-secondary">Intermediário</span></p>
                                 <hr>
-                                <p class="mb-0 text-muted small">Controle de versão eficiente com GitHub e GitLab,
-                                    gerenciamento de branches e pull requests.</p>
+                                <p class="mb-0 text-muted small">React.js é uma biblioteca JavaScript criada pelo
+                                    Facebook para construir interfaces de usuário de forma eficiente e dinâmica. Ela
+                                    permite criar componentes reutilizáveis que gerenciam seu próprio estado,
+                                    facilitando o desenvolvimento de aplicações web interativas e de página única (SPA).
+                                    Com React, o DOM é atualizado de forma rápida e otimizada graças ao uso do Virtual
+                                    DOM.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Back-End Dados">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-brands fa-node-js fs-3 me-2" style="color: #3c873a;"></i>
+                                    <h6 class="mb-0 fw-bold">NodeJS</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 1 ano | Nível: <span
+                                        class="text-success">Avançado</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Node.js é um ambiente de execução JavaScript do lado do
+                                    servidor que permite rodar código JavaScript fora do navegador. Ele é baseado no
+                                    motor V8 do Chrome e é muito usado para construir aplicações de back-end rápidas,
+                                    escaláveis e em tempo real, como APIs, servidores web e sistemas distribuídos. Além
+                                    disso, permite usar JavaScript no servidor, unificando a linguagem no front-end e no
+                                    back-end.</p>
                             </div>
                         </div>
 
                         <div class="col conhecimento-card" data-tags="Back-End">
                             <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
                                 <div class="d-flex align-items-center mb-2">
-                                    <i class="bi bi-database fs-3 me-2" style="color: #4db33d;"></i>
+                                    <i class="fa-brands fa-java fs-3 me-2" style="color: #d60303;"></i>
+                                    <h6 class="mb-0 fw-bold">JAVA</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 1.5 ano | Nível: <span
+                                        class="text-secondary">Intermediário</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Java é uma linguagem de programação orientada a
+                                    objetos, amplamente usada para desenvolver aplicações de grande porte, sistemas
+                                    corporativos, aplicativos móveis (Android), e sistemas embarcados. Conhecida por sua
+                                    portabilidade, ela roda em qualquer plataforma que tenha a Java Virtual Machine
+                                    (JVM), garantindo o lema "write once, run anywhere" (escreva uma vez, execute em
+                                    qualquer lugar).</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Back-End Dados">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-solid fa-database fs-3 me-2" style="color: #0ac739;"></i>
                                     <h6 class="mb-0 fw-bold">MongoDB</h6>
                                 </div>
-                                <p class="mb-1 text-muted small">Tempo de Experiência: 2 anos | Nível: <span
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 1.5 ano | Nível: <span
                                         class="text-success">Avançado</span></p>
                                 <hr>
-                                <p class="mb-0 text-muted small">Banco de dados NoSQL usado com Node.js, com foco em
-                                    performance, escalabilidade e consultas flexíveis.</p>
+                                <p class="mb-0 text-muted small">MongoDB é um banco de dados NoSQL orientado a
+                                    documentos, que armazena dados em formato JSON-like (BSON). Ele é flexível,
+                                    escalável e ideal para aplicações que precisam lidar com grandes volumes de dados e
+                                    estruturas dinâmicas, como dados sem esquema fixo. MongoDB é muito usado em sistemas
+                                    modernos por sua facilidade de integração com linguagens como JavaScript e por
+                                    permitir consultas rápidas e eficientes.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Back-End">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-solid fa-s fs-3 me-2" style="color: #22ca00;"></i>
+                                    <h6 class="mb-0 fw-bold">SpringBoot</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 1 anos | Nível: <span
+                                        class="text-secondary">Intermediário</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Spring Boot é um framework Java que simplifica a
+                                    criação de aplicações web e microserviços. Ele oferece uma configuração automática e
+                                    pronta para uso, facilitando o desenvolvimento rápido e eficiente de aplicações
+                                    robustas, com menos código e configuração manual. Com Spring Boot, é fácil integrar
+                                    bancos de dados, segurança, APIs REST e outras funcionalidades essenciais para
+                                    aplicações corporativas.</p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Versionamento">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-git fs-3 me-2" style="color: #e93434;"></i>
+                                    <h6 class="mb-0 fw-bold">GIT</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 2 anos | Nível: <span
+                                        class="text-secondary">Intermediário</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Git é um sistema de controle de versões distribuído
+                                    usado para gerenciar e acompanhar mudanças no código-fonte de projetos. Ele permite
+                                    que múltiplos desenvolvedores trabalhem simultaneamente, salvando diferentes versões
+                                    do código, facilitando colaboração, histórico de alterações, ramificações (branches)
+                                    e fusões (merges) de forma eficiente e segura. É fundamental no desenvolvimento
+                                    moderno de software.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="UI/UX">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-brands fa-figma fs-3 me-3" style="color: #d300b0;"></i>
+                                    <h6 class="mb-0 fw-bold">Figma</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 1 ano | Nível: <span
+                                        class="text-secondary">Intermediário</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Figma é uma ferramenta de design de interface e
+                                    prototipagem colaborativa baseada na web. Ela permite que equipes criem,
+                                    compartilhem e editem designs em tempo real, facilitando o desenvolvimento de
+                                    layouts para sites, aplicativos e sistemas, com recursos para criar protótipos
+                                    interativos sem a necessidade de instalar nenhum software.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Versionamento">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-brands fa-docker fs-3 me-2" style="color: #0084d1;"></i>
+                                    <h6 class="mb-0 fw-bold">Docker</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 1 ano | Nível: <span
+                                        class="text-primary">Básico</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">Docker é uma plataforma que permite criar, distribuir e
+                                    executar aplicações dentro de contêineres — ambientes isolados que incluem tudo o
+                                    que o software precisa para rodar, como código, bibliotecas e dependências. Isso
+                                    garante que a aplicação funcione de forma consistente em qualquer lugar, facilitando
+                                    a implantação, escalabilidade e o desenvolvimento colaborativo.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col conhecimento-card" data-tags="Versionamento">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-brands fa-github fs-3 me-2" style="color: #9b9b9b;"></i>
+                                    <h6 class="mb-0 fw-bold">GitHub</h6>
+                                </div>
+                                <p class="mb-1 text-muted small">Tempo de Experiência: 3 anos | Nível: <span
+                                        class="text-success">Avançado</span></p>
+                                <hr>
+                                <p class="mb-0 text-muted small">GitHub é uma plataforma online que hospeda repositórios
+                                    Git, facilitando o controle de versões, colaboração e compartilhamento de código
+                                    entre desenvolvedores. Além de armazenar o código-fonte, oferece ferramentas para
+                                    revisão de código, gerenciamento de projetos, documentação e integração contínua,
+                                    sendo muito popular na comunidade de desenvolvimento de software.
+                                </p>
                             </div>
                         </div>
 
@@ -792,56 +1540,70 @@
                         <!-- Projeto 1 -->
                         <div class="col">
                             <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card position-relative">
+                                <!-- Conteúdo do card -->
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <div class="d-flex align-items-center">
-                                        <img src="img/projeto1.jpg" alt="Projeto 1"
-                                            style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;"
+                                        <img src="../images/logoNatura.png" alt="Projeto 1"
+                                            style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;"
                                             class="me-2">
                                         <div>
-                                            <h6 class="mb-0 fw-bold">Sistema de Agendamento</h6>
-                                            <small class="text-muted">Objetivo: Estudos</small>
+                                            <h6 class="mb-0 fw-bold">Natura</h6>
+                                            <small class="text-muted">Objetivo: Cliente</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <i class="bi bi-filetype-js" style="color: #f7df1e;"></i>
-                                        <i class="bi bi-node-plus-fill" style="color: #3c873a;"></i>
-                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
+                                        <i class="fa-brands fa-wordpress" style="color: #1e63f7;"></i>
+                                        <i class="fa-brands fa-elementor" style="color: #f71ed3;"></i>
+                                        <i class="fa-brands fa-figma" style="color: #f01ef7;"></i>
+                                        <i class="fa-brands fa-php" style="color: #b21ef7;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
                                     </div>
                                 </div>
                                 <hr>
-                                <p class="text-muted small">Projeto de estudo para aplicação de um sistema de
-                                    agendamento de serviços com painel administrativo e usuário.</p>
+                                <p class="text-muted small">Este projeto foi desenvolvido durante meu período na empresa
+                                    Usepress, utilizando tecnologias como WordPress, PHP, Elementor e outros recursos
+                                    amplamente aplicados no ecossistema WordPress...
+                                    <br>
+                                </p>
                                 <div class="d-flex justify-content-between align-items-end pt-2">
-                                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
+                                    <a href="https://franquiaathena.com.br/"
+                                        class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
                                     <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
                                         data-bs-target="#modalProjeto1">Saber Mais</button>
                                 </div>
                             </div>
                         </div>
 
+
                         <!-- Projeto 2 -->
                         <div class="col">
                             <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card position-relative">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <div class="d-flex align-items-center">
-                                        <img src="img/projeto2.jpg" alt="Projeto 2"
-                                            style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;"
+                                        <img src="../images/logoRedeMGFarma" alt="Projeto 2"
+                                            style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;"
                                             class="me-2">
                                         <div>
-                                            <h6 class="mb-0 fw-bold">Portfólio Profissional</h6>
-                                            <small class="text-muted">Objetivo: Pessoal</small>
+                                            <h6 class="mb-0 fw-bold">Rede MG Farma</h6>
+                                            <small class="text-muted">Objetivo: Cliente</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
-                                        <i class="bi bi-git" style="color: #f05030;"></i>
+                                        <i class="fa-brands fa-wordpress" style="color: #1e63f7;"></i>
+                                        <i class="fa-brands fa-elementor" style="color: #f71ed3;"></i>
+                                        <i class="fa-brands fa-figma" style="color: #f01ef7;"></i>
+                                        <i class="fa-brands fa-php" style="color: #b21ef7;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
                                     </div>
                                 </div>
                                 <hr>
-                                <p class="text-muted small">Portfólio moderno com tema dark/light, integração com redes
-                                    sociais, currículo e links de contato.</p>
+                                <p class="text-muted small">O site da Rede MG Farma foi desenvolvido utilizando
+                                    tecnologias como WordPress, PHP, Elementor e diversas ferramentas complementares
+                                    voltadas ao desenvolvimento...
+                                <p>
                                 <div class="d-flex justify-content-between align-items-end pt-2">
-                                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
+                                    <a href="https://redemgfarma.com.br/"
+                                        class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
                                     <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
                                         data-bs-target="#modalProjeto2">Saber Mais</button>
                                 </div>
@@ -853,24 +1615,29 @@
                             <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card position-relative">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <div class="d-flex align-items-center">
-                                        <img src="img/projeto3.jpg" alt="Projeto 3"
-                                            style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;"
+                                        <img src="../images/logoDraCynthia" alt="Projeto 3"
+                                            style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;"
                                             class="me-2">
                                         <div>
-                                            <h6 class="mb-0 fw-bold">Dashboard Administrativo</h6>
+                                            <h6 class="mb-0 fw-bold">Dra. Cynthia Pinheiro</h6>
                                             <small class="text-muted">Objetivo: Cliente</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <i class="bi bi-database" style="color: #4db33d;"></i>
-                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
+                                        <i class="fa-brands fa-wordpress" style="color: #1e63f7;"></i>
+                                        <i class="fa-brands fa-elementor" style="color: #f71ed3;"></i>
+                                        <i class="fa-brands fa-figma" style="color: #f01ef7;"></i>
+                                        <i class="fa-brands fa-php" style="color: #b21ef7;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
                                     </div>
                                 </div>
                                 <hr>
-                                <p class="text-muted small">Sistema para gestão de usuários e serviços de uma barbearia,
-                                    com painéis dinâmicos e autenticação.</p>
+                                <p class="text-muted small">O site da Dra. Cynthia foi desenvolvido com o objetivo de
+                                    criar uma presença online profissional, elegante e funcional, que não apenas
+                                    apresentasse seus serviços, mas também transmitisse sua autoridade...</p>
                                 <div class="d-flex justify-content-between align-items-end pt-2">
-                                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
+                                    <a href="https://dracynthiapinheiro.com.br/"
+                                        class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
                                     <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
                                         data-bs-target="#modalProjeto3">Saber Mais</button>
                                 </div>
@@ -885,22 +1652,128 @@
                                             style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;"
                                             class="me-2">
                                         <div>
-                                            <h6 class="mb-0 fw-bold">Dashboard Administrativo</h6>
+                                            <h6 class="mb-0 fw-bold">Recrie Profissionais</h6>
                                             <small class="text-muted">Objetivo: Cliente</small>
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <i class="bi bi-database" style="color: #4db33d;"></i>
-                                        <i class="bi bi-bootstrap" style="color: #7952b3;"></i>
+                                        <i class="fa-brands fa-wordpress" style="color: #1e63f7;"></i>
+                                        <i class="fa-brands fa-elementor" style="color: #f71ed3;"></i>
+                                        <i class="fa-brands fa-figma" style="color: #f01ef7;"></i>
+                                        <i class="fa-brands fa-php" style="color: #b21ef7;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
                                     </div>
                                 </div>
                                 <hr>
-                                <p class="text-muted small">Sistema para gestão de usuários e serviços de uma barbearia,
-                                    com painéis dinâmicos e autenticação.</p>
+                                <p class="text-muted small">O site da Recrie Jalecos foi desenvolvido com o objetivo de
+                                    criar uma plataforma de vendas online moderna, eficiente e totalmente personalizada,
+                                    focada na comercialização de jalecos personalizados para profissionais de
+                                    diversas...</p>
                                 <div class="d-flex justify-content-between align-items-end pt-2">
-                                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
+                                    <a href="https://recrieprofissionais.com.br/"
+                                        class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
                                     <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
                                         data-bs-target="#modalProjeto4">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Projeto 5 -->
+                        <div class="col">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card position-relative">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="img/projeto4.jpg" alt="Projeto 3"
+                                            style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;"
+                                            class="me-2">
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">Thynk Desenvolvimentos</h6>
+                                            <small class="text-muted">Objetivo: Pessoal</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <i class="fa-brands fa-html5" style="color: #e7900c;"></i>
+                                        <i class="fa-brands fa-css3-alt" style="color: #115eee;"></i>
+                                        <i class="fa-brands fa-bootstrap" style="color: #18e223;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="text-muted small">O site da Thynk Desenvolvimentos foi desenvolvido 100%
+                                    manualmente, do zero, com o objetivo de criar uma plataforma que refletisse de forma
+                                    clara, profissional e objetiva a proposta da empresa: ajudar pessoas e negócios...
+                                </p>
+                                <div class="d-flex justify-content-between align-items-end pt-2">
+                                    <a href="https://heyarrthur.github.io/sejathynk/index.html"
+                                        class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
+                                    <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#modalProjeto5">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Projeto 6 -->
+                        <div class="col">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card position-relative">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="../images/logoThynkbarber" alt="Projeto 3"
+                                            style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;"
+                                            class="me-2">
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">Thynk Barber</h6>
+                                            <small class="text-muted">Objetivo: Sistema</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <i class="fa-brands fa-html5" style="color: #e7900c;"></i>
+                                        <i class="fa-brands fa-css3-alt" style="color: #115eee;"></i>
+                                        <i class="fa-brands fa-bootstrap" style="color: #18e223;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
+                                        <i class="fa-brands fa-node-js" style="color: #17ec33;"></i>
+                                        <i class="fa-solid fa-database" style="color: #0de761;"></i>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="text-muted small">A Thynk Barber foi desenvolvida com um único objetivo:
+                                    revolucionar o mercado de barbearias, oferecendo um sistema completo, inteligente e
+                                    intuitivo que atende tanto os barbeiros quanto os clientes de forma prática,
+                                    eficiente....</p>
+                                <div class="d-flex justify-content-between align-items-end pt-2">
+                                    <a href="error404.html" class="btn btn-outline-dark btn-sm rounded-pill">Visualizar
+                                        Projeto</a>
+                                    <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#modalProjeto6">Saber Mais</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Projeto 7 -->
+                        <div class="col">
+                            <div class="card h-100 shadow-sm rounded-4 p-3 dark-mode-card position-relative">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="img/projeto4.jpg" alt="Projeto 3"
+                                            style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;"
+                                            class="me-2">
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">DashCO</h6>
+                                            <small class="text-muted">Objetivo: Sistema</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <i class="fa-brands fa-html5" style="color: #e7900c;"></i>
+                                        <i class="fa-brands fa-css3-alt" style="color: #115eee;"></i>
+                                        <i class="fa-brands fa-bootstrap" style="color: #18e223;"></i>
+                                        <i class="fa-brands fa-js" style="color: #e7d90d;"></i>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="text-muted small">A DashCO foi o primeiro sistema que desenvolvi com foco em
+                                    facilitar a rotina de trabalho e organização pessoal durante o dia a dia de
+                                    serviços. Idealizada como uma central de produtividade...</p>
+                                <div class="d-flex justify-content-between align-items-end pt-2">
+                                    <a href="https://heyarrthur.github.io/DashCOO/"
+                                        class="btn btn-outline-dark btn-sm rounded-pill">Visualizar Projeto</a>
+                                    <button class="btn btn-success btn-sm rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#modalProjeto7">Saber Mais</button>
                                 </div>
                             </div>
                         </div>
@@ -914,16 +1787,39 @@
                         <div class="modal-content" style="height: 90vh;">
                             <div class="modal-header">
                                 <div class="d-flex align-items-center">
-                                    <img src="img/projeto1.jpg" alt="Projeto 1" class="me-3"
-                                        style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
-                                    <h5 class="modal-title" id="modalProjeto1Label">Sistema de Agendamento</h5>
+                                    <img src="../images/logoNatura.png" alt="Projeto 1" class="me-3"
+                                        style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto1Label">Natura</h5>
                                 </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Fechar"></button>
                             </div>
                             <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
-                                <p class="text-muted">Projeto desenvolvido como estudo para aplicar conceitos de backend
-                                    em Node.js, rotas protegidas, banco MongoDB e interfaces responsivas com Bootstrap.
+                                <p class="text">Este projeto foi desenvolvido durante meu período na empresa
+                                    Usepress, utilizando tecnologias como WordPress, PHP, Elementor e outros recursos
+                                    amplamente aplicados no ecossistema WordPress.
+                                    <br><br>
+                                    O objetivo principal desse site foi criar uma landing page profissional e
+                                    estratégica para uma franquia da Natura localizada em Contagem-MG. A proposta era
+                                    oferecer um ambiente digital moderno, funcional e de fácil navegação, que
+                                    proporcionasse à franquia uma presença online forte e relevante.
+                                    <br><br>
+                                    A landing page foi pensada para divulgar promoções sazonais, apresentar os produtos
+                                    disponíveis e oferecer suporte direto aos clientes locais. Além disso, ela foi
+                                    projetada para facilitar o contato com a franquia, seja através de formulários,
+                                    WhatsApp ou outros canais integrados, fortalecendo o relacionamento com os clientes
+                                    e contribuindo diretamente para o aumento das vendas e da visibilidade da marca na
+                                    região.
+                                    <br><br>
+                                    O desenvolvimento envolveu práticas de design responsivo, garantindo que a
+                                    experiência do usuário fosse otimizada tanto em desktop quanto em dispositivos
+                                    móveis. O uso do Elementor permitiu maior agilidade na construção de interfaces,
+                                    mantendo a estética alinhada com a identidade visual da Natura e a comunicação da
+                                    franquia.
+                                    <br><br>
+                                    Este projeto é um excelente exemplo de como uma solução digital bem elaborada pode
+                                    ser fundamental para fortalecer a presença de negócios locais no ambiente online,
+                                    além de gerar resultados práticos em termos de atração de clientes e conversões.
                                 </p>
                             </div>
                         </div>
@@ -936,17 +1832,38 @@
                         <div class="modal-content" style="height: 90vh;">
                             <div class="modal-header">
                                 <div class="d-flex align-items-center">
-                                    <img src="img/projeto2.jpg" alt="Projeto 2" class="me-3"
-                                        style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
-                                    <h5 class="modal-title" id="modalProjeto2Label">Portfólio Profissional</h5>
+                                    <img src="../images/logoRedeMGFarma" alt="Projeto 2" class="me-3"
+                                        style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto2Label">Rede MG Farma</h5>
                                 </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Fechar"></button>
                             </div>
                             <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
-                                <p class="text-muted">Site pessoal moderno com modo escuro, responsivo, integração com
-                                    redes sociais, currículo em PDF, links de projetos e formulário de contato com envio
-                                    para WhatsApp.</p>
+                                <p class="text">O site da Rede MG Farma foi desenvolvido utilizando tecnologias
+                                    como WordPress, PHP, Elementor e diversas ferramentas complementares voltadas ao
+                                    desenvolvimento web profissional. Além da criação da página principal institucional,
+                                    também foi desenvolvido um ambiente exclusivo para os franqueados da rede,
+                                    oferecendo uma solução completa e robusta para o ecossistema da empresa.
+                                    <br><br>
+                                    Durante o desenvolvimento, aplicamos as melhores práticas de design responsivo,
+                                    garantindo uma experiência fluida e agradável em qualquer dispositivo — seja
+                                    desktop, tablet ou smartphone. O foco sempre foi proporcionar uma navegação
+                                    intuitiva, rápida e eficiente, melhorando significativamente a jornada do usuário.
+                                    <br><br>
+                                    Além do desenvolvimento inicial, realizávamos manutenções periódicas para garantir a
+                                    total estabilidade, segurança e disponibilidade do site, mantendo-o com 100% de
+                                    uptime. Parte desse processo incluía a atualização mensal do jornal digital da rede,
+                                    uma seção dedicada à divulgação de promoções, ofertas e novidades das lojas.
+                                    <br><br>
+                                    Outro aspecto fundamental desse projeto foi o gerenciamento e manutenção dos
+                                    serviços de e-mail (SMTP), assegurando que os formulários de contato e outros canais
+                                    de comunicação do site funcionassem corretamente e sem interrupções.
+                                    <br><br>
+                                    Este projeto reflete um trabalho completo, que vai além da criação visual,
+                                    envolvendo também infraestrutura, otimização, manutenção e suporte contínuo,
+                                    oferecendo à Rede MG Farma uma presença digital sólida, confiável e eficiente.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -959,60 +1876,359 @@
                             <div class="modal-header">
                                 <div class="d-flex align-items-center">
                                     <img src="img/projeto3.jpg" alt="Projeto 3" class="me-3"
-                                        style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
-                                    <h5 class="modal-title" id="modalProjeto3Label">Dashboard Administrativo</h5>
+                                        style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto3Label">Dra. Cynthia Pinheiro</h5>
                                 </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Fechar"></button>
                             </div>
                             <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
-                                <p class="text-muted">Aplicação focada no gerenciamento de serviços e clientes para
-                                    barbearias, com autenticação, relatórios e dashboards em tempo real, totalmente
-                                    responsiva e moderna.</p>
+                                <p class="text">O site da Dra. Cynthia foi desenvolvido com o objetivo de criar
+                                    uma presença online profissional, elegante e funcional, que não apenas apresentasse
+                                    seus serviços, mas também transmitisse sua autoridade, credibilidade e excelência na
+                                    área de estética avançada e procedimentos estéticos.
+                                    <br><br>
+                                    A proposta do projeto era clara: oferecer um ambiente digital que permitisse aos
+                                    pacientes conhecerem quem é a Dra. Cynthia, sua trajetória profissional,
+                                    especializações, filosofia de trabalho e, principalmente, os procedimentos estéticos
+                                    oferecidos, com informações detalhadas e demonstração de resultados reais por meio
+                                    de depoimentos, imagens e estudos de caso.
+                                    <br><br>
+                                    Para entregar uma solução robusta, foram utilizadas tecnologias como WordPress,
+                                    Elementor, PHP, JavaScript, HTML e CSS, além da aplicação de técnicas avançadas de
+                                    responsividade e otimização de desempenho, garantindo que o site oferecesse uma
+                                    navegação fluida, rápida e intuitiva, tanto em dispositivos móveis quanto em
+                                    desktops.
+                                    <br><br>
+                                    O site foi cuidadosamente estruturado para permitir que os usuários encontrassem
+                                    facilmente informações sobre cada serviço, benefícios, indicações e cuidados, além
+                                    de contar com uma seção de agendamento facilitado, permitindo que os pacientes
+                                    realizem marcações diretamente pelo site. Também foi integrado um botão flutuante de
+                                    WhatsApp, garantindo um canal de comunicação instantâneo e prático para dúvidas,
+                                    orçamentos e agendamentos.
+                                    <br><br>
+                                    Além disso, o projeto priorizou uma estética visual que reflete a proposta da
+                                    clínica: sofisticação, leveza, bem-estar e confiança. O design foi pensado para
+                                    transmitir a mesma qualidade e cuidado que a Dra. Cynthia oferece em seus
+                                    atendimentos presenciais.
+                                    <br><br>
+                                    Por fim, foram implementadas práticas de otimização SEO, garantindo melhor
+                                    desempenho nos motores de busca, além de configurações de segurança, performance e
+                                    manutenção periódica, assegurando que o site permaneça sempre atualizado, seguro e
+                                    funcional.
+                                    <br><br>
+                                    Este projeto representa não apenas um site institucional, mas uma verdadeira
+                                    extensão digital da marca pessoal da Dra. Cynthia, contribuindo significativamente
+                                    para a captação de novos pacientes, fortalecimento da sua autoridade online e
+                                    expansão do seu negócio.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="modal fade" id="modalProjeto3" tabindex="-1" aria-labelledby="modalProjeto3Label"
+                <div class="modal fade" id="modalProjeto4" tabindex="-1" aria-labelledby="modalProjeto4Label"
                     aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-centered">
                         <div class="modal-content" style="height: 90vh;">
                             <div class="modal-header">
                                 <div class="d-flex align-items-center">
-                                    <img src="img/projeto3.jpg" alt="Projeto 3" class="me-3"
-                                        style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
-                                    <h5 class="modal-title" id="modalProjeto3Label">Dashboard Administrativo</h5>
+                                    <img src="../images/logoRecrie" alt="Projeto 3" class="me-3"
+                                        style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto4Label">Recrie Profissionais</h5>
                                 </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Fechar"></button>
                             </div>
                             <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
-                                <p class="text-muted">Aplicação focada no gerenciamento de serviços e clientes para
-                                    barbearias, com autenticação, relatórios e dashboards em tempo real, totalmente
-                                    responsiva e moderna.</p>
+                                <p class="text">O site da Recrie Jalecos foi desenvolvido com o objetivo de criar
+                                    uma plataforma de vendas online moderna, eficiente e totalmente personalizada,
+                                    focada na comercialização de jalecos personalizados para profissionais de diversas
+                                    áreas em todo o Brasil.
+
+                                    Para isso, foram utilizadas tecnologias robustas e consolidadas no mercado como
+                                    WordPress, Elementor, PHP, JavaScript, HTML e CSS, aliadas a técnicas avançadas de
+                                    responsividade e otimização de desempenho, proporcionando uma experiência de
+                                    navegação fluida, rápida e agradável em qualquer dispositivo, seja desktop, tablet
+                                    ou smartphone.
+                                    <br><br>
+                                    O projeto foi concebido para atender uma demanda crescente de profissionais que
+                                    buscam não apenas um uniforme, mas um item que transmita personalidade, identidade
+                                    profissional e estilo, através de jalecos personalizados de alta qualidade.
+                                    <br><br>
+                                    O site funciona como um E-commerce completo, com funcionalidades que incluem:
+                                    <br><br>
+                                    ● Catálogo de produtos dinâmico, com filtros por modelos, tamanhos, cores e estilos;
+                                    <br><br>
+                                    ● Sistema de personalização, onde o cliente escolhe detalhes do seu jaleco, como
+                                    bordados, nomes, cores e outros elementos;
+                                    <br><br>
+                                    ● Carrinho de compras integrado e checkout otimizado, garantindo uma jornada de
+                                    compra
+                                    simples e intuitiva;
+                                    <br><br>
+                                    ● Integração com meios de pagamento seguros e variados, como cartões de crédito, Pix
+                                    e
+                                    boleto bancário;
+                                    <br><br>
+                                    ● Cálculo automático de frete para todo o Brasil, permitindo ao cliente acompanhar
+                                    os
+                                    custos logísticos em tempo real;
+                                    <br><br>
+                                    ● Canal de atendimento via WhatsApp, oferecendo suporte ágil antes, durante e após a
+                                    compra.
+                                    <br><br>
+                                    Além disso, o desenvolvimento priorizou não só o design visual, que reflete a
+                                    proposta moderna, criativa e sofisticada da marca, como também uma estrutura técnica
+                                    voltada para SEO (otimização para mecanismos de busca), garantindo maior
+                                    visibilidade orgânica e atração de novos clientes.
+                                    <br><br>
+                                    Através dessa plataforma, a Recrie conseguiu ampliar significativamente seu alcance
+                                    nacional, oferecendo uma solução prática para profissionais que buscam jalecos
+                                    personalizados sem sair de casa, com total segurança, conforto e facilidade.
+                                    <br><br>
+                                    Este projeto é um excelente exemplo de como a união entre design, tecnologia e
+                                    experiência do usuário pode impulsionar negócios no ambiente digital, aumentando
+                                    vendas, fortalecendo a marca e levando o produto para todo o país.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="modal fade" id="modalProjeto4" tabindex="-1" aria-labelledby="modalProjeto3Label"
+                <div class="modal fade" id="modalProjeto5" tabindex="-1" aria-labelledby="modalProjeto5Label"
                     aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-centered">
                         <div class="modal-content" style="height: 90vh;">
                             <div class="modal-header">
                                 <div class="d-flex align-items-center">
-                                    <img src="img/projeto4.jpg" alt="Projeto 3" class="me-3"
-                                        style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
-                                    <h5 class="modal-title" id="modalProjeto3Label">Dashboard Administrativo</h5>
+                                    <img src="../images/logoThynk" alt="Projeto 3" class="me-3"
+                                        style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto5Label">Thynk Desenvolvimentos</h5>
                                 </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Fechar"></button>
                             </div>
                             <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
-                                <p class="text-muted">Aplicação focada no gerenciamento de serviços e clientes para
-                                    barbearias, com autenticação, relatórios e dashboards em tempo real, totalmente
-                                    responsiva e moderna.</p>
+                                <p class="text">O site da Thynk Agência Digital foi desenvolvido 100% manualmente,
+                                    do zero, com o objetivo de criar uma plataforma que refletisse de forma clara,
+                                    profissional e objetiva a proposta da empresa: ajudar pessoas e negócios a
+                                    construírem sua presença digital de maneira eficiente e estratégica.
+                                    <br><br>
+                                    O desenvolvimento foi planejado cuidadosamente para que todos os visitantes pudessem
+                                    compreender de forma clara como funciona o processo de criação de presença digital,
+                                    desde os primeiros passos até a entrega final. O site também oferece informações
+                                    detalhadas sobre os serviços prestados, as etapas de desenvolvimento, vantagens e
+                                    como a Thynk pode transformar ideias em resultados digitais concretos.
+                                    <br><br>
+                                    🚀 Tecnologias Utilizadas:
+                                    <br><br>
+                                    ● HTML5: Estruturação completa e sem uso de CMS, garantindo total controle do
+                                    código.
+                                    <br><br>
+                                    ● CSS3: Para estilização, layout, responsividade e animações leves, trazendo
+                                    modernidade e fluidez visual.
+                                    <br><br>
+                                    ● JavaScript: Implementação de funcionalidades interativas, como o botão flutuante
+                                    de
+                                    WhatsApp e melhorias na navegação.
+                                    <br><br>
+                                    ● Bootstrap: Utilizado para acelerar a construção de layouts responsivos, garantindo
+                                    que o site funcione perfeitamente em computadores, tablets e smartphones, com um
+                                    design limpo, organizado e profissional.
+                                    <br><br>
+                                    🔗 Funcionalidades Especiais:
+                                    <br><br>
+                                    ● Botão flutuante de WhatsApp integrado, desenvolvido em JavaScript, totalmente
+                                    configurado para que os visitantes possam entrar em contato diretamente com a Thynk,
+                                    facilitando o atendimento, dúvidas ou solicitações.
+                                    <br><br>
+                                    ● Navegação simples e intuitiva em formato MultiPages, separando claramente as
+                                    seções
+                                    de serviços, portfólio, contato e informações institucionais.
+                                    <br><br>
+                                    ● Design responsivo, garantindo uma excelente experiência de navegação em qualquer
+                                    dispositivo, com carregamento rápido e layout adaptável.
+                                    <br><br>
+                                    ● Estrutura otimizada para performance e SEO básico, melhorando a visibilidade nos
+                                    mecanismos de busca.
+                                    <br><br>
+                                    O site foi desenvolvido com foco na simplicidade, clareza e objetividade, mantendo
+                                    uma comunicação visual leve, moderna e direta, ao mesmo tempo que transmite
+                                    profissionalismo e confiança.
+                                    <br><br>
+                                    Este projeto reflete perfeitamente os valores da Thynk: transformar ideias em
+                                    presença digital sólida, profissional e de impacto, ajudando empresas, profissionais
+                                    e marcas a conquistarem espaço no universo online.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modalProjeto6" tabindex="-1" aria-labelledby="modalProjeto6Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="../images/logoThynkbarber" alt="Projeto 3" class="me-3"
+                                        style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto6Label">Thynk Barber</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text">A Thynk Barber foi desenvolvida com um único objetivo:
+                                    revolucionar o
+                                    mercado de barbearias, oferecendo um sistema completo, inteligente e intuitivo que
+                                    atende tanto os barbeiros quanto os clientes de forma prática, eficiente e
+                                    profissional.
+                                    <br><br>
+                                    O sistema foi cuidadosamente idealizado em parceria com um barbeiro experiente, que
+                                    trouxe sua visão prática e as dores reais do dia a dia dentro de uma barbearia.
+                                    Dessa união, nasceu uma plataforma que supre exatamente aquilo que o mercado sentia
+                                    falta, proporcionando uma solução completa, moderna e 100% pensada nas necessidades
+                                    do segmento.
+                                    <br><br>
+                                    🎯 Funcionalidades Principais:
+                                    <br><br>
+                                    ● 🔔 Sistema de Agendamentos: Permite que os clientes realizem seus agendamentos de
+                                    forma simples, rápida e online, visualizando os horários disponíveis e escolhendo
+                                    seu barbeiro de preferência.
+                                    <br><br>
+                                    ● 🔥 Sistema de Assinaturas: Oferece a possibilidade de criar planos de assinatura
+                                    para clientes fiéis, gerando recorrência, fidelização e previsibilidade financeira
+                                    para a barbearia.
+                                    <br><br>
+                                    ● 🧠 Sistema de CRM: Gestão completa dos clientes, com histórico de serviços,
+                                    preferências, frequência de visitas e informações que ajudam a criar um atendimento
+                                    personalizado e de alto nível.
+                                    <br><br>
+                                    ● 💈 Sistema de Gestão de Barbeiros e Equipe: Cada barbeiro tem seu próprio painel
+                                    de
+                                    controle, podendo gerenciar sua agenda, acompanhar seus atendimentos, ganhos,
+                                    comissões e desempenho dentro da barbearia.
+                                    <br><br>
+                                    💡 Diferenciais do Sistema:
+                                    <br><br>
+                                    ● Desenvolvido por barbeiros, para barbeiros, focando nas reais necessidades do
+                                    mercado.
+                                    <br><br>
+                                    ● Totalmente online, acessível via desktop, tablet e celular, garantindo mobilidade
+                                    e
+                                    facilidade tanto para os profissionais quanto para os clientes.
+                                    <br><br>
+                                    ● Interface moderna, limpa e intuitiva, que oferece liberdade total na gestão do
+                                    negócio, seja para pequenos salões ou grandes barbearias.
+                                    <br><br>
+                                    ● Automatização de processos que antes eram feitos manualmente, como controle de
+                                    agenda, cadastro de clientes, controle financeiro e vendas recorrentes.
+                                    <br><br>
+                                    🧠 Tecnologias Utilizadas:
+                                    <br><br>
+                                    ● HTML5 – Estruturação robusta e semântico do front-end.
+                                    <br><br>
+                                    ● CSS3 – Design responsivo, moderno e elegante.
+                                    <br><br>
+                                    ● JavaScript – Interatividade e funcionalidades dinâmicas no front-end e no
+                                    back-end.
+                                    <br><br>
+                                    ● Node.js – Backend rápido, escalável e eficiente, suportando grande volume de dados
+                                    e
+                                    múltiplos usuários simultâneos.
+                                    <br><br>
+                                    ● Bootstrap – Framework de design para acelerar o desenvolvimento com responsividade
+                                    nativa.
+                                    <br><br>
+                                    ● MongoDB – Banco de dados NoSQL, perfeito para armazenar dados estruturados e não
+                                    estruturados de clientes, agendas, serviços e muito mais.
+                                    <br><br>
+                                    🚀 Resultado:
+                                    <br><br>
+                                    A Thynk Barber se tornou uma plataforma referência para barbearias que buscam
+                                    modernização, controle total do seu negócio e uma experiência digital tanto para os
+                                    clientes quanto para os profissionais. Além de organizar a operação do dia a dia,
+                                    ela também proporciona uma melhor gestão, mais liberdade, aumento na retenção de
+                                    clientes e crescimento escalável para qualquer barbearia.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modalProjeto7" tabindex="-1" aria-labelledby="modalProjeto7Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="../images/logoDashCO" alt="Projeto 3" class="me-3"
+                                        style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
+                                    <h5 class="modal-title" id="modalProjeto7Label">DashCO</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body overflow-auto" style="max-height: calc(90vh - 60px);">
+                                <p class="text">A DashCO foi o primeiro sistema que desenvolvi com foco em
+                                    facilitar a rotina de trabalho e organização pessoal durante o dia a dia de
+                                    serviços. Idealizada como uma central de produtividade, a DashCO reúne em um só
+                                    lugar ferramentas úteis, intuitivas e voltadas para o uso local, garantindo
+                                    segurança e praticidade.
+                                    <br><br>
+                                    O projeto foi desenvolvido com o apoio de tecnologias modernas e recursos de
+                                    Inteligência Artificial, servindo como um ambiente pessoal onde o usuário pode se
+                                    organizar com agilidade e segurança, sem depender da internet ou da nuvem.
+                                    <br><br>
+                                    ⚙️ Funcionalidades Disponíveis:
+                                    <br><br>
+                                    ● 🧮 Calculadora embutida: Rápida e prática para realizar cálculos durante qualquer
+                                    tarefa.
+                                    <br><br>
+                                    ● 🗒️ Bloco de notas: Para anotações rápidas, ideias, checklists e rascunhos.
+                                    <br><br>
+                                    ● 🤖 Integração com o ChatGPT: Já funcional, permitindo interação com IA diretamente
+                                    na interface. No entanto, requer uma estrutura de backend em Node.js rodando 24h
+                                    para manter a funcionalidade ativa de forma contínua.
+                                    <br><br>
+                                    ● 🌐 Sistema de adição de plataformas: Possibilidade de registrar e organizar links
+                                    e
+                                    sistemas utilizados no dia a dia, funcionando como um dashboard pessoal.
+                                    <br><br>
+                                    ● ✅ Sistema de tarefas (To-Do): Permite criar, visualizar e gerenciar tarefas
+                                    pessoais
+                                    de forma simples.
+                                    <br><br>
+                                    🔒 Segurança e Armazenamento Local:
+                                    <br><br>
+                                    Todos os dados são armazenados via LocalStorage do navegador, o que significa que
+                                    nada é enviado para servidores externos. Isso oferece um alto nível de privacidade e
+                                    segurança, especialmente útil para usuários que lidam com informações sensíveis ou
+                                    preferem evitar o uso de plataformas na nuvem.
+                                    <br><br>
+                                    🚧 Estado Atual e Futuras Atualizações:
+                                    <br><br>
+                                    O sistema ainda está em fase de melhorias. Embora funcional, a DashCO ainda não foi
+                                    finalizada por completo, devido à falta de tempo para ajustes mais avançados. Entre
+                                    as melhorias previstas estão:
+                                    <br><br>
+                                    ● Backend dedicado para a IA funcionar 24h com segurança;
+                                    <br><br>
+                                    ● Sistema de login local opcional;
+                                    <br><br>
+                                    ● Personalização da interface;
+                                    <br><br>
+                                    ● Exportação de dados;
+                                    <br><br>
+                                    ● Integração com outras APIs.
+                                    <br><br>
+                                    A DashCO é um projeto pessoal que representa um marco inicial no meu desenvolvimento
+                                    de sistemas, integrando funcionalidades reais com uma visão de segurança, utilidade
+                                    e produtividade. Ela reflete minha vontade de criar soluções inteligentes, práticas
+                                    e totalmente personalizadas para o dia a dia profissional.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -1022,7 +2238,7 @@
                     <h2 class="text-center fw-bold mb-5">Contato</h2>
                     <div class="row align-items-center g-5">
                         <div class="col-md-5 text-center">
-                            <img src="img/contato.jpg" alt="Foto Contato" class="img-fluid rounded-4 shadow">
+                            <img src="../images/contatoImage.png" alt="Foto Contato" class="img-fluid">
                         </div>
                         <div class="col-md-7">
                             <form onsubmit="enviarMensagemWhatsapp(event)">
@@ -1120,7 +2336,7 @@
                         const msg = document.getElementById("mensagemUsuario").value;
                         if (!msg.trim()) return;
                         setTimeout(() => {
-                            const url = `https://wa.me/5532991855045?text=${encodeURIComponent(msg)}`;
+                            const url = `https://wa.me/5532991145114?text=${encodeURIComponent(msg)}`;
                             window.open(url, '_blank');
                         }, 2000);
                     }
@@ -1192,13 +2408,19 @@
                 </script>
 
                 <script>
-                    const textoCompleto = `Sou um desenvolvedor apaixonado por tecnologia, com experiência em múltiplas áreas do desenvolvimento web, tanto no front quanto no back-end. Iniciei minha jornada com HTML e CSS, mas logo me aprofundei em JavaScript, Node.js, React e bancos de dados como MongoDB. Também possuo conhecimentos sólidos em controle de versão com Git, práticas de UI/UX e segurança de aplicações.
+                    const textoCompleto = `Meu nome é Arthur Marques Ferreira, tenho 18 anos e atualmente sou estudante do segundo período de Análise e Desenvolvimento de Sistemas na faculdade Doctum. Desde muito jovem, descobri uma verdadeira paixão pela tecnologia e pelo universo da programação, que venho cultivando e aprimorando ao longo dos últimos anos.
 
-Além de estudar constantemente novas ferramentas, tenho aplicado meus conhecimentos em projetos reais e colaborado com equipes multidisciplinares. Acredito na importância da comunicação clara, do código limpo e do aprendizado contínuo como pilares da excelência profissional.
+Iniciei meus estudos em programação aos 14 anos, explorando linguagens fundamentais como JavaScript, JSON, HTML, CSS e Lua, o que me proporcionou uma base sólida para meu desenvolvimento técnico. Motivado pelo desejo de aprofundar meu conhecimento, aos 16 anos, ingressei em um curso intensivo na EBAC (Escola Britânica de Artes Criativas), voltado para o desenvolvimento Full Stack em Java. Esse curso abrangente me proporcionou uma visão completa da área, desde conceitos básicos até técnicas avançadas de programação, arquitetura de sistemas e boas práticas de desenvolvimento.
 
-Estou sempre em busca de desafios que me permitam crescer e agregar valor às pessoas e empresas ao meu redor. Quando não estou programando, gosto de compartilhar conteúdo, explorar novas ideias de produto e contribuir com a comunidade.`;
+Aos 17 anos, tive a oportunidade de iniciar meu primeiro estágio na área de tecnologia, onde pude aplicar na prática todo o conhecimento adquirido. Durante esse período, participei diretamente do desenvolvimento, manutenção e atualização de websites de grandes clientes como Natura, Rede MG Farma e Recrie. Essa experiência foi fundamental para o meu amadurecimento profissional, pois me permitiu trabalhar em equipes multidisciplinares, lidar com prazos desafiadores e aprimorar minhas habilidades técnicas e de comunicação.
 
-                    const limiteCaracteres = 450;
+Após um ano de estágio, decidi focar inteiramente na minha formação acadêmica, uma vez que conciliar o trabalho com a faculdade estava se tornando cada vez mais desafiador. Essa decisão me permitiu dedicar mais tempo e esforço ao aprofundamento dos conteúdos estudados e ao desenvolvimento de projetos próprios.
+
+Atualmente, estou dedicado ao desenvolvimento de sites utilizando a plataforma WordPress, além de atuar em projetos Back-End que envolvem criação de APIs, integração de sistemas e banco de dados. Esses projetos estão disponíveis para visualização na categoria “Projetos” do meu portfólio. Paralelamente, fundei uma empresa com alguns amigos, com o objetivo de oferecer soluções digitais personalizadas, focadas no desenvolvimento de websites modernos, funcionais e alinhados às necessidades dos clientes. Essa iniciativa tem sido um grande aprendizado sobre empreendedorismo, gestão de projetos e trabalho em equipe.
+
+Minha trajetória até aqui é marcada por um compromisso contínuo com o aprendizado, a inovação e a superação de desafios. Estou sempre aberto a novas experiências que possam ampliar meus conhecimentos e contribuir para meu crescimento profissional e pessoal. Meu objetivo é consolidar minha carreira na área de tecnologia, desenvolvendo soluções que causem impacto positivo e transformem a experiência digital das pessoas.`;
+
+                    const limiteCaracteres = 1500;
                     const textoSobre = document.getElementById("textoSobre");
                     const btnSaberMais = document.getElementById("btnSaberMais");
                     const textoModalSobre = document.getElementById("textoModalSobre");
