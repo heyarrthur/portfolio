@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio – Sidebar (Light)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :focus {
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 25%, rgba(0, 0, 0, 0.12) 37%, rgba(0, 0, 0, 0.06) 63%);
+            background-size: 400% 100%;
+            animation: shimmer 1.4s ease infinite;
+        }
+
+        @keyframes shimmer {
+            from {
+                background-position: 0% 0;
+            }
+
+            to {
+                background-position: 100% 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-b from-neutral-50 to-neutral-100 text-neutral-900 antialiased">
+    <!-- LAYOUT -->
+    <div class="grid min-h-screen grid-cols-1 md:grid-cols-[320px_1fr]">
+        <!-- SIDEBAR -->
+        <aside
+            class="bg-white/90 md:sticky md:top-0 md:h-screen md:overflow-y-auto border-r border-black/10 backdrop-blur">
+            <div class="p-5 md:p-6">
+                <div class="relative rounded-2xl bg-white ring-1 ring-black/10 shadow-xl overflow-hidden">
+                    <!-- Banner abstrato -->
+                    <div class="absolute inset-x-5 top-5 h-28 rounded-2xl overflow-hidden">
+                        <svg viewBox="0 0 400 160" class="w-full h-full">
+                            <defs>
+                                <linearGradient id="g1" x1="0" x2="1">
+                                    <stop offset="0" stop-color="black" stop-opacity=".06" />
+                                    <stop offset="1" stop-color="black" stop-opacity=".02" />
+                                </linearGradient>
+                                <pattern id="dots" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+                                    <circle cx="1" cy="1" r="1" fill="black" opacity=".06" />
+                                </pattern>
+                            </defs>
+                            <rect width="400" height="160" fill="url(#g1)" />
+                            <rect width="400" height="160" fill="url(#dots)" />
+                            <circle cx="60" cy="40" r="50" fill="black" opacity=".05" />
+                            <circle cx="340" cy="120" r="60" fill="black" opacity=".06" />
+                            <path d="M0,110 C80,140 160,80 240,110 S400,150 400,150" fill="none" stroke="black"
+                                stroke-opacity=".08" stroke-width="12" />
+                        </svg>
+                    </div>
+
+                    <div class="relative px-5 pt-24 pb-6">
+                        <!-- Avatar -->
+                        <div
+                            class="mx-auto w-36 h-36 rounded-full p-[3px] bg-[conic-gradient(at_top_left,theme(colors.neutral.900),theme(colors.neutral.700),theme(colors.neutral.900))] shadow-[0_0_0_6px_rgba(0,0,0,0.05)]">
+                            <div class="w-full h-full rounded-full bg-white grid place-items-center overflow-hidden">
+                                <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4"
+                                    alt="Foto do Desenvolvedor" class="w-full h-full object-cover" />
+                            </div>
+                        </div>
+
+                        <!-- Nome -->
+                        <div class="mt-6 text-center">
+                            <h1 class="text-2xl font-semibold tracking-tight">Arthur Ferreira</h1>
+                            <p class="mt-1 text-sm text-neutral-600">Desenvolvedor • Back-End</p>
+                        </div>
+
+                        <!-- Social -->
+                        <div class="mt-5 flex items-center justify-center gap-3">
+                            <a href="https://github.com/heyarrthur"
+                                class="group inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white ring-1 ring-black/10 hover:ring-black/20 transition shadow-sm"
+                                aria-label="GitHub">
+                                <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-90 group-hover:opacity-100"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.8-.25.8-.56v-2.15c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.18.08 1.81 1.21 1.81 1.21 1.04 1.79 2.72 1.27 3.38.97.11-.78.41-1.27.74-1.56-2.55-.29-5.22-1.28-5.22-5.7 0-1.26.45-2.3 1.2-3.12-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.62.23 2.82.11 3.12.75.82 1.2 1.86 1.2 3.12 0 4.43-2.68 5.41-5.23 5.7.42.36.79 1.08.79 2.18v3.23c0 .31.22.68.81.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/arthur-ferreira-a007a9279/"
+                                class="group inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white ring-1 ring-black/10 hover:ring-black/20 transition shadow-sm"
+                                aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-90 group-hover:opacity-100"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v1.97h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.95c0-1.42-.03-3.25-1.98-3.25-1.98 0-2.29 1.54-2.29 3.14V23h-4V8.5z" />
+                                </svg>
+                            </a>
+                            <!-- Instagram -->
+                            <a href="https://instagram.com/hey.arrthur"
+                                class="group inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white ring-1 ring-black/10 hover:ring-black/20 transition shadow-sm"
+                                aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-90 group-hover:opacity-100"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.343 3.608 1.317.975.975 1.255 2.242 1.317 3.608.058 1.266.069 1.646.069 4.842s-.012 3.576-.069 4.842c-.062 1.366-.343 2.633-1.317 3.608-.975.975-2.242 1.255-3.608 1.317-1.266.058-1.646.069-4.85.069s-3.584-.012-4.85-.069c-1.366-.062-2.633-.343-3.608-1.317-.975-.975-1.255-2.242-1.317-3.608C2.175 15.78 2.163 15.4 2.163 12s.012-3.576.069-4.842c.062-1.366.343-2.633 1.317-3.608.975-.975 2.242-1.255 3.608-1.317C8.416 2.175 8.796 2.163 12 2.163zm0 3.675a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zM18.406 5.317a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
+                                </svg>
+                                <span class="sr-only">Instagram</span>
+                            </a>
+
+                            <a href="mailto:arthurmf.adm@gmail.com"
+                                class="group inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white ring-1 ring-black/10 hover:ring-black/20 transition shadow-sm"
+                                aria-label="Email">
+                                <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-90 group-hover:opacity-100" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                    <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
+                                    <path d="m22 7-10 7L2 7" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Baixar CV -->
+                        <div class="mt-5 flex justify-center">
+                            <a href="certificadosecv/CV.pdf" download="CV.pdf"
+                                class="group inline-flex items-center gap-2 rounded-xl bg-black text-white px-4 py-2.5 text-sm font-medium shadow-md hover:bg-black/90 focus-visible:ring-2 focus-visible:ring-black transition">
+                                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" aria-hidden="true">
+                                    <path d="M12 3v12" />
+                                    <path d="m7 10 5 5 5-5" />
+                                    <path d="M5 21h14" />
+                                </svg>
+                                Baixar CV
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="h-px bg-gradient-to-r from-transparent via-black/10 to-transparent mx-5"></div>
+
+                    <!-- NAV -->
+                    <nav class="px-5 py-5">
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#inicio" data-nav-item
+                                    class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium ring-1 ring-black/10 bg-black/5 text-black hover:bg-black/10 transition">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-90" fill="none"
+                                        stroke="currentColor" stroke-width="1.8">
+                                        <path d="m3 10 9-7 9 7" />
+                                        <path d="M9 22V12h6v10" />
+                                    </svg>
+                                    Início
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#skills" data-nav-item
+                                    class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 hover:text-black hover:bg-black/5 ring-1 ring-black/10">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-80" fill="none"
+                                        stroke="currentColor" stroke-width="1.8">
+                                        <path d="M4 19.5V5.5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" />
+                                        <path d="M14 3v4a2 2 0 0 0 2 2h4" />
+                                    </svg>
+                                    Skills
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#formacoes" data-nav-item
+                                    class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 hover:text-black hover:bg-black/5 ring-1 ring-black/10">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-80" fill="none"
+                                        stroke="currentColor" stroke-width="1.8">
+                                        <path d="M22 12H2" />
+                                        <path d="M7 19h10" />
+                                        <path d="M12 2v20" />
+                                    </svg>
+                                    Formações
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#cursos" data-nav-item
+                                    class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 hover:text-black hover:bg-black/5 ring-1 ring-black/10">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-80" fill="none"
+                                        stroke="currentColor" stroke-width="1.8">
+                                        <path d="M4 6h16" />
+                                        <path d="M4 10h16" />
+                                        <path d="M4 14h10" />
+                                    </svg>
+                                    Cursos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#projetos" data-nav-item
+                                    class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 hover:text-black hover:bg-black/5 ring-1 ring-black/10">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-80" fill="none"
+                                        stroke="currentColor" stroke-width="1.8">
+                                        <path d="M12 2v20" />
+                                        <path
+                                            d="M17 7H7a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-7a3 3 0 0 0-3-3Z" />
+                                    </svg>
+                                    Projetos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#experiencia" data-nav-item
+                                    class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 hover:text-black hover:bg-black/5 ring-1 ring-black/10">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-80" fill="none"
+                                        stroke="currentColor" stroke-width="1.8">
+                                        <path
+                                            d="M20 7h-3V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2ZM7 7h10" />
+                                    </svg>
+                                    Experiência
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#contato" data-nav-item
+                                    class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 hover:text-black hover:bg-black/5 ring-1 ring-black/10">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5 opacity-80" fill="none"
+                                        stroke="currentColor" stroke-width="1.8">
+                                        <path d="M21 10a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1 1.9-5.4" />
+                                        <path d="M22 2 12 12" />
+                                    </svg>
+                                    Contato
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="block p-6 sm:p-8">
+            <!-- SOBRE MIM -->
+            <section id="inicio" class="scroll-mt-8">
+                <div class="mx-auto max-w-4xl">
+                    <div class="mb-6 flex items-center gap-3">
+                        <span class="inline-block h-6 w-1 rounded bg-black"></span>
+                        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Sobre mim</h2>
+                    </div>
+
+                    <article class="relative overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-black/10">
+                        <!-- Artes -->
+                        <svg class="absolute -right-16 -top-16 h-52 w-52 opacity-[0.06]" viewBox="0 0 200 200"
+                            aria-hidden="true">
+                            <circle cx="60" cy="60" r="60" fill="black" />
+                            <rect x="90" y="90" width="110" height="110" fill="black" rx="24" />
+                        </svg>
+                        <svg class="absolute -left-20 -bottom-24 h-72 w-72 opacity-[0.06]" viewBox="0 0 200 200"
+                            aria-hidden="true">
+                            <path d="M0 120 C40 80, 80 160, 200 100" stroke="black" stroke-width="18" fill="none" />
+                        </svg>
+
+                        <div class="relative grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.2fr_.8fr]">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-semibold">Olá! Sou <span
+                                        class="whitespace-nowrap">Arthur Ferreira</span></h3>
+                                <p class="mt-3 text-neutral-700 leading-relaxed">Desenvolvedor formado na prática desde
+                                    os 14 anos, quando comecei criando scripts para FiveM. Passei por estágio e depois
+                                    como Dev Júnior na Usepress, construindo plataformas e plugins em PHP e evoluindo
+                                    meu stack com JavaScript, Node.js e front-end. Tenho experiência com processos de
+                                    time, deploys e AWS, e foco em código limpo, performance e entrega de valor ao
+                                    produto.
+                                </p>
+
+                                <!-- chips -->
+                                <div class="mt-5 flex flex-wrap gap-2">
+                                    <span
+                                        class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">JavaScript</span>
+                                    <span
+                                        class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">NodeJS</span>
+                                    <span
+                                        class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">PHP</span>
+                                </div>
+
+                                <div class="mt-6 flex flex-wrap gap-3">
+                                    <a href="#contato"
+                                        class="inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-4 py-2.5 text-sm font-medium shadow-sm hover:shadow transition">
+                                        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
+                                            stroke-width="1.8">
+                                            <path d="M2 8l10 7L22 8" />
+                                            <path d="M21 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6" />
+                                        </svg>
+                                        Contato
+                                    </a>
+                                    <button id="openAboutModal"
+                                        class="inline-flex items-center gap-2 rounded-xl bg-black text-white px-4 py-2.5 text-sm font-medium shadow-md hover:bg-black/90 focus-visible:ring-2 focus-visible:ring-black transition">
+                                        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
+                                            stroke-width="1.8">
+                                            <path d="M12 20v-6" />
+                                            <path d="M12 4h.01" />
+                                        </svg>
+                                        Saber Mais
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- cards curtos -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+                                <div class="rounded-xl border border-black/10 bg-white p-4 shadow-sm">
+                                    <div class="flex items-center gap-3">
+                                        <div class="h-10 w-10 grid place-items-center rounded-lg bg-black/5">
+                                            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
+                                                stroke-width="1.8">
+                                                <path d="M3 12h18" />
+                                                <path d="M12 3v18" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-neutral-600">Experiência</p>
+                                            <p class="font-semibold">1+ ano</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rounded-xl border border-black/10 bg-white p-4 shadow-sm">
+                                    <div class="flex items-center gap-3">
+                                        <div class="h-10 w-10 grid place-items-center rounded-lg bg-black/5">
+                                            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
+                                                stroke-width="1.8">
+                                                <path d="M3 3h18v14H3z" />
+                                                <path d="M7 21h10" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-neutral-600">Projetos</p>
+                                            <p class="font-semibold">7+ entregues</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="rounded-xl border border-black/10 bg-white p-4 shadow-sm sm:col-span-2 lg:col-span-1">
+                                    <div class="flex items-center gap-3">
+                                        <div class="h-10 w-10 grid place-items-center rounded-lg bg-black/5">
+                                            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
+                                                stroke-width="1.8">
+                                                <path d="M4 7h16" />
+                                                <path d="M4 12h16" />
+                                                <path d="M4 17h7" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-neutral-600">Stack</p>
+                                            <p class="font-semibold">JavaScript • NodeJS • Express • JWT</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SKILLS -->
+            <section id="skills" class="mt-16 scroll-mt-8">
+                <div class="mx-auto max-w-4xl">
+                    <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="inline-block h-6 w-1 rounded bg-black"></span>
+                            <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Soft Skills & Hard Skills</h2>
+                        </div>
+                        <div class="inline-flex rounded-xl border border-black/10 bg-white p-1 shadow-sm" role="tablist"
+                            aria-label="Filtro de skills">
+                            <button
+                                class="px-3 py-1.5 text-sm rounded-lg data-[active=true]:bg-black data-[active=true]:text-white"
+                                data-skill-filter="all" aria-selected="true" role="tab" data-active="true">Tudo</button>
+                            <button class="px-3 py-1.5 text-sm rounded-lg hover:bg-black/5" data-skill-filter="soft"
+                                aria-selected="false" role="tab">Soft</button>
+                            <button class="px-3 py-1.5 text-sm rounded-lg hover:bg-black/5" data-skill-filter="hard"
+                                aria-selected="false" role="tab">Hard</button>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-6 lg:grid-cols-2">
+                        <!-- Soft -->
+                        <div class="rounded-2xl bg-white ring-1 ring-black/10 p-5 shadow-sm opacity-0 translate-y-2"
+                            data-animate data-skill-wrapper="soft">
+                            <h3 class="text-lg font-semibold">Soft Skills</h3>
+                            <p class="mt-1 text-sm text-neutral-600">Como me relaciono, comunico e organizo para
+                                entregar resultados.</p>
+
+                            <div class="mt-5 space-y-3">
+                                <!-- Comunicação -->
+                                <div class="flex gap-3 rounded-xl border border-black/10 p-3 opacity-0 translate-y-2"
+                                    data-animate>
+                                    <div class="h-9 w-9 grid place-items-center rounded-lg bg-black/5">
+                                        <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" fill="none"
+                                            stroke="currentColor" stroke-width="1.8">
+                                            <path
+                                                d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v10Z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Comunicação</p>
+                                        <p class="text-sm text-neutral-600">Mensagens claras, documentação objetiva e
+                                            facilitação de alinhamentos.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Trabalho em Equipe -->
+                                <div class="flex gap-3 rounded-xl border border-black/10 p-3 opacity-0 translate-y-2"
+                                    data-animate>
+                                    <div class="h-9 w-9 grid place-items-center rounded-lg bg-black/5">
+                                        <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" fill="none"
+                                            stroke="currentColor" stroke-width="1.8">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                            <circle cx="10" cy="8" r="4" />
+                                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                            <path d="M17 3.13a4 4 0 0 1 0 7.75" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Trabalho em Equipe</p>
+                                        <p class="text-sm text-neutral-600">Pair programming, code review construtivo e
+                                            colaboração contínua.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Empatia -->
+                                <div class="flex gap-3 rounded-xl border border-black/10 p-3 opacity-0 translate-y-2"
+                                    data-animate>
+                                    <div class="h-9 w-9 grid place-items-center rounded-lg bg-black/5">
+                                        <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" fill="none"
+                                            stroke="currentColor" stroke-width="1.8">
+                                            <path
+                                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Empatia</p>
+                                        <p class="text-sm text-neutral-600">Escuta ativa, compreensão de contextos e
+                                            feedbacks respeitosos.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Paciência -->
+                                <div class="flex gap-3 rounded-xl border border-black/10 p-3 opacity-0 translate-y-2"
+                                    data-animate>
+                                    <div class="h-9 w-9 grid place-items-center rounded-lg bg-black/5">
+                                        <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" fill="none"
+                                            stroke="currentColor" stroke-width="1.8">
+                                            <circle cx="12" cy="12" r="8" />
+                                            <path d="M12 8v4l3 2" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Paciência</p>
+                                        <p class="text-sm text-neutral-600">Calma em momentos de pressão, persistência
+                                            em bugs e apoio a iniciantes.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Criatividade -->
+                                <div class="flex gap-3 rounded-xl border border-black/10 p-3 opacity-0 translate-y-2"
+                                    data-animate>
+                                    <div class="h-9 w-9 grid place-items-center rounded-lg bg-black/5">
+                                        <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" fill="none"
+                                            stroke="currentColor" stroke-width="1.8">
+                                            <path d="M9 18h6" />
+                                            <path d="M10 22h4" />
+                                            <path
+                                                d="M12 2a7 7 0 0 1 7 7c0 2.3-1.2 4-3 5v2H8v-2c-1.8-1-3-2.7-3-5a7 7 0 0 1 7-7Z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Criatividade</p>
+                                        <p class="text-sm text-neutral-600">Prototipação rápida, soluções fora da caixa
+                                            e microinterações elegantes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Hard -->
+                        <div class="rounded-2xl bg-white ring-1 ring-black/10 p-5 shadow-sm opacity-0 translate-y-2"
+                            data-animate data-skill-wrapper="hard">
+                            <h3 class="text-lg font-semibold">Hard Skills</h3>
+                            <p class="mt-1 text-sm text-neutral-600">Ferramentas e técnicas de dia a dia.</p>
+
+                            <!-- chips -->
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">JavaScript</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">NodeJS</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">JWT</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">PHP</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">HTML</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">CSS</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">Bootstrap</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">Tailwind</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">AWS</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs">Banco
+                                    de Dados</span>
+                            </div>
+
+                            <!-- barras de nível (sem % visível) -->
+                            <div class="mt-5 grid gap-3">
+                                <!-- JavaScript -->
+                                <div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span>JavaScript</span><span class="text-neutral-600">Avançado</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-black/5 overflow-hidden" aria-hidden="true">
+                                        <div class="h-full bg-black rounded-full" data-progress="78" style="width:0%"
+                                            role="progressbar" aria-label="JavaScript nível Avançado" aria-valuemin="0"
+                                            aria-valuemax="100" aria-valuenow="78"></div>
+                                    </div>
+                                </div>
+
+                                <!-- NodeJS -->
+                                <div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span>NodeJS</span><span class="text-neutral-600">Interm./Avanç.</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-black/5 overflow-hidden">
+                                        <div class="h-full bg-black rounded-full" data-progress="72" style="width:0%"
+                                            role="progressbar" aria-label="NodeJS nível Intermediário/Avançado"
+                                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="72"></div>
+                                    </div>
+                                </div>
+
+                                <!-- JWT -->
+                                <div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span>JWT</span><span class="text-neutral-600">Básico/Interm.</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-black/5 overflow-hidden">
+                                        <div class="h-full bg-black rounded-full" data-progress="43" style="width:0%"
+                                            role="progressbar" aria-label="JWT nível Básico/Intermediário"
+                                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="43"></div>
+                                    </div>
+                                </div>
+
+                                <!-- PHP -->
+                                <div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span>PHP</span><span class="text-neutral-600">Intermediário</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-black/5 overflow-hidden">
+                                        <div class="h-full bg-black rounded-full" data-progress="69" style="width:0%"
+                                            role="progressbar" aria-label="PHP nível Intermediário" aria-valuemin="0"
+                                            aria-valuemax="100" aria-valuenow="69"></div>
+                                    </div>
+                                </div>
+
+                                <!-- HTML -->
+                                <div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span>HTML</span><span class="text-neutral-600">Avançado</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-black/5 overflow-hidden">
+                                        <div class="h-full bg-black rounded-full" data-progress="89" style="width:0%"
+                                            role="progressbar" aria-label="HTML nível Avançado" aria-valuemin="0"
+                                            aria-valuemax="100" aria-valuenow="89"></div>
+                                    </div>
+                                </div>
+
+                                <!-- CSS -->
+                                <div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span>CSS</span><span class="text-neutral-600">Interm./Avanç.</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-black/5 overflow-hidden">
+                                        <div class="h-full bg-black rounded-full" data-progress="71" style="width:0%"
+                                            role="progressbar" aria-label="CSS nível Intermediário/Avançado"
+                                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="71"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Bootstrap -->
+                                <div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span>Bootstrap</span><span class="text-neutral-600">Interm./Avanç.</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-black/5 overflow-hidden">
+                                        <div class="h-full bg-black rounded-full" data-progress="73" style="width:0%"
+                                            role="progressbar" aria-label="Bootstrap nível Intermediário/Avançado"
+                                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="73"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Tailwind -->
+                                <div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span>Tailwind</span><span class="text-neutral-600">Básico</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-black/5 overflow-hidden">
+                                        <div class="h-full bg-black rounded-full" data-progress="38" style="width:0%"
+                                            role="progressbar" aria-label="Tailwind nível Básico" aria-valuemin="0"
+                                            aria-valuemax="100" aria-valuenow="38"></div>
+                                    </div>
+                                </div>
+
+                                <!-- AWS -->
+                                <div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span>AWS</span><span class="text-neutral-600">Básico/Interm.</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-black/5 overflow-hidden">
+                                        <div class="h-full bg-black rounded-full" data-progress="47" style="width:0%"
+                                            role="progressbar" aria-label="AWS nível Básico/Intermediário"
+                                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="47"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Banco de Dados -->
+                                <div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span>Banco de Dados</span><span class="text-neutral-600">Interm./Avanç.</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-black/5 overflow-hidden">
+                                        <div class="h-full bg-black rounded-full" data-progress="72" style="width:0%"
+                                            role="progressbar" aria-label="Banco de Dados nível Intermediário/Avançado"
+                                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="72"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- FORMAÇÕES (timeline vertical) -->
+            <section id="formacoes" class="mt-16 scroll-mt-8">
+                <div class="mx-auto max-w-5xl">
+                    <div class="mb-6 flex items-center gap-3">
+                        <span class="inline-block h-6 w-1 rounded bg-black"></span>
+                        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Formações</h2>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute left-4 top-0 bottom-0 w-px bg-black/10"></div>
+                        <ol class="space-y-6">
+                            <!-- Graduação -->
+                            <li class="relative pl-12">
+                                <span
+                                    class="absolute left-4 -translate-x-1/2 top-6 h-3.5 w-3.5 rounded-full bg-black ring-4 ring-white"></span>
+                                <article
+                                    class="rounded-2xl bg-white ring-1 ring-black/10 p-4 sm:p-5 shadow-sm opacity-0 translate-y-2"
+                                    data-animate>
+                                    <header class="flex items-center justify-between gap-2 flex-wrap">
+                                        <div>
+                                            <h3 class="font-semibold">Engenharia de Software</h3>
+                                            <p class="text-sm text-neutral-600">Universidade Estácio de Sá</p>
+                                        </div>
+                                        <time
+                                            class="text-xs sm:text-sm rounded-full border border-black/10 bg-white px-2 py-1">2024
+                                            – 2029</time>
+                                    </header>
+                                    <div class="mt-3 flex flex-wrap gap-2">
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Bacharelado</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Engenharia</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">EAD</span>
+                                    </div>
+                                    <div class="mt-4">
+                                        <a href="pages/manutencao.html" target="_blank" rel="noopener"
+                                            class="inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm shadow-sm hover:shadow">
+                                            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                                stroke-width="1.8">
+                                                <path d="M12 5v14" />
+                                                <path d="M5 12h14" />
+                                            </svg>
+                                            Ver certificado
+                                        </a>
+                                    </div>
+                                </article>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CURSOS (timeline vertical com mesmo design) -->
+            <section id="cursos" class="mt-16 scroll-mt-8">
+                <div class="mx-auto max-w-5xl">
+                    <div class="mb-6 flex items-center gap-3">
+                        <span class="inline-block h-6 w-1 rounded bg-black"></span>
+                        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Cursos</h2>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute left-4 top-0 bottom-0 w-px bg-black/10"></div>
+                        <ol class="space-y-6">
+                            <!-- Curso 1 -->
+                            <li class="relative pl-12">
+                                <span
+                                    class="absolute left-4 -translate-x-1/2 top-6 h-3.5 w-3.5 rounded-full bg-black ring-4 ring-white"></span>
+                                <article
+                                    class="rounded-2xl bg-white ring-1 ring-black/10 p-4 sm:p-5 shadow-sm opacity-0 translate-y-2"
+                                    data-animate>
+                                    <header class="flex items-center justify-between gap-2 flex-wrap">
+                                        <div>
+                                            <h3 class="font-semibold">Desenvolvimento FullStack Java</h3>
+                                            <p class="text-sm text-neutral-600">Escola Britânica de Artes Criativas</p>
+                                        </div>
+                                        <time
+                                            class="text-xs sm:text-sm rounded-full border border-black/10 bg-white px-2 py-1">2026</time>
+                                    </header>
+                                    <div class="mt-2 text-sm text-neutral-700 space-y-1">
+                                        <p>
+                                            <span class="font-medium">Front-end:</span>
+                                            Fundamentos da Web; Interfaces Responsivas (Grid, Flexbox, BEM, SASS,
+                                            Bootstrap, Tailwind); Fundamentos de React;
+                                            Fundamentos de Next.js e Redux; Testes e Qualidade de Código; Fundamentos de
+                                            Cloud e DevOps (PWAs, Performance e Micro Frontends);
+                                            Habilidades Profissionais e Carreira.
+                                        </p>
+                                        <p>
+                                            <span class="font-medium">Back-end Java:</span>
+                                            Introdução ao Backend Java; Fundamentos da Programação; Programação
+                                            Orientada a Objetos (POO); Estruturas de Dados e Algoritmos;
+                                            Banco de Dados (MySQL/JDBC/CRUD); Introdução ao Spring Boot; Segurança e
+                                            Testes (Spring Security, JUnit/Mockito);
+                                            Microsserviços e Computação em Nuvem (Kafka, Docker, AWS).
+                                        </p>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Java</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Spring
+                                            Boot</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">REST
+                                            APIs</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">SQL</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">JavaScript</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">React</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Git</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Docker</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">AWS</span>
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <a href="certificadosecv/javaebac.pdf" target="_blank" rel="noopener"
+                                            class="inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm shadow-sm hover:shadow">
+                                            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                                stroke-width="1.8">
+                                                <path d="M12 5v14" />
+                                                <path d="M5 12h14" />
+                                            </svg>
+                                            Ver certificado
+                                        </a>
+                                    </div>
+                                </article>
+                            </li>
+
+                            <!-- Curso 2 -->
+                            <li class="relative pl-12">
+                                <span
+                                    class="absolute left-4 -translate-x-1/2 top-6 h-3.5 w-3.5 rounded-full bg-black ring-4 ring-white"></span>
+                                <article
+                                    class="rounded-2xl bg-white ring-1 ring-black/10 p-4 sm:p-5 shadow-sm opacity-0 translate-y-2"
+                                    data-animate>
+                                    <header class="flex items-center justify-between gap-2 flex-wrap">
+                                        <div>
+                                            <h3 class="font-semibold">Inteligência Artificial</h3>
+                                            <p class="text-sm text-neutral-600">Escola Britânica de Artes Criativas</p>
+                                        </div>
+                                        <time
+                                            class="text-xs sm:text-sm rounded-full border border-black/10 bg-white px-2 py-1">2024</time>
+                                    </header>
+                                    <p>
+                                        <span class="font-medium">IA com ChatGPT:</span>
+                                        fundamentos de IA generativa e LLMs, engenharia de prompt (zero/few-shot,
+                                        refinamento), criação de assistentes,
+                                        automações no dia a dia, integração por API/no-code, ética e segurança, e
+                                        avaliação/otimização das respostas.
+                                    </p>
+                                    <p>
+                                        <span class="font-medium">Imagens com Midjourney:</span>
+                                        sintaxe de prompts, estilos e referências, composição/iluminação, variações e
+                                        upscales, Remix/Blend,
+                                        geração por imagem de referência e boas práticas para consistência visual e
+                                        portfólio.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">ChatGPT</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Midjourney</span>
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <a href="certificadosecv/iaebac.pdf" target="_blank" rel="noopener"
+                                            class="inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm shadow-sm hover:shadow">
+                                            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                                stroke-width="1.8">
+                                                <path d="M12 5v14" />
+                                                <path d="M5 12h14" />
+                                            </svg>
+                                            Ver certificado
+                                        </a>
+                                    </div>
+                                </article>
+                            </li>
+
+                            <!-- Curso 3 -->
+                            <li class="relative pl-12">
+                                <span
+                                    class="absolute left-4 -translate-x-1/2 top-6 h-3.5 w-3.5 rounded-full bg-black ring-4 ring-white"></span>
+                                <article
+                                    class="rounded-2xl bg-white ring-1 ring-black/10 p-4 sm:p-5 shadow-sm opacity-0 translate-y-2"
+                                    data-animate>
+                                    <header class="flex items-center justify-between gap-2 flex-wrap">
+                                        <div>
+                                            <h3 class="font-semibold">Plano de Carreira</h3>
+                                            <p class="text-sm text-neutral-600">Escola Britânica de Artes Criativas</p>
+                                        </div>
+                                        <time
+                                            class="text-xs sm:text-sm rounded-full border border-black/10 bg-white px-2 py-1">2024</time>
+                                    </header>
+                                    <p>
+                                        <span class="font-medium">Autoconhecimento e direção:</span>
+                                        mapeamento de objetivos profissionais, avaliação de hard e soft skills,
+                                        definição de metas (SMART),
+                                        trilhas de carreira e níveis de senioridade, além de plano de estudos contínuo.
+                                    </p>
+                                    <p>
+                                        <span class="font-medium">Marca pessoal e presença online:</span>
+                                        construção de currículo eficaz, portfólio e GitHub, otimização de LinkedIn,
+                                        storytelling de projetos e cases, e estratégias de networking em comunidades e
+                                        eventos.
+                                    </p>
+                                    <p>
+                                        <span class="font-medium">Empregabilidade e processos seletivos:</span>
+                                        análise de vagas, candidaturas assertivas, preparação para entrevistas técnicas
+                                        e comportamentais (método STAR),
+                                        desafios práticos, comunicação em entrevistas, negociação salarial e de
+                                        benefícios, e acompanhamento de métricas de busca (aplicações, entrevistas,
+                                        ofertas).
+                                    </p>
+                                    <p>
+                                        <span class="font-medium">Produtividade e rotina:</span>
+                                        organização do estudo e do trabalho (Kanban, time blocking), gestão de tempo,
+                                        foco e hábitos,
+                                        além de feedback contínuo e ajuste do plano de carreira ao longo do tempo.
+                                    </p>
+                                    <div class="mt-3 flex flex-wrap gap-2">
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Autoconhecimento</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Metas
+                                            SMART</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Currículo</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Portfólio/GitHub</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">LinkedIn</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Entrevistas
+                                            (STAR)</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Negociação
+                                            Salarial</span>
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <a href="certificadosecv/planodecarreiraebac.pdf" target="_blank" rel="noopener"
+                                            class="inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm shadow-sm hover:shadow">
+                                            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                                stroke-width="1.8">
+                                                <path d="M12 5v14" />
+                                                <path d="M5 12h14" />
+                                            </svg>
+                                            Ver certificado
+                                        </a>
+                                    </div>
+                                </article>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJETOS -->
+            <section id="projetos" class="mt-16 scroll-mt-8">
+                <div class="mx-auto max-w-5xl">
+                    <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="inline-block h-6 w-1 rounded bg-black"></span>
+                            <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Projetos</h2>
+                        </div>
+
+                        <div class="flex items-center gap-3 w-full sm:w-auto">
+                            <div class="inline-flex rounded-xl border border-black/10 bg-white p-1 shadow-sm"
+                                role="tablist" aria-label="Filtro de projetos">
+                                <button
+                                    class="px-3 py-1.5 text-sm rounded-lg data-[active=true]:bg-black data-[active=true]:text-white"
+                                    data-proj-filter="all" aria-selected="true" role="tab"
+                                    data-active="true">Todos</button>
+                                <button class="px-3 py-1.5 text-sm rounded-lg hover:bg-black/5" data-proj-filter="ui"
+                                    aria-selected="false" role="tab">Front-End</button>
+                                <button class="px-3 py-1.5 text-sm rounded-lg hover:bg-black/5"
+                                    data-proj-filter="javascript" aria-selected="false" role="tab">SAAS</button>
+                                <button class="px-3 py-1.5 text-sm rounded-lg hover:bg-black/5"
+                                    data-proj-filter="wordpress" aria-selected="false" role="tab">Wordpress</button>
+                            </div>
+                            <div class="relative flex-1 sm:flex-none">
+                                <svg viewBox="0 0 24 24"
+                                    class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 opacity-60"
+                                    fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <circle cx="11" cy="11" r="7" />
+                                    <path d="m21 21-4.3-4.3" />
+                                </svg>
+                                <input type="text" placeholder="Buscar projetos..." data-proj-search
+                                    class="w-full sm:w-60 rounded-xl border border-black/10 bg-white pl-9 pr-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-black/40" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-proj-grid>
+                        <!-- Card 1 -->
+                        <article tabindex="0"
+                            class="group rounded-2xl bg-white ring-1 ring-black/10 p-4 sm:p-5 shadow-sm transition hover:shadow-md hover:ring-black/20 focus-within:shadow-md focus-within:ring-black/20 opacity-0 translate-y-2"
+                            data-animate data-proj-card data-tags="ui tailwind html"
+                            data-title="Landing Page Minimalista"
+                            data-desc="Landing page responsiva com foco em tipografia, contraste e conversão.">
+                            <div
+                                class="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-black/10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,.05),transparent_60%)]">
+                                <span
+                                    class="absolute left-3 top-3 rounded-full bg-black/80 px-2 py-1 text-[10px] font-medium text-white">Front-End</span>
+                                <div class="absolute inset-0 p-5">
+                                    <div class="shimmer h-3 w-1/2 rounded"></div>
+                                    <div class="mt-3 space-y-2">
+                                        <div class="shimmer h-2 w-4/5 rounded"></div>
+                                        <div class="shimmer h-2 w-3/5 rounded"></div>
+                                        <div class="shimmer h-2 w-2/5 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-start justify-between gap-3">
+                                <div>
+                                    <h3 class="font-semibold">Sistema para Oficina</h3>
+                                    <p class="mt-1 text-sm text-neutral-600">OS ágeis, estoque sob controle e fluxo da
+                                        oficina organizado — tudo local, simples e rápido.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">HTML & CSS</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">JS</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Boostrap</span>
+                            </div>
+                            <div class="mt-4 flex flex-wrap items-center gap-2">
+                                <a href="https://heyarrthur.github.io/thynkrp/"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    target="_blank" rel="noopener">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                        stroke-width="1.8">
+                                        <path d="M7 17 17 7" />
+                                        <path d="M7 7h10v10" />
+                                    </svg>
+                                    Live
+                                </a>
+                                <a href="https://heyarrthur.github.io/thynkrp/"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    aria-label="Ver código no GitHub">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.8-.25.8-.56v-2.15c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.18.08 1.81 1.21 1.81 1.21 1.04 1.79 2.72 1.27 3.38.97.11-.78.41-1.27.74-1.56-2.55-.29-5.22-1.28-5.22-5.7 0-1.26.45-2.3 1.2-3.12-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.62.23 2.82.11 3.12.75.82 1.2 1.86 1.2 3.12 0 4.43-2.68 5.41-5.23 5.7.42.36.79 1.08.79 2.18v3.23c0 .31.22.68.81.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
+                                    </svg>
+                                    Código
+                                </a>
+                                <!-- Botão -->
+                                <div>
+                                    <button
+                                        class="openCaseStudy inline-flex items-center gap-1.5 rounded-lg bg-black text-white px-3 py-1.5 text-sm shadow-md hover:bg-black/90"
+                                        aria-expanded="false">
+                                        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                            stroke-width="1.8">
+                                            <circle cx="11" cy="11" r="7" />
+                                            <path d="m21 21-4.3-4.3" />
+                                        </svg>
+                                        Sobre
+                                    </button>
+                                </div>
+
+                                <!-- Modal (irmão seguinte) -->
+                                <div class="modal hidden" role="dialog" aria-modal="true"
+                                    aria-labelledby="portfolio-title" aria-hidden="true">
+                                    <div class="fixed inset-0 z-50">
+                                        <!-- Fundo -->
+                                        <div
+                                            class="modal-backdrop fixed inset-0 bg-black/50 opacity-0 transition-opacity">
+                                        </div>
+
+                                        <!-- Container do modal -->
+                                        <div class="fixed inset-0 flex items-center justify-center p-4">
+                                            <div class="modal-card w-full max-w-md rounded-2xl bg-white shadow-xl opacity-0 translate-y-4 transition-all outline-none"
+                                                tabindex="-1">
+                                                <div class="flex items-center justify-between border-b p-4">
+                                                    <h2 class="text-lg font-semibold" id="portfolio-title">Sobre o
+                                                        projeto</h2>
+                                                    <button class="closeModal p-2 rounded-lg hover:bg-neutral-100"
+                                                        aria-label="Fechar">
+                                                        ✕
+                                                    </button>
+                                                </div>
+
+                                                <div class="p-4 text-neutral-700">
+                                                    Aplicação web local para oficina mecânica em Juiz de Fora (MG),
+                                                    feita com HTML, CSS, JavaScript e Bootstrap. Centraliza o fluxo da
+                                                    oficina — registro e acompanhamento de demandas, emissão e controle
+                                                    de OS e gestão de estoque. Interface responsiva para uso interno,
+                                                    sem depender de serviços externos, com foco em agilidade e
+                                                    confiabilidade.
+
+                                                </div>
+
+                                                <div class="flex justify-end gap-2 border-t p-3">
+                                                    <button
+                                                        class="closeModal rounded-lg px-3 py-1.5 text-sm bg-neutral-100 hover:bg-neutral-200">
+                                                        Fechar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </article>
+
+                        <!-- Card 2 -->
+                        <article tabindex="0"
+                            class="group rounded-2xl bg-white ring-1 ring-black/10 p-4 sm:p-5 shadow-sm transition hover:shadow-md hover:ring-black/20 focus-within:shadow-md focus-within:ring-black/20 opacity-0 translate-y-2"
+                            data-animate data-proj-card data-tags=" tailwind ui" data-title="Dashboard Interativo"
+                            data-desc="Dashboard com gráficos reativos e estados de loading/skeleton.">
+                            <div
+                                class="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-black/10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,.05),transparent_60%)]">
+                                <span
+                                    class="absolute left-3 top-3 rounded-full bg-black/80 px-2 py-1 text-[10px] font-medium text-white">Front-End</span>
+                                <div class="absolute inset-0 p-5">
+                                    <div class="shimmer h-3 w-2/5 rounded"></div>
+                                    <div class="mt-3 space-y-2">
+                                        <div class="shimmer h-2 w-3/5 rounded"></div>
+                                        <div class="shimmer h-24 w-full rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-start justify-between gap-3">
+                                <div>
+                                    <h3 class="font-semibold">Dashboard Administrativo</h3>
+                                    <p class="mt-1 text-sm text-neutral-600">Links centralizados, redirecionamentos
+                                        instantâneos e utilitários embutidos (calculadora e notas), com IA em breve.</p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">HTML & CSS</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">JS</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">IA</span>
+                            </div>
+                            <div class="mt-4 flex flex-wrap items-center gap-2">
+                                <a href="https://heyarrthur.github.io/DashCOO/dash/index.html"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    target="_blank" rel="noopener">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                        stroke-width="1.8">
+                                        <path d="M7 17 17 7" />
+                                        <path d="M7 7h10v10" />
+                                    </svg>
+                                    Live
+                                </a>
+                                <a href="https://heyarrthur.github.io/DashCOO/"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    aria-label="Ver código no GitHub">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.8-.25.8-.56v-2.15c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.18.08 1.81 1.21 1.81 1.21 1.04 1.79 2.72 1.27 3.38.97.11-.78.41-1.27.74-1.56-2.55-.29-5.22-1.28-5.22-5.7 0-1.26.45-2.3 1.2-3.12-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.62.23 2.82.11 3.12.75.82 1.2 1.86 1.2 3.12 0 4.43-2.68 5.41-5.23 5.7.42.36.79 1.08.79 2.18v3.23c0 .31.22.68.81.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
+                                    </svg>
+                                    Código
+                                </a>
+                                <!-- Botão -->
+                                <div>
+                                    <button
+                                        class="openCaseStudy inline-flex items-center gap-1.5 rounded-lg bg-black text-white px-3 py-1.5 text-sm shadow-md hover:bg-black/90"
+                                        aria-expanded="false">
+                                        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                            stroke-width="1.8">
+                                            <circle cx="11" cy="11" r="7" />
+                                            <path d="m21 21-4.3-4.3" />
+                                        </svg>
+                                        Sobre
+                                    </button>
+                                </div>
+
+                                <!-- Modal (irmão seguinte) -->
+                                <div class="modal hidden" role="dialog" aria-modal="true"
+                                    aria-labelledby="portfolio-title" aria-hidden="true">
+                                    <div class="fixed inset-0 z-50">
+                                        <!-- Fundo -->
+                                        <div
+                                            class="modal-backdrop fixed inset-0 bg-black/50 opacity-0 transition-opacity">
+                                        </div>
+
+                                        <!-- Container do modal -->
+                                        <div class="fixed inset-0 flex items-center justify-center p-4">
+                                            <div class="modal-card w-full max-w-md rounded-2xl bg-white shadow-xl opacity-0 translate-y-4 transition-all outline-none"
+                                                tabindex="-1">
+                                                <div class="flex items-center justify-between border-b p-4">
+                                                    <h2 class="text-lg font-semibold" id="portfolio-title">Sobre o
+                                                        projeto</h2>
+                                                    <button class="closeModal p-2 rounded-lg hover:bg-neutral-100"
+                                                        aria-label="Fechar">
+                                                        ✕
+                                                    </button>
+                                                </div>
+
+                                                <div class="p-4 text-neutral-700">
+                                                    Criei uma plataforma para o meu pai que centraliza todos os links da
+                                                    empresa em um só lugar, com redirecionamentos rápidos. Inclui
+                                                    calculadora e bloco de notas integrados. A integração com IA
+                                                    (ChatGPT) já foi iniciada e está temporariamente pausada enquanto
+                                                    priorizo melhorias no núcleo do sistema.
+                                                </div>
+
+                                                <div class="flex justify-end gap-2 border-t p-3">
+                                                    <button
+                                                        class="closeModal rounded-lg px-3 py-1.5 text-sm bg-neutral-100 hover:bg-neutral-200">
+                                                        Fechar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </article>
+
+                        <!-- Card 3 -->
+                        <article tabindex="0"
+                            class="group rounded-2xl bg-white ring-1 ring-black/10 p-4 sm:p-5 shadow-sm transition hover:shadow-md hover:ring-black/20 focus-within:shadow-md focus-within:ring-black/20 opacity-0 translate-y-2"
+                            data-animate data-proj-card data-tags="javascript" data-title="Portfólio Responsivo"
+                            data-desc="Template de portfólio com navegação suave e modal de informações.">
+                            <div
+                                class="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-black/10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,.05),transparent_60%)]">
+                                <span
+                                    class="absolute left-3 top-3 rounded-full bg-black/80 px-2 py-1 text-[10px] font-medium text-white">SAAS
+                                    | Em Breve</span>
+                                <div class="absolute inset-0 p-5">
+                                    <div class="shimmer h-3 w-3/5 rounded"></div>
+                                    <div class="mt-3 space-y-2">
+                                        <div class="shimmer h-2 w-4/5 rounded"></div>
+                                        <div class="shimmer h-2 w-2/3 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-start justify-between gap-3">
+                                <div>
+                                    <h3 class="font-semibold">Sistema de Barbearia</h3>
+                                    <p class="mt-1 text-sm text-neutral-600">Agendamentos, assinaturas e gestão —
+                                        lembretes, pagamentos online, lista de espera, fidelidade e comissões.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">JS & NodeJS</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">MongoDB</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">HTML & CSS</span>
+                            </div>
+                            <div class="mt-4 flex flex-wrap items-center gap-2">
+                                <a href="pages/manutencao.html"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    target="_blank" rel="noopener">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                        stroke-width="1.8">
+                                        <path d="M7 17 17 7" />
+                                        <path d="M7 7h10v10" />
+                                    </svg>
+                                    Live
+                                </a>
+                                <a href="pages/manutencao.html"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    aria-label="Ver código no GitHub">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.8-.25.8-.56v-2.15c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.18.08 1.81 1.21 1.81 1.21 1.04 1.79 2.72 1.27 3.38.97.11-.78.41-1.27.74-1.56-2.55-.29-5.22-1.28-5.22-5.7 0-1.26.45-2.3 1.2-3.12-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.62.23 2.82.11 3.12.75.82 1.2 1.86 1.2 3.12 0 4.43-2.68 5.41-5.23 5.7.42.36.79 1.08.79 2.18v3.23c0 .31.22.68.81.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
+                                    </svg>
+                                    Código
+                                </a>
+                                <!-- Botão -->
+                                <div>
+                                    <button
+                                        class="openCaseStudy inline-flex items-center gap-1.5 rounded-lg bg-black text-white px-3 py-1.5 text-sm shadow-md hover:bg-black/90"
+                                        aria-expanded="false">
+                                        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                            stroke-width="1.8">
+                                            <circle cx="11" cy="11" r="7" />
+                                            <path d="m21 21-4.3-4.3" />
+                                        </svg>
+                                        Sobre
+                                    </button>
+                                </div>
+
+                                <!-- Modal (irmão seguinte) -->
+                                <div class="modal hidden" role="dialog" aria-modal="true"
+                                    aria-labelledby="portfolio-title" aria-hidden="true">
+                                    <div class="fixed inset-0 z-50">
+                                        <!-- Fundo -->
+                                        <div
+                                            class="modal-backdrop fixed inset-0 bg-black/50 opacity-0 transition-opacity">
+                                        </div>
+
+                                        <!-- Container do modal -->
+                                        <div class="fixed inset-0 flex items-center justify-center p-4">
+                                            <div class="modal-card w-full max-w-md rounded-2xl bg-white shadow-xl opacity-0 translate-y-4 transition-all outline-none"
+                                                tabindex="-1">
+                                                <div class="flex items-center justify-between border-b p-4">
+                                                    <h2 class="text-lg font-semibold" id="portfolio-title">Sobre o
+                                                        projeto</h2>
+                                                    <button class="closeModal p-2 rounded-lg hover:bg-neutral-100"
+                                                        aria-label="Fechar">
+                                                        ✕
+                                                    </button>
+                                                </div>
+
+                                                <div class="p-4 text-neutral-700">
+                                                    Plataforma para barbearias com agendamentos online, assinaturas e
+                                                    cobrança recorrente. Lembretes por WhatsApp/SMS/e-mail, agenda por
+                                                    barbeiro e cadeira, lista de espera, controle de no-show e comissões
+                                                    automáticas. PDV integrado (pagamentos online e no balcão), catálogo
+                                                    de serviços e produtos com estoque e relatórios de faturamento,
+                                                    ocupação e ticket médio.
+                                                </div>
+
+                                                <div class="flex justify-end gap-2 border-t p-3">
+                                                    <button
+                                                        class="closeModal rounded-lg px-3 py-1.5 text-sm bg-neutral-100 hover:bg-neutral-200">
+                                                        Fechar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </article>
+
+                        <!-- Card 4 -->
+                        <article tabindex="0"
+                            class="group rounded-2xl bg-white ring-1 ring-black/10 p-4 sm:p-5 shadow-sm transition hover:shadow-md hover:ring-black/20 focus-within:shadow-md focus-within:ring-black/20 opacity-0 translate-y-2"
+                            data-animate data-proj-card data-tags="wordpress" data-title="Portfólio Responsivo"
+                            data-desc="Template de portfólio com navegação suave e modal de informações.">
+                            <div
+                                class="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-black/10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,.05),transparent_60%)]">
+                                <span
+                                    class="absolute left-3 top-3 rounded-full bg-black/80 px-2 py-1 text-[10px] font-medium text-white">Wordpress</span>
+                                <div class="absolute inset-0 p-5">
+                                    <div class="shimmer h-3 w-3/5 rounded"></div>
+                                    <div class="mt-3 space-y-2">
+                                        <div class="shimmer h-2 w-4/5 rounded"></div>
+                                        <div class="shimmer h-2 w-2/3 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-start justify-between gap-3">
+                                <div>
+                                    <h3 class="font-semibold">Rede MG Farma</h3>
+                                    <p class="mt-1 text-sm text-neutral-600">Gestão de franquias, produtos e promoções —
+                                        catálogo centralizado, preços por unidade e campanhas com relatórios.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Wordpress</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">PHP</span>
+                            </div>
+                            <div class="mt-4 flex flex-wrap items-center gap-2">
+                                <a href="https://redemgfarma.com.br/"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    target="_blank" rel="noopener">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                        stroke-width="1.8">
+                                        <path d="M7 17 17 7" />
+                                        <path d="M7 7h10v10" />
+                                    </svg>
+                                    Live
+                                </a>
+                                <a href="pages/manutencao.html"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    aria-label="Ver código no GitHub">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.8-.25.8-.56v-2.15c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.18.08 1.81 1.21 1.81 1.21 1.04 1.79 2.72 1.27 3.38.97.11-.78.41-1.27.74-1.56-2.55-.29-5.22-1.28-5.22-5.7 0-1.26.45-2.3 1.2-3.12-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.62.23 2.82.11 3.12.75.82 1.2 1.86 1.2 3.12 0 4.43-2.68 5.41-5.23 5.7.42.36.79 1.08.79 2.18v3.23c0 .31.22.68.81.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
+                                    </svg>
+                                    Código
+                                </a>
+                                <!-- Botão -->
+                                <div>
+                                    <button
+                                        class="openCaseStudy inline-flex items-center gap-1.5 rounded-lg bg-black text-white px-3 py-1.5 text-sm shadow-md hover:bg-black/90"
+                                        aria-expanded="false">
+                                        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                            stroke-width="1.8">
+                                            <circle cx="11" cy="11" r="7" />
+                                            <path d="m21 21-4.3-4.3" />
+                                        </svg>
+                                        Sobre
+                                    </button>
+                                </div>
+
+                                <!-- Modal (irmão seguinte) -->
+                                <div class="modal hidden" role="dialog" aria-modal="true"
+                                    aria-labelledby="portfolio-title" aria-hidden="true">
+                                    <div class="fixed inset-0 z-50">
+                                        <!-- Fundo -->
+                                        <div
+                                            class="modal-backdrop fixed inset-0 bg-black/50 opacity-0 transition-opacity">
+                                        </div>
+
+                                        <!-- Container do modal -->
+                                        <div class="fixed inset-0 flex items-center justify-center p-4">
+                                            <div class="modal-card w-full max-w-md rounded-2xl bg-white shadow-xl opacity-0 translate-y-4 transition-all outline-none"
+                                                tabindex="-1">
+                                                <div class="flex items-center justify-between border-b p-4">
+                                                    <h2 class="text-lg font-semibold" id="portfolio-title">Sobre o
+                                                        projeto</h2>
+                                                    <button class="closeModal p-2 rounded-lg hover:bg-neutral-100"
+                                                        aria-label="Fechar">
+                                                        ✕
+                                                    </button>
+                                                </div>
+
+                                                <div class="p-4 text-neutral-700">
+                                                    Plataforma para gestão de franquias, produtos e promoções com
+                                                    catálogo centralizado. Permite preços por unidade, regras locais e
+                                                    campanhas por calendário (cupons, combos, descontos segmentados).
+                                                    Dashboards em tempo real mostram vendas, giro e ROI de campanhas;
+                                                    integra com ERP/PDV e oferece perfis de acesso e auditoria.
+
+                                                </div>
+
+                                                <div class="flex justify-end gap-2 border-t p-3">
+                                                    <button
+                                                        class="closeModal rounded-lg px-3 py-1.5 text-sm bg-neutral-100 hover:bg-neutral-200">
+                                                        Fechar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </article>
+
+                        <!-- Card 5 -->
+                        <article tabindex="0"
+                            class="group rounded-2xl bg-white ring-1 ring-black/10 p-4 sm:p-5 shadow-sm transition hover:shadow-md hover:ring-black/20 focus-within:shadow-md focus-within:ring-black/20 opacity-0 translate-y-2"
+                            data-animate data-proj-card data-tags="wordpress" data-title="Portfólio Responsivo"
+                            data-desc="Template de portfólio com navegação suave e modal de informações.">
+                            <div
+                                class="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-black/10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,.05),transparent_60%)]">
+                                <span
+                                    class="absolute left-3 top-3 rounded-full bg-black/80 px-2 py-1 text-[10px] font-medium text-white">Wordpress</span>
+                                <div class="absolute inset-0 p-5">
+                                    <div class="shimmer h-3 w-3/5 rounded"></div>
+                                    <div class="mt-3 space-y-2">
+                                        <div class="shimmer h-2 w-4/5 rounded"></div>
+                                        <div class="shimmer h-2 w-2/3 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-start justify-between gap-3">
+                                <div>
+                                    <h3 class="font-semibold">Envia Bem</h3>
+                                    <p class="mt-1 text-sm text-neutral-600">Compras para unidades prisionais e
+                                        logística — requisições, cotações, aprovação e rastreio de entregas.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Wordpress</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">WooCommerce</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">PHP</span>
+                            </div>
+                            <div class="mt-4 flex flex-wrap items-center gap-2">
+                                <a href="https://enviabem.com/"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    target="_blank" rel="noopener">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                        stroke-width="1.8">
+                                        <path d="M7 17 17 7" />
+                                        <path d="M7 7h10v10" />
+                                    </svg>
+                                    Live
+                                </a>
+                                <a href="pages/manutencao.html"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    aria-label="Ver código no GitHub">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.8-.25.8-.56v-2.15c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.18.08 1.81 1.21 1.81 1.21 1.04 1.79 2.72 1.27 3.38.97.11-.78.41-1.27.74-1.56-2.55-.29-5.22-1.28-5.22-5.7 0-1.26.45-2.3 1.2-3.12-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.62.23 2.82.11 3.12.75.82 1.2 1.86 1.2 3.12 0 4.43-2.68 5.41-5.23 5.7.42.36.79 1.08.79 2.18v3.23c0 .31.22.68.81.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
+                                    </svg>
+                                    Código
+                                </a>
+                                <!-- Botão -->
+                                <div>
+                                    <button
+                                        class="openCaseStudy inline-flex items-center gap-1.5 rounded-lg bg-black text-white px-3 py-1.5 text-sm shadow-md hover:bg-black/90"
+                                        aria-expanded="false">
+                                        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                            stroke-width="1.8">
+                                            <circle cx="11" cy="11" r="7" />
+                                            <path d="m21 21-4.3-4.3" />
+                                        </svg>
+                                        Sobre
+                                    </button>
+                                </div>
+
+                                <!-- Modal (irmão seguinte) -->
+                                <div class="modal hidden" role="dialog" aria-modal="true"
+                                    aria-labelledby="portfolio-title" aria-hidden="true">
+                                    <div class="fixed inset-0 z-50">
+                                        <!-- Fundo -->
+                                        <div
+                                            class="modal-backdrop fixed inset-0 bg-black/50 opacity-0 transition-opacity">
+                                        </div>
+
+                                        <!-- Container do modal -->
+                                        <div class="fixed inset-0 flex items-center justify-center p-4">
+                                            <div class="modal-card w-full max-w-md rounded-2xl bg-white shadow-xl opacity-0 translate-y-4 transition-all outline-none"
+                                                tabindex="-1">
+                                                <div class="flex items-center justify-between border-b p-4">
+                                                    <h2 class="text-lg font-semibold" id="portfolio-title">Sobre o
+                                                        projeto</h2>
+                                                    <button class="closeModal p-2 rounded-lg hover:bg-neutral-100"
+                                                        aria-label="Fechar">
+                                                        ✕
+                                                    </button>
+                                                </div>
+
+                                                <div class="p-4 text-neutral-700">
+                                                    Plataforma criada para aproximar famílias de pessoas privadas de
+                                                    liberdade, permitindo a compra remota de itens autorizados para
+                                                    entrega na unidade prisional e reduzindo a dependência de visitas
+                                                    presenciais.
+
+                                                </div>
+
+                                                <div class="flex justify-end gap-2 border-t p-3">
+                                                    <button
+                                                        class="closeModal rounded-lg px-3 py-1.5 text-sm bg-neutral-100 hover:bg-neutral-200">
+                                                        Fechar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </article>
+
+                        <!-- Card 6 -->
+                        <article tabindex="0"
+                            class="group rounded-2xl bg-white ring-1 ring-black/10 p-4 sm:p-5 shadow-sm transition hover:shadow-md hover:ring-black/20 focus-within:shadow-md focus-within:ring-black/20 opacity-0 translate-y-2"
+                            data-animate data-proj-card data-tags="wwordpress" data-title="Portfólio Responsivo"
+                            data-desc="Template de portfólio com navegação suave e modal de informações.">
+                            <div
+                                class="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-black/10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,.05),transparent_60%)]">
+                                <span
+                                    class="absolute left-3 top-3 rounded-full bg-black/80 px-2 py-1 text-[10px] font-medium text-white">Wordpress
+                                    | Em Breve</span>
+                                <div class="absolute inset-0 p-5">
+                                    <div class="shimmer h-3 w-3/5 rounded"></div>
+                                    <div class="mt-3 space-y-2">
+                                        <div class="shimmer h-2 w-4/5 rounded"></div>
+                                        <div class="shimmer h-2 w-2/3 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-start justify-between gap-3">
+                                <div>
+                                    <h3 class="font-semibold">High Vision</h3>
+                                    <p class="mt-1 text-sm text-neutral-600">E-commerce de moda com alcance nacional —
+                                        catálogo, checkout seguro, frete e rastreio, promoções.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Wordpress</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">WooCommerce</span>
+                                <span
+                                    class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">PHP</span>
+                            </div>
+                            <div class="mt-4 flex flex-wrap items-center gap-2">
+                                <a href="pages/manutencao.html"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    target="_blank" rel="noopener">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                        stroke-width="1.8">
+                                        <path d="M7 17 17 7" />
+                                        <path d="M7 7h10v10" />
+                                    </svg>
+                                    Live
+                                </a>
+                                <a href="pages/manutencao.html"
+                                    class="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-sm shadow-sm hover:shadow transition"
+                                    aria-label="Ver código no GitHub">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.8-.25.8-.56v-2.15c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.18.08 1.81 1.21 1.81 1.21 1.04 1.79 2.72 1.27 3.38.97.11-.78.41-1.27.74-1.56-2.55-.29-5.22-1.28-5.22-5.7 0-1.26.45-2.3 1.2-3.12-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.62.23 2.82.11 3.12.75.82 1.2 1.86 1.2 3.12 0 4.43-2.68 5.41-5.23 5.7.42.36.79 1.08.79 2.18v3.23c0 .31.22.68.81.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
+                                    </svg>
+                                    Código
+                                </a>
+                                <!-- Botão -->
+                                <div>
+                                    <button
+                                        class="openCaseStudy inline-flex items-center gap-1.5 rounded-lg bg-black text-white px-3 py-1.5 text-sm shadow-md hover:bg-black/90"
+                                        aria-expanded="false">
+                                        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                            stroke-width="1.8">
+                                            <circle cx="11" cy="11" r="7" />
+                                            <path d="m21 21-4.3-4.3" />
+                                        </svg>
+                                        Sobre
+                                    </button>
+                                </div>
+
+                                <!-- Modal (irmão seguinte) -->
+                                <div class="modal hidden" role="dialog" aria-modal="true"
+                                    aria-labelledby="portfolio-title" aria-hidden="true">
+                                    <div class="fixed inset-0 z-50">
+                                        <!-- Fundo -->
+                                        <div
+                                            class="modal-backdrop fixed inset-0 bg-black/50 opacity-0 transition-opacity">
+                                        </div>
+
+                                        <!-- Container do modal -->
+                                        <div class="fixed inset-0 flex items-center justify-center p-4">
+                                            <div class="modal-card w-full max-w-md rounded-2xl bg-white shadow-xl opacity-0 translate-y-4 transition-all outline-none"
+                                                tabindex="-1">
+                                                <div class="flex items-center justify-between border-b p-4">
+                                                    <h2 class="text-lg font-semibold" id="portfolio-title">Sobre o
+                                                        projeto</h2>
+                                                    <button class="closeModal p-2 rounded-lg hover:bg-neutral-100"
+                                                        aria-label="Fechar">
+                                                        ✕
+                                                    </button>
+                                                </div>
+
+                                                <div class="p-4 text-neutral-700">
+                                                    Plataforma de e-commerce da High Vision para reduzir a dependência
+                                                    de lojas físicas e ampliar as vendas online. Catálogo completo,
+                                                    checkout seguro e logística nacional para que qualquer pessoa possa
+                                                    ter uma peça High Vision sem sair de casa.
+                                                </div>
+
+                                                <div class="flex justify-end gap-2 border-t p-3">
+                                                    <button
+                                                        class="closeModal rounded-lg px-3 py-1.5 text-sm bg-neutral-100 hover:bg-neutral-200">
+                                                        Fechar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPERIÊNCIA -->
+            <section id="experiencia" class="mt-16 scroll-mt-8">
+                <div class="mx-auto max-w-4xl">
+                    <div class="mb-6 flex items-center gap-3">
+                        <span class="inline-block h-6 w-1 rounded bg-black"></span>
+                        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Experiência</h2>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute left-4 top-0 bottom-0 w-px bg-black/10"></div>
+                        <ol role="list" class="space-y-6">
+                            <li class="group relative pl-12">
+                                <span
+                                    class="absolute left-4 -translate-x-1/2 top-6 h-3.5 w-3.5 rounded-full bg-black ring-4 ring-white"></span>
+                                <article
+                                    class="rounded-2xl bg-white ring-1 ring-black/10 border border-black/10 shadow-sm p-4 sm:p-5 transition hover:shadow-md hover:ring-black/20 opacity-0 translate-y-2"
+                                    data-animate>
+                                    <header class="flex flex-wrap items-center justify-between gap-2">
+                                        <div>
+                                            <h3 class="text-base sm:text-lg font-semibold">Desenvolvedor de Sistemas
+                                                Júnior</h3>
+                                            <p class="text-sm text-neutral-600">UXP • Remoto</p>
+                                        </div>
+                                        <time datetime="2024-03"
+                                            class="text-xs sm:text-sm rounded-full border border-black/10 bg-white px-2 py-1 shadow-sm">Set
+                                            2025 – Atual</time>
+                                    </header>
+                                    <div class="mt-3 flex flex-wrap gap-2">
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Desenvolvimento
+                                            de Sistemas</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Scripts</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Suporte
+                                            ao Cliente</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Criação
+                                            de Pages</span>
+                                    </div>
+
+                                </article>
+                            </li>
+
+                            <li class="group relative pl-12">
+                                <span
+                                    class="absolute left-4 -translate-x-1/2 top-6 h-3.5 w-3.5 rounded-full bg-black ring-4 ring-white"></span>
+                                <article
+                                    class="rounded-2xl bg-white ring-1 ring-black/10 border border-black/10 shadow-sm p-4 sm:p-5 transition hover:shadow-md hover:ring-black/20 opacity-0 translate-y-2"
+                                    data-animate>
+                                    <header class="flex flex-wrap items-center justify-between gap-2">
+                                        <div>
+                                            <h3 class="text-base sm:text-lg font-semibold">Estagiário Desenvolvimento de
+                                                Sistemas</h3>
+                                            <p class="text-sm text-neutral-600">UXP • Remoto</p>
+                                        </div>
+                                        <time datetime="2023-08"
+                                            class="text-xs sm:text-sm rounded-full border border-black/10 bg-white px-2 py-1 shadow-sm">Jul
+                                            2024 – Jul 2025</time>
+                                    </header>
+                                    <div class="mt-3 flex flex-wrap gap-2">
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Suporte
+                                            ao Cliente</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Deploys</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Criação
+                                            de Designs</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-[11px]">Acompanhamentos</span>
+                                    </div>
+
+                                </article>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTATO -->
+            <section id="contato" class="mt-16 scroll-mt-8">
+                <div class="mx-auto max-w-4xl">
+                    <div class="mb-6 flex items-center gap-3">
+                        <span class="inline-block h-6 w-1 rounded bg-black"></span>
+                        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Contato</h2>
+                    </div>
+
+                    <div class="grid gap-6 lg:grid-cols-2">
+                        <!-- Info -->
+                        <div class="rounded-2xl bg-white ring-1 ring-black/10 p-5 shadow-sm">
+                            <p class="text-sm text-neutral-600">Prefere falar direto? Clique abaixo para abrir o
+                                WhatsApp com uma mensagem inicial.</p>
+                            <a href="https://wa.me/553299145114?text=Ol%C3%A1!%20Vim%20pelo%20seu%20portf%C3%B3lio."
+                                target="_blank" rel="noopener"
+                                class="mt-4 inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-4 py-2.5 text-sm font-medium shadow-sm hover:shadow">
+                                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                                    <path
+                                        d="M20.52 3.48A11.9 11.9 0 1 0 2.7 19.4L2 22l2.7-.7a11.9 11.9 0 0 0 5.1 1.2h.01A11.9 11.9 0 0 0 20.5 3.5Z" />
+                                </svg>
+                                Falar no WhatsApp
+                            </a>
+                            <div class="mt-6 grid gap-2 text-sm">
+                                <div class="flex items-center gap-2">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor"
+                                        stroke-width="1.8">
+                                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                                        <path d="m3 7 9 6 9-6" />
+                                    </svg>
+                                    <span>arthurmf.adm@gmail.com</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.8-.25.8-.56v-2.15c-3.2.7-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.18.08 1.81 1.21 1.81 1.21 1.04 1.79 2.72 1.27 3.38.97.11-.78.41-1.27.74-1.56-2.55-.29-5.22-1.28-5.22-5.7 0-1.26.45-2.3 1.2-3.12-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.62.23 2.82.11 3.12.75.82 1.2 1.86 1.2 3.12 0 4.43-2.68 5.41-5.23 5.7.42.36.79 1.08.79 2.18v3.23c0 .31.22.68.81.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
+                                    </svg>
+                                    <span>@heyarrthur</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                                        <path
+                                            d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v1.97h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.95c0-1.42-.03-3.25-1.98-3.25-1.98 0-2.29 1.54-2.29 3.14V23h-4V8.5z" />
+                                    </svg>
+                                    <span>/in/arthur-ferreira-a007a9279</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form WhatsApp -->
+                        <div class="rounded-2xl bg-white ring-1 ring-black/10 p-5 sm:p-6 shadow-xl">
+                            <form id="whatsForm" class="grid gap-4" novalidate>
+                                <div class="grid gap-1">
+                                    <label for="w-name" class="text-sm font-medium">Nome</label>
+                                    <input id="w-name" type="text" required
+                                        class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-black/40"
+                                        placeholder="Seu nome" />
+                                </div>
+                                <div class="grid gap-1">
+                                    <label for="w-email" class="text-sm font-medium">Email <span
+                                            class="text-neutral-500 font-normal">(opcional)</span></label>
+                                    <input id="w-email" type="email"
+                                        class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-black/40"
+                                        placeholder="voce@email.com" />
+                                </div>
+                                <div class="grid gap-1">
+                                    <label for="w-subject" class="text-sm font-medium">Assunto <span
+                                            class="text-neutral-500 font-normal">(opcional)</span></label>
+                                    <input id="w-subject" type="text"
+                                        class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-black/40"
+                                        placeholder="Freela, site, orçamento..." />
+                                </div>
+                                <div class="grid gap-1">
+                                    <label for="w-message" class="text-sm font-medium">Mensagem</label>
+                                    <textarea id="w-message" rows="6" required
+                                        class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-black/40"
+                                        placeholder="Conte em poucas linhas o que você precisa"></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="inline-flex items-center gap-2 rounded-xl bg-black text-white px-4 py-2.5 text-sm font-medium shadow-md hover:bg-black/90">
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                                        <path
+                                            d="M20.52 3.48A11.9 11.9 0 1 0 2.7 19.4L2 22l2.7-.7a11.9 11.9 0 0 0 5.1 1.2h.01A11.9 11.9 0 0 0 20.5 3.5Z" />
+                                    </svg>
+                                    Enviar via WhatsApp
+                                </button>
+                                <p class="text-xs text-neutral-500">Ao enviar, abrirei o WhatsApp com a mensagem
+                                    preenchida.</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL: Sobre mim (ampliado) -->
+    <div id="aboutModal" class="fixed inset-0 z-50 hidden items-center justify-center" role="dialog" aria-modal="true"
+        aria-labelledby="aboutModalTitle">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" data-modal-overlay></div>
+
+        <!-- Aumentei largura e altura aqui -->
+        <div
+            class="relative mx-auto w-[96%] max-w-6xl h-[88vh] rounded-2xl bg-white shadow-2xl ring-1 ring-black/10 flex flex-col">
+            <div
+                class="sticky top-0 flex items-center justify-between border-b border-black/10 px-5 sm:px-6 py-4 bg-white/90 backdrop-blur rounded-t-2xl">
+                <h3 id="aboutModalTitle" class="text-lg font-semibold">Mais sobre mim</h3>
+                <button id="closeAboutModal" aria-label="Fechar"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg hover:bg-black/5">
+                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M18 6 6 18" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Agora o conteúdo ocupa o restante da altura e rola -->
+            <div class="flex-1 overflow-y-auto px-5 sm:px-6 py-6 space-y-8">
+
+                <section>
+                    <h4 class="text-base font-semibold">Minha trajetória</h4>
+                    <div class="mt-2 space-y-4 text-neutral-700 leading-relaxed">
+                        <p>
+                            Comecei minha história na tecnologia aos 14 anos, criando scripts para a plataforma de jogos
+                            FiveM. Foi a
+                            primeira vez que vi uma ideia ganhar vida na tela por causa de algo que eu escrevi. A partir
+                            dali, mergulhei
+                            de vez: estudei todos os dias, testei conceitos na prática e fui entendendo, com curiosidade
+                            e paciência,
+                            como transformar problemas em soluções de código.
+                        </p>
+                        <p>
+                            Depois de cerca de dois anos nessa rotina intensa, conquistei meu primeiro estágio na
+                            Usepress. Entrei para
+                            desenvolver plataformas e plugins em PHP e, ao mesmo tempo, descobri o que significa
+                            trabalhar em equipe de
+                            verdade. Aprendi a dividir tarefas, participar de planejamentos, dar e receber feedback em
+                            code reviews,
+                            cuidar de versionamento e acompanhar deploys. Tive contato com atendimento ao cliente e com
+                            rotinas de
+                            helpdesk, o que me ensinou a ouvir e traduzir necessidades em funcionalidades. Também usei
+                            serviços da AWS
+                            para preparar e subir aplicações, ganhando noção de infraestrutura, logs e boas práticas de
+                            entrega. Essa
+                            fase me deu confiança e clareza sobre o caminho que eu queria seguir.
+                        </p>
+                        <p>
+                            Meu contrato terminou após um ano e, três meses depois, voltei para a Usepress como
+                            Desenvolvedor Júnior.
+                            Continuei trabalhando com PHP, agora com mais autonomia, e aos poucos integrei outras
+                            tecnologias que vinha
+                            estudando por conta própria, como JavaScript, Node.js e ferramentas de front-end. Isso me
+                            permitiu entregar
+                            soluções mais completas, cuidar da experiência do usuário e pensar no sistema como um todo,
+                            do back ao front.
+                            Passei a me preocupar mais com legibilidade, organização do código, testes e documentação,
+                            para que o
+                            trabalho do time fluísse melhor.
+                        </p>
+                        <p>
+                            Nesse meio tempo, também me dediquei a projetos por fora. Criei pequenas aplicações para
+                            resolver problemas
+                            reais, participei de trabalhos independentes e usei esses desafios para consolidar o que
+                            aprendia. Fiz cursos
+                            complementares para ampliar meu repertório, revisitei fundamentos e aprofundei temas como
+                            boas práticas de
+                            JavaScript, APIs com Node.js, integração com bancos de dados e noções de cloud. Essa mistura
+                            de estudo e
+                            prática me deu mais segurança para pesquisar, experimentar e decidir com base em contexto e
+                            impacto.
+                        </p>
+                        <p>
+                            Hoje sigo evoluindo com foco em escrever código limpo, testável e bem documentado,
+                            colaborando de forma
+                            aberta com o time e mantendo proximidade com quem usa o produto. Gosto de entender o porquê
+                            por trás de cada
+                            demanda, quebrar problemas grandes em entregas menores e acompanhar o que vai para produção
+                            para aprender com
+                            dados e feedback. Busco continuar crescendo tecnicamente, aprofundando conhecimentos em
+                            arquitetura,
+                            performance e observabilidade, e contribuindo para que cada projeto seja mais estável,
+                            escalável e útil para
+                            as pessoas que o utilizam.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JS -->
+
+    <!-- JS -->
+    <script>
+        (() => {
+            const focusablesSel =
+                'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+            let lastFocused = null;
+
+            function firstFocusable(root) {
+                return root.querySelector(focusablesSel) || root;
+            }
+
+            function trapTab(e, modal) {
+                if (e.key !== 'Tab') return;
+                const list = Array.from(modal.querySelectorAll(focusablesSel));
+                if (list.length === 0) {
+                    e.preventDefault();
+                    modal.querySelector('.modal-card').focus();
+                    return;
+                }
+                const idx = list.indexOf(document.activeElement);
+                if (e.shiftKey) {
+                    if (idx <= 0) {
+                        e.preventDefault();
+                        list[list.length - 1].focus();
+                    }
+                } else {
+                    if (idx === -1 || idx === list.length - 1) {
+                        e.preventDefault();
+                        list[0].focus();
+                    }
+                }
+            }
+
+            function openModal(modal, openerBtn) {
+                if (!modal) return;
+                lastFocused = openerBtn || document.activeElement;
+
+                modal.classList.remove('hidden');
+                modal.setAttribute('aria-hidden', 'false');
+                document.documentElement.style.overflow = 'hidden';
+
+                const overlay = modal.querySelector('.modal-backdrop');
+                const card = modal.querySelector('.modal-card');
+
+                requestAnimationFrame(() => {
+                    overlay.classList.remove('opacity-0');
+                    card.classList.remove('opacity-0', 'translate-y-4');
+                });
+
+                firstFocusable(modal).focus({ preventScroll: true });
+
+                // listeners específicos enquanto aberto
+                modal._onKeydown = (e) => {
+                    if (e.key === 'Escape') closeModal(modal);
+                    trapTab(e, modal);
+                };
+                document.addEventListener('keydown', modal._onKeydown);
+            }
+
+            function closeModal(modal) {
+                if (!modal) return;
+
+                const overlay = modal.querySelector('.modal-backdrop');
+                const card = modal.querySelector('.modal-card');
+
+                overlay.classList.add('opacity-0');
+                card.classList.add('opacity-0', 'translate-y-4');
+                modal.setAttribute('aria-hidden', 'true');
+
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.documentElement.style.overflow = '';
+                    if (modal._onKeydown) {
+                        document.removeEventListener('keydown', modal._onKeydown);
+                        modal._onKeydown = null;
+                    }
+                    if (lastFocused && typeof lastFocused.focus === 'function') {
+                        lastFocused.focus({ preventScroll: true });
+                    }
+                }, 150); // combina com a transition padrão do Tailwind
+            }
+
+            // Abrir (delegação)
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('.openCaseStudy');
+                if (btn) {
+                    const modalCandidate = btn.closest('div')?.nextElementSibling;
+                    if (modalCandidate && modalCandidate.classList.contains('modal')) {
+                        openModal(modalCandidate, btn);
+                        btn.setAttribute('aria-expanded', 'true');
+                    }
+                }
+            });
+
+            // Fechar por clique no fundo ou nos botões .closeModal
+            document.addEventListener('click', (e) => {
+                const openModalEl = document.querySelector('.modal:not(.hidden)');
+                if (!openModalEl) return;
+
+                if (
+                    e.target.classList.contains('modal-backdrop') ||
+                    e.target.closest('.closeModal')
+                ) {
+                    closeModal(openModalEl);
+                    const opener = openModalEl.previousElementSibling?.querySelector('.openCaseStudy');
+                    if (opener) opener.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+
+    <script>
+
+        // NAV active
+        const navItems = document.querySelectorAll('[data-nav-item]');
+        function setActive(el) {
+            navItems.forEach(i => {
+                i.classList.remove('bg-black/5', 'text-black');
+                i.classList.add('text-neutral-700');
+            });
+            el.classList.add('bg-black/5', 'text-black');
+            el.classList.remove('text-neutral-700');
+        }
+        navItems.forEach(i => i.addEventListener('click', () => setActive(i)));
+
+        // Modal "Sobre mim"
+        const openBtn = document.getElementById('openAboutModal');
+        const modal = document.getElementById('aboutModal');
+        const closeBtn = document.getElementById('closeAboutModal');
+        const overlay = modal.querySelector('[data-modal-overlay]');
+        let lastFocused;
+
+        function openModal() {
+            lastFocused = document.activeElement;
+            modal.classList.remove('hidden'); modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+            setTimeout(() => closeBtn.focus(), 0);
+        }
+        function closeModal() {
+            modal.classList.add('hidden'); modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+            if (lastFocused) lastFocused.focus();
+        }
+        openBtn && openBtn.addEventListener('click', openModal);
+        closeBtn && closeBtn.addEventListener('click', closeModal);
+        overlay && overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+
+        // Filtro de skills
+        const filterBtns = document.querySelectorAll('[data-skill-filter]');
+        const skillWrappers = document.querySelectorAll('[data-skill-wrapper]');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.getAttribute('data-skill-filter');
+                filterBtns.forEach(b => { b.removeAttribute('data-active'); b.setAttribute('aria-selected', 'false'); });
+                btn.setAttribute('data-active', 'true'); btn.setAttribute('aria-selected', 'true');
+                skillWrappers.forEach(w => {
+                    w.classList.remove('hidden');
+                    if (type !== 'all' && w.getAttribute('data-skill-wrapper') !== type) { w.classList.add('hidden'); }
+                });
+            });
+        });
+
+        // Animações de entrada + barras
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const animEls = document.querySelectorAll('[data-animate]');
+        const bars = document.querySelectorAll('[data-progress]');
+        if (!prefersReduced && 'IntersectionObserver' in window) {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        el.classList.add('transition', 'duration-500');
+                        el.classList.remove('opacity-0', 'translate-y-2');
+                        el.classList.add('opacity-100', 'translate-y-0');
+                        io.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.2 });
+            animEls.forEach(el => io.observe(el));
+
+            const ioBars = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = Number(el.getAttribute('data-progress')) || 0;
+                        el.style.transition = 'width 900ms ease';
+                        requestAnimationFrame(() => { el.style.width = target + '%'; });
+                        ioBars.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.3 });
+            bars.forEach(b => ioBars.observe(b));
+        } else {
+            animEls.forEach(el => el.classList.remove('opacity-0', 'translate-y-2'));
+            bars.forEach(el => { el.style.width = (el.getAttribute('data-progress') || '0') + '%'; });
+        }
+
+        // PROJETOS: filtro/busca
+        const projBtns = document.querySelectorAll('[data-proj-filter]');
+        const projCards = document.querySelectorAll('[data-proj-card]');
+        const projSearch = document.querySelector('[data-proj-search]');
+        function applyProjFilters() {
+            const activeBtn = document.querySelector('[data-proj-filter][data-active]');
+            const type = activeBtn ? activeBtn.getAttribute('data-proj-filter') : 'all';
+            const q = (projSearch && projSearch.value || '').trim().toLowerCase();
+            projCards.forEach(card => {
+                const tags = (card.dataset.tags || '').toLowerCase();
+                const title = (card.dataset.title || '').toLowerCase();
+                const desc = (card.dataset.desc || '').toLowerCase();
+                const typePass = type === 'all' || tags.includes(type);
+                const qPass = !q || title.includes(q) || desc.includes(q) || tags.includes(q);
+                card.classList.toggle('hidden', !typePass || !qPass);
+            });
+        }
+        projBtns.forEach(btn => btn.addEventListener('click', () => {
+            projBtns.forEach(b => { b.removeAttribute('data-active'); b.setAttribute('aria-selected', 'false'); });
+            btn.setAttribute('data-active', 'true'); btn.setAttribute('aria-selected', 'true');
+            applyProjFilters();
+        }));
+        projSearch && projSearch.addEventListener('input', applyProjFilters);
+        applyProjFilters();
+        document.querySelectorAll('[data-proj-card]').forEach(card => {
+            const title = card.dataset.title || '';
+            const url = repoMap[title];
+            if (!url) return;
+            const codeLink = Array.from(card.querySelectorAll('a')).find(a => a.textContent.trim().toLowerCase() === 'código');
+            if (codeLink) {
+                codeLink.href = url;
+                codeLink.target = '_blank';
+                codeLink.rel = 'noopener noreferrer';
+                codeLink.setAttribute('aria-label', 'Ver código no GitHub');
+            }
+        });
+
+        // PROJETOS: modal Case Study
+        const projModal = document.createElement('div');
+        projModal.id = 'projectModal';
+        projModal.className = 'fixed inset-0 z-50 hidden items-center justify-center';
+        projModal.innerHTML = `
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" data-proj-overlay></div>
+        <div class="relative mx-auto w-[94%] max-w-3xl rounded-2xl bg-white shadow-2xl ring-1 ring-black/10 flex flex-col max-h-[80vh]">
+          <div class="sticky top-0 flex items-center justify-between border-b border-black/10 px-5 sm:px-6 py-4 bg-white/90 backdrop-blur rounded-t-2xl">
+            <h3 id="projectModalTitle" class="text-lg font-semibold">Case Study</h3>
+            <button aria-label="Fechar" class="proj-close inline-flex h-9 w-9 items-center justify-center rounded-lg hover:bg-black/5">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <div class="proj-body grow overflow-y-auto px-5 sm:px-6 py-6 space-y-6"></div>
+        </div>`;
+        document.body.appendChild(projModal);
+        const projOverlay = projModal.querySelector('[data-proj-overlay]');
+        const projBody = projModal.querySelector('.proj-body');
+        const projCloseBtn = projModal.querySelector('.proj-close');
+        let lastProjFocused;
+        function openProjModal(title, content) {
+            lastProjFocused = document.activeElement;
+            projModal.querySelector('#projectModalTitle').textContent = title || 'Case Study';
+            projBody.innerHTML = content || '<p class="text-sm text-neutral-700">Sem conteúdo.</p>';
+            projModal.classList.remove('hidden'); projModal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+            setTimeout(() => projCloseBtn.focus(), 0);
+        }
+        function closeProjModal() {
+            projModal.classList.add('hidden'); projModal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+            if (lastProjFocused) lastProjFocused.focus();
+        }
+        projOverlay.addEventListener('click', (e) => { if (e.target === projOverlay) closeProjModal(); });
+        projCloseBtn.addEventListener('click', closeProjModal);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !projModal.classList.contains('hidden')) closeProjModal(); });
+
+        document.querySelectorAll('.openCaseStudy').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const card = btn.closest('[data-proj-card]');
+                const id = btn.getAttribute('data-case-id');
+                const hidden = card && card.querySelector('[data-case][id="' + id + '"]');
+                const title = (card && card.dataset.title) || 'Projeto';
+                openProjModal(title, hidden ? hidden.innerHTML : '');
+            });
+        });
+
+        // FORM WHATSAPP
+        (function () {
+            const form = document.getElementById('whatsForm');
+            const WHATS_NUMBER = '553299145114'; // DDI + DDD + número
+            function isEmail(v) { if (!v) return true; const at = v.indexOf('@'); const dot = v.lastIndexOf('.'); return at > 0 && dot > at + 1 && dot < v.length - 1; }
+            form && form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = document.getElementById('w-name').value.trim();
+                const email = document.getElementById('w-email').value.trim();
+                const subject = document.getElementById('w-subject').value.trim();
+                const msg = document.getElementById('w-message').value.trim();
+                if (!name || !msg) { alert('Preencha nome e mensagem.'); return; }
+                if (!isEmail(email)) { alert('Informe um e-mail válido.'); return; }
+                const lines = [
+                    'Olá! Sou ' + name + '.',
+                    email ? 'Email: ' + email : '',
+                    subject ? 'Assunto: ' + subject : '',
+                    '',
+                    msg
+                ].filter(Boolean).join('\\n');
+                const url = 'https://wa.me/' + WHATS_NUMBER + '?text=' + encodeURIComponent(lines);
+                window.open(url, '_blank');
+            });
+        })();
+    </script>
+</body>
+
+</html>
